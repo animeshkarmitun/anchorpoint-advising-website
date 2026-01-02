@@ -1,0 +1,295 @@
+export const translations = {
+    bn: {
+        // Navbar
+        navbar: {
+            logo: "নিরাপদট্যাক্স",
+            home: "হোম",
+            about: "আমাদের সম্পর্কে",
+            services: "সেবাসমূহ",
+            testimonials: "মতামত",
+            contact: "যোগাযোগ",
+            strategyCall: "স্ট্র্যাটেজি কল",
+        },
+        // Hero Section
+        hero: {
+            badge: "২০০৪ সাল থেকে পেশাদার ট্যাক্স সেবা",
+
+            title1: "বিশেষজ্ঞ ট্যাক্স সমাধান",
+            title2: "আপনার ব্যবসার জন্য",
+            subtitle: "আমরা আপনার ব্যবসার অনন্য চাহিদা পূরণের জন্য অত্যাধুনিক সমাধান সহ ব্যাপক ট্যাক্স পরিকল্পনা, প্রস্তুতি এবং পরামর্শ সেবা প্রদান করি।",
+            btnServices: "আমাদের সেবাসমূহ",
+            btnContact: "যোগাযোগ করুন",
+            happyClients: "সন্তুষ্ট ক্লায়েন্ট",
+            projectsDone: "সম্পন্ন প্রকল্প",
+            yearsExperience: "বছরের অভিজ্ঞতা",
+        },
+        // About Section
+        about: {
+            badge: "আমরা কে",
+            title1: "আমরা সেরা",
+            title2: "ট্যাক্স ও ফিন্যান্স সমাধান",
+            description: "২০ বছরেরও বেশি অভিজ্ঞতার সাথে, ট্যাক্সপার্ট হাজার হাজার ব্যবসা এবং ব্যক্তিদের কর এবং অর্থের জটিলতা নেভিগেট করতে সাহায্য করেছে। আমাদের প্রত্যয়িত বিশেষজ্ঞদের দল আপনার আর্থিক সাফল্য এবং বৃদ্ধির জন্য নিবেদিত।",
+            feature1: "প্রত্যয়িত ট্যাক্স পেশাদার",
+            feature2: "ব্যাপক আর্থিক বিশ্লেষণ",
+            feature3: "ব্যক্তিগতকৃত ব্যবসায়িক কৌশল",
+            feature4: "২৪/৭ সহায়তা ও পরামর্শ",
+            btnLearnMore: "আমাদের সম্পর্কে আরও জানুন",
+            yearsExp: "বছরের অভিজ্ঞতা",
+        },
+        // Services Section
+        services: {
+            badge: "আমাদের দক্ষতা",
+            title1: "পেশাদার ট্যাক্স ও",
+            title2: "ফিন্যান্স সেবা",
+            subtitle: "আমরা আত্মবিশ্বাসের সাথে অর্থ এবং করের জটিল জগতে নেভিগেট করতে সাহায্য করার জন্য অত্যাধুনিক সেবাগুলির একটি বিস্তৃত পরিসর অফার করি।",
+            service1Title: "ট্যাক্স প্রস্তুতি",
+            service1Desc: "সমস্ত আকারের ব্যক্তি এবং ব্যবসার জন্য সঠিক এবং সময়মত ট্যাক্স রিটার্ন প্রস্তুতি।",
+            service2Title: "আর্থিক পরিকল্পনা",
+            service2Desc: "আপনার দীর্ঘমেয়াদী আর্থিক লক্ষ্য অর্জনে সাহায্য করার জন্য কৌশলগত আর্থিক পরিকল্পনা।",
+            service3Title: "ব্যবসায়িক পরামর্শ",
+            service3Desc: "আপনার ব্যবসার কর্মক্ষমতা উন্নত করতে এবং লাভজনকতা সর্বাধিক করার জন্য বিশেষজ্ঞ পরামর্শ।",
+            service4Title: "অডিটিং সেবা",
+            service4Desc: "সম্মতি এবং আর্থিক স্বচ্ছতা নিশ্চিত করার জন্য ব্যাপক অডিটিং সেবা।",
+            service5Title: "হিসাবরক্ষণ",
+            service5Desc: "আপনার আর্থিক রেকর্ড সংগঠিত এবং সঠিক রাখতে নির্ভরযোগ্য হিসাবরক্ষণ সেবা।",
+            service6Title: "পেরোল ব্যবস্থাপনা",
+            service6Desc: "সমস্ত আকার এবং শিল্পের ব্যবসার জন্য দক্ষ পেরোল ব্যবস্থাপনা সমাধান।",
+            learnMore: "আরও জানুন",
+        },
+        // Stats Section
+        stats: {
+            badge: "আমাদের অর্জন",
+            title1: "সংখ্যা যা",
+            title2: "আমাদের জন্য কথা বলে",
+            subtitle: "আমাদের উৎকর্ষতা এবং ক্লায়েন্ট সন্তুষ্টির ট্র্যাক রেকর্ড",
+            stat1: "সন্তুষ্ট ক্লায়েন্ট",
+            stat2: "সম্পন্ন প্রকল্প",
+            stat3: "বিশেষজ্ঞ দল",
+            stat4: "পুরস্কার জিতেছে",
+        },
+        // Testimonials Section
+        testimonials: {
+            badge: "মতামত",
+            title1: "আমাদের",
+            title2: "ক্লায়েন্টরা কী বলে",
+            subtitle: "শুধু আমাদের কথা নিবেন না - আমাদের সন্তুষ্ট ক্লায়েন্টদের কাছ থেকে শুনুন",
+            client1Name: "সারাহ জনসন",
+            client1Role: "সিইও, টেকস্টার্ট ইনক।",
+            client1Quote: "ট্যাক্সপার্ট আমাদের কোম্পানির আর্থিক বৃদ্ধিতে সহায়ক ভূমিকা পালন করেছে। তাদের কৌশলগত পরামর্শ এবং বিস্তারিত মনোযোগ শিল্পে সত্যিই অতুলনীয়।",
+            client2Name: "মাইকেল চেন",
+            client2Role: "প্রতিষ্ঠাতা, গ্রিনলিফ",
+            client2Quote: "পেশাদার ট্যাক্স সেবা খুঁজছেন এমন যে কাউকে আমি ট্যাক্সপার্টকে অত্যন্ত সুপারিশ করি। তারা সম্পূর্ণ প্রক্রিয়াটি নির্বিঘ্ন, দক্ষ এবং সম্পূর্ণ চাপমুক্ত করেছে।",
+            client3Name: "এমিলি ডেভিস",
+            client3Role: "পরিচালক, ক্রিয়েটিভ সলিউশনস",
+            client3Quote: "ট্যাক্সপার্টের দল জ্ঞানী, প্রতিক্রিয়াশীল এবং সত্যিই তাদের ক্লায়েন্টদের যত্ন নেয়। আমরা তাদের ব্যতিক্রমী সেবা নিয়ে আরও খুশি হতে পারিনি।",
+        },
+        // Consultation Section
+        consultation: {
+            badge: "বিনামূল্যে পরামর্শ",
+            title1: "আপনার বিনামূল্যে",
+            title2: "কৌশল কল বুক করুন",
+            subtitle: "আমাদের ট্যাক্স বিশেষজ্ঞদের সাথে একটি ব্যক্তিগত পরামর্শ সেশন নির্ধারণ করুন এবং আপনার ব্যবসার জন্য কাস্টমাইজড সমাধান পান।",
+            feature1: "৩০ মিনিটের ব্যক্তিগত পরামর্শ",
+            feature2: "আপনার সুবিধাজনক সময়ে",
+            feature3: "ভিডিও বা ফোন কল",
+            feature4: "কোন বাধ্যবাধকতা নেই",
+            cta: "এখনই আপনার স্লট বুক করুন",
+        },
+        logo: "NirapodTax",
+        home: "Home",
+        about: "About",
+        services: "Services",
+        testimonials: "Testimonials",
+        contact: "Contact",
+        strategyCall: "Strategy Call",
+    },
+    // Hero Section
+    hero: {
+        badge: "Professional Tax Services Since 2004",
+        title1: "Expert Tax Solution",
+        title2: "For Your Business",
+        subtitle: "We provide comprehensive tax planning, preparation, and consulting services tailored to meet the unique needs of your business with cutting-edge solutions.",
+        btnServices: "Our Services",
+        btnContact: "Contact Us",
+        happyClients: "Happy Clients",
+        projectsDone: "Projects Done",
+        yearsExperience: "Years Experience",
+    },
+    // About Section
+    about: {
+        badge: "Who We Are",
+        title1: "We Are The Best",
+        title2: "Tax & Finance Solution",
+        description: "With over 20 years of experience, Taxpert has helped thousands of businesses and individuals navigate the complexities of taxation and finance. Our team of certified experts is dedicated to your financial success and growth.",
+        feature1: "Certified Tax Professionals",
+        feature2: "Comprehensive Financial Analysis",
+        feature3: "Personalized Business Strategies",
+        feature4: "24/7 Support & Consultation",
+        btnLearnMore: "Learn More About Us",
+        yearsExp: "Years Experience",
+    },
+    // Services Section
+    services: {
+        badge: "Our Expertise",
+        title1: "Professional Tax &",
+        title2: "Finance Services",
+        subtitle: "We offer a wide range of cutting-edge services to help you navigate the complex world of finance and taxation with confidence.",
+        service1Title: "Tax Preparation",
+        service1Desc: "Accurate and timely tax return preparation for individuals and businesses of all sizes.",
+        service2Title: "Financial Planning",
+        service2Desc: "Strategic financial planning to help you achieve your long-term financial goals.",
+        service3Title: "Business Consulting",
+        service3Desc: "Expert advice to improve your business performance and maximize profitability.",
+        service4Title: "Auditing Services",
+        service4Desc: "Comprehensive auditing services to ensure compliance and financial transparency.",
+        service5Title: "Bookkeeping",
+        service5Desc: "Reliable bookkeeping services to keep your financial records organized and accurate.",
+        service6Title: "Payroll Management",
+        service6Desc: "Efficient payroll management solutions for businesses of all sizes and industries.",
+        learnMore: "Learn More",
+    },
+    // Stats Section
+    stats: {
+        badge: "Our Achievements",
+        title1: "Numbers That",
+        title2: "Speak For Us",
+        subtitle: "Our track record of excellence and client satisfaction",
+        stat1: "Happy Clients",
+        stat2: "Projects Done",
+        stat3: "Expert Team",
+        stat4: "Awards Won",
+    },
+    // Testimonials Section
+    testimonials: {
+        badge: "Testimonials",
+        title1: "What Our",
+        title2: "Clients Say",
+        subtitle: "Don't just take our word for it - hear from our satisfied clients",
+        client1Name: "Sarah Johnson",
+        client1Role: "CEO, TechStart Inc.",
+        client1Quote: "Taxpert has been instrumental in our company's financial growth. Their strategic advice and attention to detail are truly unmatched in the industry.",
+        client2Name: "Michael Chen",
+        client2Role: "Founder, GreenLeaf",
+        client2Quote: "I highly recommend Taxpert for anyone looking for professional tax services. They made the entire process seamless, efficient and completely stress-free.",
+        client3Name: "Emily Davis",
+        client3Role: "Director, Creative Solutions",
+        client3Quote: "The team at Taxpert is knowledgeable, responsive, and truly cares about their clients. We couldn't be happier with their exceptional services.",
+    },
+    // Consultation Section
+    consultation: {
+        badge: "Free Consultation",
+        title1: "Book Your Free",
+        title2: "Strategy Call",
+        subtitle: "Schedule a personalized consultation session with our tax experts and get customized solutions for your business.",
+        feature1: "30-minute personalized consultation",
+        feature2: "At your convenient time",
+        feature3: "Video or phone call",
+        feature4: "No obligation required",
+        cta: "Book Your Slot Now",
+    },
+    // WhatsApp Button
+    whatsapp: {
+        tooltip: "Chat with us",
+    },
+    // Video Section
+    video: {
+        badge: "Watch Video",
+        title1: "Your Complete Tax Solution",
+        title2: "All in One Place",
+        subtitle: "Discover how our comprehensive tax services can transform your business and ensure your financial success.",
+        features: [
+            "Complete Tax Management",
+            "Expert Guidance & Support",
+            "Proven Results & Success"
+        ],
+    },
+    // FAQ Section
+    faq: {
+        badge: "Frequently Asked Questions",
+        title1: "Get Answers to",
+        title2: "Your Questions",
+        subtitle: "Find answers to the most common questions about tax filing in Bangladesh",
+        questions: [
+            {
+                question: "Who is legally required to file an income tax return in Bangladesh?",
+                answer: "You must file a tax return if:\n\n• Your total taxable income exceeds the tax-free threshold; or\n• You have a TIN; or\n• You own a car, own/lease a flat in a city corporation area, have a trade license, run a business, are a company director, or meet any other mandatory filing criteria under NBR."
+            },
+            {
+                question: "When should I file my tax return, and how often am I legally required to file?",
+                answer: "Once every year.\n\nFiling deadline for individuals: 30 November of each assessment year."
+            },
+            {
+                question: "What are the penalties for failing to file a tax return on time?",
+                answer: "Minimum penalty: BDT 1,000.\n\n• 10% of last assessed tax (where applicable).\n• BDT 50 per day additional penalty for continued delay.\n• Loss of privileges (certificate, trade license renewal, credit facilities)."
+            },
+            {
+                question: "What are the penalties for providing incorrect or incomplete information?",
+                answer: "Considered concealment or false return.\n\nPenalty: up to 5 years imprisonment, or fine, or both.\n\nAdditional tax/penalty on concealed income may apply."
+            },
+            {
+                question: "What types of income must be declared in a tax return?",
+                answer: "All income sources, including:\n\n• Salary\n• Business/professional/freelancing income\n• Rental income\n• Interest, dividends, capital gains\n• Any other taxable receipts"
+            },
+            {
+                question: "Do I need to file if tax was already deducted at source by my employer?",
+                answer: "Yes, if your income exceeds the threshold or you meet any mandatory filing criteria.\n\nTDS does not remove the requirement to file."
+            },
+            {
+                question: "Do I need to file taxes if I only have salary income?",
+                answer: "Yes, if your salary exceeds the tax-free threshold or you hold a TIN.\n\nNo, only if your income is below threshold AND you are not in any mandatory category."
+            },
+            {
+                question: "Do I need to declare income from freelancing or side jobs?",
+                answer: "Yes. Freelance, outsourcing, online, or side-job income is fully taxable and must be declared."
+            },
+            {
+                question: "Do I need to file taxes if I only earn rental income?",
+                answer: "Yes. Rental income is taxable and must be included in your return."
+            },
+            {
+                question: "What documents are legally required to support a tax return?",
+                answer: "Typically required:\n\n• TIN & NID\n• Salary certificate / proof of income\n• Bank statements (for interest or income)\n• Rental agreements (if applicable)\n• Investment/profit statements\n• Asset & liability information\n• Previous year's return (if any)"
+            },
+            {
+                question: "What is the legal difference between an e-TIN and a TIN certificate?",
+                answer: "e-TIN: The actual 12-digit Taxpayer Identification Number issued electronically.\n\nTIN certificate: The document showing your TIN.\n\nThey represent the same registration; one is the number; one is the proof."
+            },
+            {
+                question: "Is it mandatory to update TIN information if I change my address or profession?",
+                answer: "Yes. You must keep your TIN profile's address, profession, and personal details updated.\n\nIncorrect information may result in penalties."
+            },
+            {
+                question: "How do I legally correct mistakes in my tax return after submission?",
+                answer: "You can file a Revised Return.\n\nMust be submitted before assessment is completed by the tax authority.\n\nUnintentional mistakes can be corrected; intentional concealment remains punishable."
+            }
+        ]
+    },
+    // Footer Section
+    footer: {
+        logo: "NirapodTax",
+        description: "We provide professional tax and finance solutions to help your business grow and succeed in today's competitive market.",
+        quickLinks: "Quick Links",
+        home: "Home",
+        aboutUs: "About Us",
+        services: "Services",
+        projects: "Projects",
+        contact: "Contact",
+        ourServices: "Our Services",
+        taxPreparation: "Tax Preparation",
+        financialPlanning: "Financial Planning",
+        auditingServices: "Auditing Services",
+        bookkeeping: "Bookkeeping",
+        payrollManagement: "Payroll Management",
+        getInTouch: "Get In Touch",
+        address: "123 Business Street, Suite 100, New York, NY 10001",
+        phone: "+1 (555) 123-4567",
+        email: "info@NirapodTax.com",
+        newsletter: "Newsletter",
+        emailPlaceholder: "Your Email",
+        copyright: "NirapodTax. All rights reserved. Crafted with ❤️",
+        privacyPolicy: "Privacy Policy",
+        termsOfService: "Terms of Service",
+        cookiePolicy: "Cookie Policy",
+    },
+},
+};
