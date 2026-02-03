@@ -1,0 +1,7 @@
+[00:00:05.486] Server  LOG      ✓ Ready in 3.7s
+[00:00:12.684] Server  LOG      ○ Compiling / ...
+[00:01:24.595] Browser WARN    Please ensure that the container has a non-static position, like 'relative', 'fixed', or 'absolute' to ensure scroll offset is calculated correctly.
+[00:01:24.947] Browser WARN    Image with src "/logo/transparent-logo.png" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
+[00:01:45.356] Server  LOG      ✓ Compiled in 544ms
+[00:03:30.909] Server  LOG      ✓ Compiled in 306ms
