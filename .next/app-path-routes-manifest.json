@@ -1,0 +1,9 @@
+{
+  "/_global-error/page": "/_global-error",
+  "/_not-found/page": "/_not-found",
+  "/api/bkash/callback/route": "/api/bkash/callback",
+  "/api/bkash/create/route": "/api/bkash/create",
+  "/api/save-customer/route": "/api/save-customer",
+  "/favicon.ico/route": "/favicon.ico",
+  "/page": "/"
+}
