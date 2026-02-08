@@ -4,6 +4,7 @@ import { createPortal } from "react-dom";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Loader2 } from "lucide-react";
+import Image from "next/image";
 import { useLanguage } from "@/context/LanguageContext";
 import { translations } from "@/lib/translations";
 
@@ -152,12 +153,12 @@ export default function PackagePurchaseModal({ isOpen, onClose, packageType, pac
 
                             {/* Modal Content */}
                             <div className="overflow-y-auto max-h-[90vh] p-6 md:p-8 bg-white relative z-[1]">
-                                {/* Header Message */}
+                                {/* Instruction Message */}
                                 <div className="bg-gradient-to-r from-purple-50 to-blue-50 rounded-2xl p-6 mb-8 relative">
                                     <p className="text-gray-700 text-lg leading-relaxed">
                                         {language === 'bn'
-                                            ? "আপনি প্রায় শেষ! শুধু একটি দ্রুত পদক্ষেপ বাকি - সম্পূর্ণ নিরাপত্তার সাথে আপনার পেমেন্ট করা। আমরা প্রতিশ্রুতি দিচ্ছি কোন লুকানো ফি নেই - শুধু আপনার জন্য স্পষ্ট এবং সহজ পদক্ষেপ।"
-                                            : "You're almost there! Just a quick step remains - making your payment with full security. We promise no hidden fees - just clear and simple steps for you."}
+                                            ? 'অনুগ্রহ করে নিচের নম্বরে সেন্ড মানি করুন অথবা QR কোড স্ক্যান করুন এবং ফর্মটি পূরণ করুন:'
+                                            : 'Please Send Money to the number below or scan the QR code, then fill out the form:'}
                                     </p>
                                 </div>
 
@@ -309,43 +310,37 @@ export default function PackagePurchaseModal({ isOpen, onClose, packageType, pac
                                                         </span>
                                                     </div>
 
-                                                    <div className="flex justify-between items-center pt-4">
-                                                        <span className="text-xl font-bold text-gray-800">
-                                                            {language === 'bn' ? 'মোট পেমেন্ট' : 'Total payment'}
-                                                        </span>
-                                                        <span className="text-2xl font-bold text-secondary">
-                                                            {language === 'bn'
-                                                                ? `${packagePrice.toLocaleString('bn-BD')} টাকা`
-                                                                : `${packagePrice} BDT`
-                                                            }
-                                                        </span>
-                                                    </div>
                                                 </div>
                                             </div>
 
                                             {/* Payment Method - Bkash Instructions */}
                                             <div className="space-y-4">
-                                                <h3 className="text-xl font-bold text-gray-800">
-                                                    {language === 'bn' ? 'পেমেন্ট পদ্ধতি' : 'Payment Method'}
-                                                </h3>
 
                                                 <div className="bg-gray-50 border border-gray-200 rounded-2xl p-6">
-                                                    <div className="flex items-center gap-4 mb-4">
-                                                        <div className="w-12 h-12 bg-pink-100 rounded-lg flex items-center justify-center">
-                                                            <svg className="w-8 h-8" viewBox="0 0 40 40" fill="none">
-                                                                <path d="M20 5L5 15V25L20 35L35 25V15L20 5Z" fill="#E91E63" />
-                                                                <text x="50%" y="55%" textAnchor="middle" fill="white" fontSize="14" fontWeight="bold" dy=".3em">b</text>
-                                                            </svg>
-                                                        </div>
-                                                        <span className="text-lg font-semibold text-gray-800">bKash Payment</span>
+
+                                                    {/* bKash Merchant Number - Prominent Display */}
+                                                    <div className="bg-gradient-to-r from-pink-500 to-pink-600 rounded-xl p-4 mb-5 text-center">
+                                                        <p className="text-pink-100 text-sm font-medium mb-1">
+                                                            {language === 'bn' ? 'বিকাশ মার্চেন্ট নম্বর' : 'bKash Merchant Number'}
+                                                        </p>
+                                                        <p className="text-white text-3xl md:text-4xl font-bold tracking-widest">
+                                                            01400966833
+                                                        </p>
                                                     </div>
 
-                                                    <p className="text-gray-600 mb-4">
-                                                        {language === 'bn'
-                                                            ? 'অনুগ্রহ করে নিচের নম্বরে সেন্ড মানি করুন এবং ফর্মটি পূরণ করুন:'
-                                                            : 'Please Send Money to the number below and fill out the form:'}
-                                                    </p>
-                                                    <p className="text-xl font-bold text-secondary mb-6">019XX-XXXXXX</p>
+                                                    {/* bKash QR Code Image */}
+                                                    <div className="flex justify-center my-4">
+                                                        <div className="relative rounded-2xl overflow-hidden border-2 border-pink-200 shadow-md bg-white p-2">
+                                                            <Image
+                                                                src="/bkash-image.jpeg"
+                                                                alt="bKash QR Code"
+                                                                width={260}
+                                                                height={260}
+                                                                className="rounded-xl object-contain"
+                                                                priority
+                                                            />
+                                                        </div>
+                                                    </div>
 
 
                                                     <div className="space-y-4">
