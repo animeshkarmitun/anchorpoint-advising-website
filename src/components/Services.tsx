@@ -106,9 +106,9 @@ export default function Services() {
 
 
                             {/* Content */}
-                            <div className="relative z-10">
+                            <div className="relative z-10 text-center md:text-left">
                                 {/* Icon with Background */}
-                                <div className="w-24 h-24 bg-secondary rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-xl">
+                                <div className="w-24 h-24 bg-secondary rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-xl mx-auto md:mx-0">
                                     <div className="text-white">
                                         {service.icon}
                                     </div>
@@ -125,7 +125,7 @@ export default function Services() {
                                 </p>
 
                                 {/* Learn More Link */}
-                                <div className="flex items-center gap-2 text-secondary font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                <div className="flex items-center justify-center md:justify-start gap-2 text-secondary font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                                     <span>{t.learnMore}</span>
                                     <svg className="w-4 h-4 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
