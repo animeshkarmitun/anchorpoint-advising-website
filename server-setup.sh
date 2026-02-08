@@ -49,6 +49,7 @@ APP_PORT="$APP_PORT"
 DOMAIN_NAME="$DOMAIN_NAME"
 GIT_BRANCH="$GIT_BRANCH"
 HEALTH_ENDPOINT="$HEALTH_ENDPOINT"
+SSL_EMAIL="$SSL_EMAIL"
 INSTALL_CMD="$INSTALL_CMD"
 BUILD_CMD="$BUILD_CMD"
 START_CMD="$START_CMD"
@@ -68,6 +69,7 @@ show_config() {
     echo -e "  Domain Name  : ${CYAN}${DOMAIN_NAME:-_(none — IP only)_}${NC}"
     echo -e "  Git Branch   : ${CYAN}${GIT_BRANCH:-main}${NC}"
     echo -e "  Health EP    : ${CYAN}${HEALTH_ENDPOINT:-/ (default)}${NC}"
+    echo -e "  SSL Email    : ${CYAN}${SSL_EMAIL:-_(none — no renewal alerts)_}${NC}"
     echo -e "  Install Cmd  : ${CYAN}$INSTALL_CMD${NC}"
     echo -e "  Build Cmd    : ${CYAN}${BUILD_CMD:-_(none)_}${NC}"
     echo -e "  Start Cmd    : ${CYAN}$START_CMD${NC}"
@@ -111,6 +113,10 @@ prompt_config() {
     log_prompt "Health check endpoint (e.g. /api/health) [/]: "
     read -r input
     HEALTH_ENDPOINT="${input:-/}"
+
+    log_prompt "Email for SSL certificate renewal alerts (optional, press Enter to skip): "
+    read -r input
+    SSL_EMAIL="${input:-}"
 
     log_prompt "Install command [npm install]: "
     read -r input
@@ -721,23 +727,43 @@ step_ssl() {
     local server_ip
     server_ip=$(curl -s ifconfig.me 2>/dev/null || curl -s icanhazip.com 2>/dev/null)
     local domain_ip
-    domain_ip=$(dig +short "$DOMAIN_NAME" 2>/dev/null | head -1)
+    domain_ip=$(dig +short "$DOMAIN_NAME" 2>/dev/null | grep -E '^[0-9]+\.' | head -1)
 
-    if [[ -n "$server_ip" && -n "$domain_ip" ]]; then
-        if [[ "$server_ip" == "$domain_ip" ]]; then
-            log_ok "DNS verified: $DOMAIN_NAME → $server_ip"
-        else
-            log_warn "DNS mismatch: $DOMAIN_NAME → $domain_ip but server IP is $server_ip"
-            log_warn "SSL may fail if DNS hasn't propagated yet."
-            log_prompt "Continue anyway? [y/N]: "
-            read -r dns_choice
-            if [[ ! "$dns_choice" =~ ^[yY]$ ]]; then
-                log_info "Aborting SSL setup. Fix DNS and try again."
-                return 1
-            fi
+    log_info "Server IP: ${server_ip:-unknown}"
+    log_info "Domain IP: ${domain_ip:-not resolving}"
+
+    if [[ -z "$domain_ip" ]]; then
+        log_fail "DNS is NOT configured for $DOMAIN_NAME"
+        echo ""
+        echo -e "  ${BOLD}${YELLOW}┌───────────────────────────────────────────────────────┐${NC}"
+        echo -e "  ${BOLD}${YELLOW}│   DNS NOT SET UP — SSL cannot proceed                 │${NC}"
+        echo -e "  ${BOLD}${YELLOW}├───────────────────────────────────────────────────────┤${NC}"
+        echo -e "  ${BOLD}${YELLOW}│                                                       │${NC}"
+        echo -e "  ${BOLD}${YELLOW}│${NC}   Go to your domain registrar and add:               ${BOLD}${YELLOW}│${NC}"
+        echo -e "  ${BOLD}${YELLOW}│${NC}                                                       ${BOLD}${YELLOW}│${NC}"
+        echo -e "  ${BOLD}${YELLOW}│${NC}   ${CYAN}A record:  @    → ${server_ip:-<server-ip>}${NC}         ${BOLD}${YELLOW}│${NC}"
+        echo -e "  ${BOLD}${YELLOW}│${NC}   ${CYAN}A record:  www  → ${server_ip:-<server-ip>}${NC}         ${BOLD}${YELLOW}│${NC}"
+        echo -e "  ${BOLD}${YELLOW}│${NC}                                                       ${BOLD}${YELLOW}│${NC}"
+        echo -e "  ${BOLD}${YELLOW}│${NC}   Then wait for DNS propagation (5-30 min)            ${BOLD}${YELLOW}│${NC}"
+        echo -e "  ${BOLD}${YELLOW}│${NC}   and re-run: ${CYAN}bash server-setup.sh${NC} → step 11         ${BOLD}${YELLOW}│${NC}"
+        echo -e "  ${BOLD}${YELLOW}│                                                       │${NC}"
+        echo -e "  ${BOLD}${YELLOW}│${NC}   Verify with: ${CYAN}dig +short $DOMAIN_NAME${NC}"
+        echo -e "  ${BOLD}${YELLOW}│${NC}   Should return: ${CYAN}${server_ip:-<server-ip>}${NC}"
+        echo -e "  ${BOLD}${YELLOW}│                                                       │${NC}"
+        echo -e "  ${BOLD}${YELLOW}└───────────────────────────────────────────────────────┘${NC}"
+        echo ""
+        return 1
+    elif [[ -n "$server_ip" && "$server_ip" != "$domain_ip" ]]; then
+        log_warn "DNS mismatch: $DOMAIN_NAME → $domain_ip but server IP is $server_ip"
+        log_warn "SSL will likely fail. DNS may still be propagating."
+        log_prompt "Continue anyway? [y/N]: "
+        read -r dns_choice
+        if [[ ! "$dns_choice" =~ ^[yY]$ ]]; then
+            log_info "Aborting SSL setup. Wait for DNS propagation and try again."
+            return 1
         fi
     else
-        log_warn "Could not verify DNS. Proceeding anyway..."
+        log_ok "DNS verified: $DOMAIN_NAME → $domain_ip"
     fi
 
     # Install Certbot
@@ -757,12 +783,21 @@ step_ssl() {
     log_info "Requesting SSL certificate for $DOMAIN_NAME..."
     echo ""
 
-    if sudo certbot --nginx -d "$DOMAIN_NAME" -d "www.$DOMAIN_NAME" --non-interactive --agree-tos --redirect --email ""; then
+    # Build email flag
+    local email_flag="--register-unsafely-without-email"
+    if [[ -n "$SSL_EMAIL" ]]; then
+        email_flag="--email $SSL_EMAIL"
+        log_info "Using email: $SSL_EMAIL"
+    else
+        log_info "No email configured — skipping renewal notifications."
+    fi
+
+    if sudo certbot --nginx -d "$DOMAIN_NAME" -d "www.$DOMAIN_NAME" --non-interactive --agree-tos --redirect $email_flag; then
         log_ok "SSL certificate installed!"
     else
         # Try without www if www fails
         log_warn "Failed with www. Trying without www subdomain..."
-        if sudo certbot --nginx -d "$DOMAIN_NAME" --non-interactive --agree-tos --redirect --email ""; then
+        if sudo certbot --nginx -d "$DOMAIN_NAME" --non-interactive --agree-tos --redirect $email_flag; then
             log_ok "SSL certificate installed (without www)!"
         else
             log_fail "Certbot failed. Common fixes:"
