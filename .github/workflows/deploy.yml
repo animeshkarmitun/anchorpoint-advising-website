@@ -1,0 +1,37 @@
+name: 🚀 Deploy to Production
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    name: Deploy to Ubuntu Server
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: 🔗 SSH & Deploy
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          password: ${{ secrets.SERVER_PASSWORD }}
+          port: ${{ secrets.SERVER_PORT || 22 }}
+          script_stop: true
+          script: |
+            echo "🚀 Starting deployment..."
+            cd ${{ secrets.PROJECT_DIR || '~/anchor-point' }}
+            
+            if [ -f deploy.sh ]; then
+              bash deploy.sh
+            else
+              echo "deploy.sh not found. Running manual deploy..."
+              git fetch origin main
+              git reset --hard origin/main
+              npm install
+              npm run build
+              pm2 restart anchor-point
+            fi
+            
+            echo "✅ Deployment finished at $(date)"
