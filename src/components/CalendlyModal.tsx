@@ -10,6 +10,18 @@ interface CalendlyModalProps {
 }
 
 export default function CalendlyModal({ isOpen, onClose, calendlyUrl }: CalendlyModalProps) {
+    // Build the Calendly URL with cookie consent if already accepted
+    const getCalendlyUrl = () => {
+        if (typeof window !== "undefined") {
+            const consent = localStorage.getItem("cookie_consent");
+            if (consent === "accepted") {
+                const separator = calendlyUrl.includes("?") ? "&" : "?";
+                return `${calendlyUrl}${separator}cookie_consent=1`;
+            }
+        }
+        return calendlyUrl;
+    };
+
     useEffect(() => {
         if (isOpen) {
             // Load Calendly script
@@ -44,7 +56,7 @@ export default function CalendlyModal({ isOpen, onClose, calendlyUrl }: Calendly
                 {/* Calendly Inline Widget */}
                 <div
                     className="calendly-inline-widget"
-                    data-url={calendlyUrl}
+                    data-url={getCalendlyUrl()}
                     style={{ minWidth: "320px", height: "700px" }}
                 />
             </div>

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "@/context/LanguageContext";
+import CookieConsent from "@/components/CookieConsent";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -25,7 +26,10 @@ export default function RootLayout({
         className={`${poppins.variable} antialiased`}
         suppressHydrationWarning
       >
-        <LanguageProvider>{children}</LanguageProvider>
+        <LanguageProvider>
+          {children}
+          <CookieConsent />
+        </LanguageProvider>
       </body>
     </html>
   );

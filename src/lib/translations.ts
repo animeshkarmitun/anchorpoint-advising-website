@@ -209,6 +209,12 @@ export const translations = {
                 }
             ]
         },
+        // Cookie Consent
+        cookieConsent: {
+            message: "আমরা আপনার অভিজ্ঞতা উন্নত করতে কুকিজ ব্যবহার করি। আমাদের ওয়েবসাইট ব্যবহার অব্যাহত রাখলে আপনি আমাদের কুকি নীতিতে সম্মত হবেন।",
+            accept: "গ্রহণ করুন",
+            decline: "প্রত্যাখ্যান",
+        },
         // Footer Section
         footer: {
             logo: "Anchor Point Advising",
@@ -445,6 +451,12 @@ export const translations = {
                     answer: "You can file a Revised Return.\\n\\nMust be submitted before assessment is completed by the tax authority.\\n\\nUnintentional mistakes can be corrected; intentional concealment remains punishable."
                 }
             ]
+        },
+        // Cookie Consent
+        cookieConsent: {
+            message: "We use cookies to enhance your browsing experience and provide personalized services. By continuing to use our website, you agree to our cookie policy.",
+            accept: "Accept",
+            decline: "Decline",
         },
         // Footer Section
         footer: {
