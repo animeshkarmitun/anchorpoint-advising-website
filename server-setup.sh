@@ -611,8 +611,8 @@ step_nginx() {
     # Determine server_name directive
     local server_name_value="_"
     if [[ -n "$DOMAIN_NAME" ]]; then
-        server_name_value="$DOMAIN_NAME www.$DOMAIN_NAME"
-        log_info "Domain configured: $DOMAIN_NAME"
+        server_name_value="$DOMAIN_NAME"
+        log_info "Domain configured: $DOMAIN_NAME (canonical, non-www)"
     else
         log_info "No domain configured — using catch-all."
     fi
@@ -622,6 +622,18 @@ step_nginx() {
     log_info "Writing Nginx config to $nginx_conf..."
 
     sudo tee "$nginx_conf" > /dev/null <<EOF
+# ── www → non-www 301 redirect (SEO canonical) ──────────────────────────
+$(if [[ -n "$DOMAIN_NAME" ]]; then
+cat <<WWWBLOCK
+server {
+    listen 80;
+    server_name www.${DOMAIN_NAME};
+    return 301 \$scheme://${DOMAIN_NAME}\$request_uri;
+}
+WWWBLOCK
+fi)
+
+# ── Main server block ───────────────────────────────────────────────────
 server {
     listen 80;
     server_name ${server_name_value};
@@ -674,6 +686,10 @@ server {
 }
 EOF
     log_ok "Nginx config written."
+
+    if [[ -n "$DOMAIN_NAME" ]]; then
+        log_ok "www.$DOMAIN_NAME → $DOMAIN_NAME (301 permanent redirect)"
+    fi
 
     # Enable site
     sudo ln -sf "$nginx_conf" "/etc/nginx/sites-enabled/$APP_NAME"
