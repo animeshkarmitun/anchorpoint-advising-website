@@ -5,7 +5,7 @@ import Image from "next/image";
 import { CheckCircle2, Award, Users, TrendingUp, FileCheck } from "lucide-react";
 import { useRef } from "react";
 import { useLanguage } from "@/context/LanguageContext";
-import { translations } from "@/lib/translations";
+import { translations } from "@/lib/content";
 
 export default function About() {
     const ref = useRef(null);

@@ -5,7 +5,7 @@ import Image from "next/image";
 import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone, MapPin, Send, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
-import { translations } from "@/lib/translations";
+import { translations } from "@/lib/content";
 
 export default function Footer() {
     const { language } = useLanguage();

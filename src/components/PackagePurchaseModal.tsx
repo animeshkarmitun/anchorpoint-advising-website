@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { X, Loader2, Copy, Check } from "lucide-react";
 import Image from "next/image";
 import { useLanguage } from "@/context/LanguageContext";
-import { translations } from "@/lib/translations";
+import { translations } from "@/lib/content";
 
 interface PackagePurchaseModalProps {
     isOpen: boolean;
@@ -361,8 +361,8 @@ export default function PackagePurchaseModal({ isOpen, onClose, packageType, pac
                                                     inputMode="numeric"
                                                     maxLength={11}
                                                     className={`w-full px-4 py-3 border-2 rounded-xl focus:outline-none transition-colors ${fieldErrors.phone ? 'border-red-300 focus:border-red-400' :
-                                                            formData.phone && validatePhone(formData.phone) ? 'border-green-300 focus:border-green-400' :
-                                                                'border-gray-200 focus:border-secondary'
+                                                        formData.phone && validatePhone(formData.phone) ? 'border-green-300 focus:border-green-400' :
+                                                            'border-gray-200 focus:border-secondary'
                                                         }`}
                                                     placeholder={language === 'bn' ? '01XXXXXXXXX' : '01XXXXXXXXX'}
                                                 />
@@ -399,9 +399,9 @@ export default function PackagePurchaseModal({ isOpen, onClose, packageType, pac
                                                     maxLength={11}
                                                     disabled={useSameNumber}
                                                     className={`w-full px-4 py-3 border-2 rounded-xl focus:outline-none transition-colors ${useSameNumber ? 'bg-gray-50' :
-                                                            fieldErrors.bkashNumber ? 'border-red-300 focus:border-red-400' :
-                                                                formData.bkashNumber && validatePhone(formData.bkashNumber) ? 'border-green-300 focus:border-green-400' :
-                                                                    'border-gray-200 focus:border-secondary'
+                                                        fieldErrors.bkashNumber ? 'border-red-300 focus:border-red-400' :
+                                                            formData.bkashNumber && validatePhone(formData.bkashNumber) ? 'border-green-300 focus:border-green-400' :
+                                                                'border-gray-200 focus:border-secondary'
                                                         }`}
                                                     placeholder={language === 'bn' ? '01XXXXXXXXX' : '01XXXXXXXXX'}
                                                 />
@@ -427,8 +427,8 @@ export default function PackagePurchaseModal({ isOpen, onClose, packageType, pac
                                                     onBlur={handleTransactionIdBlur}
                                                     maxLength={10}
                                                     className={`w-full px-4 py-3 border-2 rounded-xl focus:outline-none transition-colors uppercase ${fieldErrors.transactionId ? 'border-red-300 focus:border-red-400' :
-                                                            formData.transactionId && validateTransactionId(formData.transactionId) ? 'border-green-300 focus:border-green-400' :
-                                                                'border-gray-200 focus:border-secondary'
+                                                        formData.transactionId && validateTransactionId(formData.transactionId) ? 'border-green-300 focus:border-green-400' :
+                                                            'border-gray-200 focus:border-secondary'
                                                         }`}
                                                     placeholder="TRX123456"
                                                 />

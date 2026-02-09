@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { Calculator, PieChart, TrendingUp, FileText, Users, Briefcase } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
-import { translations } from "@/lib/translations";
+import { translations } from "@/lib/content";
 
 export default function Services() {
     const { language } = useLanguage();

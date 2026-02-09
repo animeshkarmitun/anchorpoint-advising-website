@@ -7,7 +7,7 @@ import { Menu, X, Globe } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { clsx } from "clsx";
 import { useLanguage } from "@/context/LanguageContext";
-import { translations } from "@/lib/translations";
+import { translations } from "@/lib/content";
 import CalendlyModal from "./CalendlyModal";
 
 export default function Navbar() {

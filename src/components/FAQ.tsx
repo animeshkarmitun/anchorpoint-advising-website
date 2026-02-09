@@ -4,7 +4,7 @@ import { useState } from "react";
 import { ChevronDown, HelpCircle } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
-import { translations } from "@/lib/translations";
+import { translations } from "@/lib/content";
 
 export default function FAQ() {
     const [openIndex, setOpenIndex] = useState<number | null>(null);

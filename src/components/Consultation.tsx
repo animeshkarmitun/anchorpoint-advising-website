@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Calendar, Clock, CheckCircle2, Video } from "lucide-react";
 import { motion } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
-import { translations } from "@/lib/translations";
+import { translations } from "@/lib/content";
 import CalendlyModal from "./CalendlyModal";
 
 export default function Consultation() {

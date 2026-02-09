@@ -4,7 +4,7 @@ import { motion, useInView, useMotionValue, useSpring } from "framer-motion";
 import { useEffect, useRef } from "react";
 import { Users, Briefcase, Award, TrendingUp } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
-import { translations } from "@/lib/translations";
+import { translations } from "@/lib/content";
 
 interface StatItemProps {
     end: number;

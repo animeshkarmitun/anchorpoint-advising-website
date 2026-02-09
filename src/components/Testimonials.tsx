@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { Star, Quote } from "lucide-react";
 import Image from "next/image";
 import { useLanguage } from "@/context/LanguageContext";
-import { translations } from "@/lib/translations";
+import { translations } from "@/lib/content";
 
 export default function Testimonials() {
     const { language } = useLanguage();

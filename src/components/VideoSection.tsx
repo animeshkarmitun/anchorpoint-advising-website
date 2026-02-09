@@ -3,7 +3,7 @@
 import { Play } from "lucide-react";
 import { motion } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
-import { translations } from "@/lib/translations";
+import { translations } from "@/lib/content";
 
 export default function VideoSection() {
     const { language } = useLanguage();

@@ -4,7 +4,7 @@ import { useState } from "react";
 import { MessageCircle } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
-import { translations } from "@/lib/translations";
+import { translations } from "@/lib/content";
 
 export default function WhatsAppButton() {
     const [showTooltip, setShowTooltip] = useState(false);

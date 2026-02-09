@@ -1,0 +1,60 @@
+{
+    "badge": "Frequently Asked Questions",
+    "title1": "Get Answers to",
+    "title2": "Your Questions",
+    "subtitle": "Find answers to the most common questions about tax filing in Bangladesh",
+    "questions": [
+        {
+            "question": "Who is legally required to file an income tax return in Bangladesh?",
+            "answer": "You must file a tax return if:\\n\\n• Your total taxable income exceeds the tax-free threshold; or\\n• You have a TIN; or\\n• You own a car, own/lease a flat in a city corporation area, have a trade license, run a business, are a company director, or meet any other mandatory filing criteria under NBR."
+        },
+        {
+            "question": "When should I file my tax return, and how often am I legally required to file?",
+            "answer": "Once every year.\\n\\nFiling deadline for individuals: 30 November of each assessment year."
+        },
+        {
+            "question": "What are the penalties for failing to file a tax return on time?",
+            "answer": "Minimum penalty: BDT 1,000.\\n\\n• 10% of last assessed tax (where applicable).\\n• BDT 50 per day additional penalty for continued delay.\\n• Loss of privileges (certificate, trade license renewal, credit facilities)."
+        },
+        {
+            "question": "What are the penalties for providing incorrect or incomplete information?",
+            "answer": "Considered concealment or false return.\\n\\nPenalty: up to 5 years imprisonment, or fine, or both.\\n\\nAdditional tax/penalty on concealed income may apply."
+        },
+        {
+            "question": "What types of income must be declared in a tax return?",
+            "answer": "All income sources, including:\\n\\n• Salary\\n• Business/professional/freelancing income\\n• Rental income\\n• Interest, dividends, capital gains\\n• Any other taxable receipts"
+        },
+        {
+            "question": "Do I need to file if tax was already deducted at source by my employer?",
+            "answer": "Yes, if your income exceeds the threshold or you meet any mandatory filing criteria.\\n\\nTDS does not remove the requirement to file."
+        },
+        {
+            "question": "Do I need to file taxes if I only have salary income?",
+            "answer": "Yes, if your salary exceeds the tax-free threshold or you hold a TIN.\\n\\nNo, only if your income is below threshold AND you are not in any mandatory category."
+        },
+        {
+            "question": "Do I need to declare income from freelancing or side jobs?",
+            "answer": "Yes. Freelance, outsourcing, online, or side-job income is fully taxable and must be declared."
+        },
+        {
+            "question": "Do I need to file taxes if I only earn rental income?",
+            "answer": "Yes. Rental income is taxable and must be included in your return."
+        },
+        {
+            "question": "What documents are legally required to support a tax return?",
+            "answer": "Typically required:\\n\\n• TIN & NID\\n• Salary certificate / proof of income\\n• Bank statements (for interest or income)\\n• Rental agreements (if applicable)\\n• Investment/profit statements\\n• Asset & liability information\\n• Previous year's return (if any)"
+        },
+        {
+            "question": "What is the legal difference between an e-TIN and a TIN certificate?",
+            "answer": "e-TIN: The actual 12-digit Taxpayer Identification Number issued electronically.\\n\\nTIN certificate: The document showing your TIN.\\n\\nThey represent the same registration; one is the number; one is the proof."
+        },
+        {
+            "question": "Is it mandatory to update TIN information if I change my address or profession?",
+            "answer": "Yes. You must keep your TIN profile's address, profession, and personal details updated.\\n\\nIncorrect information may result in penalties."
+        },
+        {
+            "question": "How do I legally correct mistakes in my tax return after submission?",
+            "answer": "You can file a Revised Return.\\n\\nMust be submitted before assessment is completed by the tax authority.\\n\\nUnintentional mistakes can be corrected; intentional concealment remains punishable."
+        }
+    ]
+}

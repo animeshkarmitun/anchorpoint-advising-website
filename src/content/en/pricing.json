@@ -1,0 +1,36 @@
+{
+    "badge": "Our Package",
+    "title1": "Simple and",
+    "title2": "Transparent Pricing",
+    "subtitle": "One complete package with everything included - no hidden costs",
+    "popularBadge": "Most Popular",
+    "packageName": "Complete Tax Solution",
+    "price": "1,500/-",
+    "currency": "BDT",
+    "priceDescription": "Everything included - one-time fee",
+    "features": [
+        "Complete income tax return preparation & filing",
+        "TIN registration & certificate assistance",
+        "Asset & liability statement preparation",
+        "Expert consultation for tax savings",
+        "All required document verification",
+        "Online filing through NBR portal",
+        "Return receipt & confirmation"
+    ],
+    "cta": "Get Started Now",
+    "additionalInfo": "✓ No hidden charges ✓ 100% satisfaction guarantee",
+    "consultationBadge": "Consultation",
+    "consultationPackageName": "Expert Consultation",
+    "consultationPrice": "299/-",
+    "consultationPriceDescription": "Consultation with Expert",
+    "consultationFeatures": [
+        "10-30 minutes personalized consultation",
+        "With expert tax consultant",
+        "At your convenient time",
+        "Video or phone call",
+        "Customized solutions",
+        "No obligation required"
+    ],
+    "consultationCta": "Book Now",
+    "consultationAdditionalInfo": "✓ Instant booking ✓ Flexible scheduling"
+}
