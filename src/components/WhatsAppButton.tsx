@@ -11,7 +11,7 @@ export default function WhatsAppButton() {
     const { language } = useLanguage();
     const t = translations[language].whatsapp;
 
-    const phoneNumber = "01820861115";
+    const phoneNumber = "8801400966833";
     const whatsappUrl = `https://wa.me/${phoneNumber}`;
 
     const handleClick = () => {
