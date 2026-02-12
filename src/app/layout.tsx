@@ -4,6 +4,7 @@ import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 import { LanguageProvider } from "@/context/LanguageContext";
 import CookieConsent from "@/components/CookieConsent";
+import MetaPixel from "@/components/MetaPixel";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -32,6 +33,7 @@ export default function RootLayout({
           {children}
           <CookieConsent />
         </LanguageProvider>
+        <MetaPixel />
       </body>
     </html>
   );
