@@ -1,60 +1,63 @@
 {
     "badge": "Frequently Asked Questions",
-    "title1": "Get Answers to",
-    "title2": "Your Questions",
-    "subtitle": "Find answers to the most common questions about tax filing in Bangladesh",
+    "title1": "Answers to Your",
+    "title2": "Tax Questions",
+    "subtitle": "Clear, simple explanations to help you understand income tax filing in Bangladesh.",
+    "ctaTitle": "Still have questions?",
+    "ctaSubtitle": "Every taxpayer's situation is different. If you're unsure about your obligations or want peace of mind, speak with one of our tax experts today.",
+    "ctaButton": "Talk to an Expert",
     "questions": [
         {
             "question": "Who is legally required to file an income tax return in Bangladesh?",
-            "answer": "You must file a tax return if:\\n\\n• Your total taxable income exceeds the tax-free threshold; or\\n• You have a TIN; or\\n• You own a car, own/lease a flat in a city corporation area, have a trade license, run a business, are a company director, or meet any other mandatory filing criteria under NBR."
+            "answer": "You are required to file a tax return if any of the following applies to you:\n\n• Your total income exceeds the tax-free threshold\n• You have a Tax Identification Number (TIN)\n• You own a car or property within a city corporation area\n• You hold a trade license or operate a business\n• You are a company director\n• You fall under any other mandatory filing category set by the NBR\n\nIf you're unsure whether you qualify, our experts can quickly assess your situation."
         },
         {
-            "question": "When should I file my tax return, and how often am I legally required to file?",
-            "answer": "Once every year.\\n\\nFiling deadline for individuals: 30 November of each assessment year."
+            "question": "When should I file my tax return, and how often is filing required?",
+            "answer": "Tax returns must be filed once every assessment year.\n\nFor individual taxpayers, the deadline is typically 30 November of each assessment year.\n\nFiling on time helps you avoid penalties and unnecessary complications."
         },
         {
-            "question": "What are the penalties for failing to file a tax return on time?",
-            "answer": "Minimum penalty: BDT 1,000.\\n\\n• 10% of last assessed tax (where applicable).\\n• BDT 50 per day additional penalty for continued delay.\\n• Loss of privileges (certificate, trade license renewal, credit facilities)."
+            "question": "What happens if I fail to file my tax return on time?",
+            "answer": "Late filing may result in:\n\n• A minimum penalty of BDT 1,000\n• 10% of the last assessed tax (where applicable)\n• An additional BDT 50 per day for continued delay\n• Complications in renewing trade licenses or obtaining financial facilities\n\nFiling on time protects you from avoidable penalties and stress."
         },
         {
-            "question": "What are the penalties for providing incorrect or incomplete information?",
-            "answer": "Considered concealment or false return.\\n\\nPenalty: up to 5 years imprisonment, or fine, or both.\\n\\nAdditional tax/penalty on concealed income may apply."
+            "question": "What are the consequences of providing incorrect or incomplete information?",
+            "answer": "Providing false or incomplete information may be treated as concealment of income.\n\nThis can lead to:\n\n• Financial penalties\n• Additional tax on concealed income\n• In serious cases, legal consequences\n\nAccurate filing is essential. Our team ensures your return is prepared correctly and in full compliance with the law."
         },
         {
             "question": "What types of income must be declared in a tax return?",
-            "answer": "All income sources, including:\\n\\n• Salary\\n• Business/professional/freelancing income\\n• Rental income\\n• Interest, dividends, capital gains\\n• Any other taxable receipts"
+            "answer": "All sources of taxable income must be declared, including:\n\n• Salary\n• Business, professional, or freelancing income\n• Rental income\n• Interest, dividends, and capital gains\n• Any other taxable receipts\n\nIf you earn it and it is taxable, it must be reported."
         },
         {
-            "question": "Do I need to file if tax was already deducted at source by my employer?",
-            "answer": "Yes, if your income exceeds the threshold or you meet any mandatory filing criteria.\\n\\nTDS does not remove the requirement to file."
+            "question": "Do I need to file if tax was already deducted at source (TDS)?",
+            "answer": "Yes.\n\nEven if your employer has deducted tax at source, you must still file a return if:\n\n• Your income exceeds the tax-free threshold, or\n• You fall under any mandatory filing category\n\nTDS does not remove your legal obligation to file."
         },
         {
             "question": "Do I need to file taxes if I only have salary income?",
-            "answer": "Yes, if your salary exceeds the tax-free threshold or you hold a TIN.\\n\\nNo, only if your income is below threshold AND you are not in any mandatory category."
+            "answer": "Yes — if your salary exceeds the tax-free threshold or if you hold a TIN.\n\nYou may not need to file only if:\n\n• Your income is below the threshold, AND\n• You do not fall under any mandatory filing category.\n\nWhen in doubt, it is safer to verify your status."
         },
         {
             "question": "Do I need to declare income from freelancing or side jobs?",
-            "answer": "Yes. Freelance, outsourcing, online, or side-job income is fully taxable and must be declared."
+            "answer": "Yes.\n\nIncome from freelancing, outsourcing, online work, or part-time jobs is fully taxable and must be declared in your return.\n\nAll legal income sources must be reported."
         },
         {
             "question": "Do I need to file taxes if I only earn rental income?",
-            "answer": "Yes. Rental income is taxable and must be included in your return."
+            "answer": "Yes.\n\nRental income is taxable and must be included in your tax return if it exceeds the applicable limits or falls under mandatory filing rules."
         },
         {
-            "question": "What documents are legally required to support a tax return?",
-            "answer": "Typically required:\\n\\n• TIN & NID\\n• Salary certificate / proof of income\\n• Bank statements (for interest or income)\\n• Rental agreements (if applicable)\\n• Investment/profit statements\\n• Asset & liability information\\n• Previous year's return (if any)"
+            "question": "What documents are required to file a tax return?",
+            "answer": "Typically, you will need:\n\n• TIN and NID\n• Salary certificate or proof of income\n• Bank statements (for interest or other income)\n• Rental agreements (if applicable)\n• Investment or profit statements\n• Asset and liability information\n• Previous year's return (if available)\n\nOur team will guide you through exactly what is required in your case."
         },
         {
-            "question": "What is the legal difference between an e-TIN and a TIN certificate?",
-            "answer": "e-TIN: The actual 12-digit Taxpayer Identification Number issued electronically.\\n\\nTIN certificate: The document showing your TIN.\\n\\nThey represent the same registration; one is the number; one is the proof."
+            "question": "What is the difference between an e-TIN and a TIN certificate?",
+            "answer": "e-TIN is your actual 12-digit Taxpayer Identification Number issued electronically.\n\nTIN Certificate is the official document showing your TIN.\n\nThey represent the same registration — one is the number, the other is the proof."
         },
         {
-            "question": "Is it mandatory to update TIN information if I change my address or profession?",
-            "answer": "Yes. You must keep your TIN profile's address, profession, and personal details updated.\\n\\nIncorrect information may result in penalties."
+            "question": "Is it mandatory to update my TIN information if my address or profession changes?",
+            "answer": "Yes.\n\nYou must keep your TIN profile updated with accurate address, profession, and personal details.\n\nOutdated or incorrect information may cause future complications or penalties."
         },
         {
-            "question": "How do I legally correct mistakes in my tax return after submission?",
-            "answer": "You can file a Revised Return.\\n\\nMust be submitted before assessment is completed by the tax authority.\\n\\nUnintentional mistakes can be corrected; intentional concealment remains punishable."
+            "question": "How can I correct mistakes after submitting my tax return?",
+            "answer": "If you discover an error after submission, you can file a Revised Return.\n\nThis must be submitted before the tax authority completes the assessment.\n\nUnintentional mistakes can be corrected. However, deliberate concealment remains punishable."
         }
     ]
 }
