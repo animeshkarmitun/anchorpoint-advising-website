@@ -1,0 +1,147 @@
+{
+    "meta": {
+        "title": "Income Tax Penalty in Bangladesh | Late Filing Fine & How to Avoid It",
+        "description": "Understand income tax penalties in Bangladesh. Minimum fine, daily penalty, last filing date & how to avoid late submission penalties."
+    },
+    "hero": {
+        "badge": "Late Filing Guide",
+        "headline": "Don't Let Penalties Eat Into Your Finances",
+        "subtext": "Understand the consequences of late tax filing and learn how to regularize your return before it's too late.",
+        "cta1": "Fix My Late Filing",
+        "cta2": "Book Consultation"
+    },
+    "h1": "Income Tax Penalties & Late Filing Rules in Bangladesh",
+    "sections": [
+        {
+            "id": "filing-deadline",
+            "title": "Filing Deadline",
+            "type": "bullets",
+            "intro": "The standard income tax return filing deadline in Bangladesh is:",
+            "items": [
+                "30 November of each assessment year (subject to extension by NBR)",
+                "Employers and companies may have different deadlines — check NBR notices for updates",
+                "Extensions may be granted in specific circumstances, but are not guaranteed"
+            ],
+            "note": "Mark your calendar — late filing triggers automatic penalties"
+        },
+        {
+            "id": "what-happens-late",
+            "title": "What Happens If You File Late?",
+            "type": "warning",
+            "intro": "Filing your income tax return after the deadline can result in:",
+            "items": [
+                "Minimum fine of BDT 1,000 (even for nil returns)",
+                "Penalty of 10% of the last assessed tax (if applicable)",
+                "Additional daily penalty of BDT 50 per day of delay",
+                "Possible compliance restrictions — problems obtaining bank loans, property transfers, or trade license renewals",
+                "Negative impact on your tax compliance record with NBR"
+            ]
+        },
+        {
+            "id": "avoid-penalty",
+            "title": "Can You Avoid the Penalty?",
+            "type": "steps",
+            "items": [
+                "File before receiving a notice from NBR — voluntary late filing may reduce penalties",
+                "Apply for a deadline extension before the due date (if applicable)",
+                "File a revised return if you've already submitted an incomplete or incorrect return",
+                "Engage a tax advisor to handle the regularization process on your behalf"
+            ]
+        },
+        {
+            "id": "risk-factors",
+            "title": "Who Is Most at Risk?",
+            "type": "services",
+            "items": [
+                {
+                    "text": "Business owners & entrepreneurs",
+                    "icon": "Briefcase"
+                },
+                {
+                    "text": "Company directors & shareholders",
+                    "icon": "Users"
+                },
+                {
+                    "text": "Property holders",
+                    "icon": "Home"
+                },
+                {
+                    "text": "NRBs with income in Bangladesh",
+                    "icon": "Globe"
+                },
+                {
+                    "text": "Professionals with multiple income sources",
+                    "icon": "TrendingUp"
+                },
+                {
+                    "text": "TIN holders who haven't filed previously",
+                    "icon": "AlertCircle"
+                }
+            ]
+        },
+        {
+            "id": "why-act-now",
+            "title": "Why You Should Act Now",
+            "type": "features",
+            "items": [
+                {
+                    "text": "The longer you wait, the higher the penalty accumulates",
+                    "icon": "Clock"
+                },
+                {
+                    "text": "NBR is increasingly enforcing compliance digitally",
+                    "icon": "ShieldCheck"
+                },
+                {
+                    "text": "Filing history affects your financial credibility",
+                    "icon": "Target"
+                },
+                {
+                    "text": "A clean tax record avoids future complications",
+                    "icon": "Lock"
+                }
+            ]
+        }
+    ],
+    "cta": {
+        "headline": "Missed the Deadline?",
+        "subtext": "We can help you regularize your tax return and minimize penalties.",
+        "button": "Fix My Late Filing"
+    },
+    "faq": [
+        {
+            "question": "What is the minimum penalty for late tax filing in Bangladesh?",
+            "answer": "The minimum penalty is BDT 1,000, regardless of your income level. This applies even if you have a nil tax return."
+        },
+        {
+            "question": "Can I file my return after the deadline?",
+            "answer": "Yes, you can still file a late return. However, you will be subject to penalties. Filing voluntarily before receiving an NBR notice may help reduce the penalty."
+        },
+        {
+            "question": "Does late filing affect my ability to get bank loans?",
+            "answer": "Yes. Banks and financial institutions often require an up-to-date tax clearance certificate. Late filing or non-filing can create problems when applying for loans."
+        },
+        {
+            "question": "Is there a daily penalty for late filing?",
+            "answer": "Yes. In addition to the minimum fine, a daily penalty of BDT 50 per day may apply from the day after the deadline until the return is filed."
+        },
+        {
+            "question": "Can a tax consultant help reduce my penalty?",
+            "answer": "A qualified tax consultant can help regularize your filing, ensure accurate return preparation, and guide you through the penalty minimization process."
+        }
+    ],
+    "relatedServices": [
+        {
+            "title": "Individual Tax Filing",
+            "href": "/services/individual-tax"
+        },
+        {
+            "title": "Tax Rebate & Investment Guide",
+            "href": "/services/tax-rebate-guide"
+        },
+        {
+            "title": "NRB Tax Services",
+            "href": "/services/nrb-tax"
+        }
+    ]
+}

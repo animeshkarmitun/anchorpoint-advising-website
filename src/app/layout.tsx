@@ -12,8 +12,8 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Anchor Point Advising - Tax & Finance Solutions",
-  description: "Professional tax and finance solutions for your business.",
+  title: "Income Tax Filing Service in Bangladesh | Online NBR e-Return & NRB Support",
+  description: "Professional income tax filing service in Bangladesh. Online NBR e-return, e-TIN registration, tax calculation & NRB tax support. File accurately & on time.",
 };
 
 export default function RootLayout({

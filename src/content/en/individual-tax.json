@@ -1,0 +1,135 @@
+{
+    "meta": {
+        "title": "Individual Income Tax Filing Service in Bangladesh | Online NBR e-Return",
+        "description": "Professional individual income tax filing service in Bangladesh. Online NBR e-return submission, tax calculation, e-TIN support & full compliance assistance."
+    },
+    "hero": {
+        "badge": "Individual Tax Filing",
+        "headline": "File Your Income Tax Return Online — Accurate & On Time",
+        "subtext": "We handle complete NBR e-return submission, tax calculation, and compliance so you stay stress-free.",
+        "cta1": "Start Your Tax Filing",
+        "cta2": "Book Consultation"
+    },
+    "h1": "Individual Income Tax Filing in Bangladesh (2025-26)",
+    "sections": [
+        {
+            "id": "who-needs",
+            "title": "Who Needs to File?",
+            "type": "bullets",
+            "intro": "You may need to file if:",
+            "items": [
+                "Your income exceeds the tax-free limit",
+                "You hold a TIN (Taxpayer Identification Number)",
+                "You own property or a vehicle",
+                "You operate a business or hold a trade license"
+            ],
+            "note": "Learn about mandatory filing criteria"
+        },
+        {
+            "id": "what-we-handle",
+            "title": "What We Handle",
+            "type": "services",
+            "items": [
+                {
+                    "text": "Income tax calculation",
+                    "icon": "Calculator"
+                },
+                {
+                    "text": "NBR e-return submission",
+                    "icon": "FileText"
+                },
+                {
+                    "text": "Asset & liability statement preparation",
+                    "icon": "ClipboardList"
+                },
+                {
+                    "text": "Tax rebate calculation",
+                    "icon": "TrendingDown"
+                },
+                {
+                    "text": "e-TIN registration (if required)",
+                    "icon": "UserPlus"
+                },
+                {
+                    "text": "Revised return support",
+                    "icon": "RefreshCw"
+                }
+            ]
+        },
+        {
+            "id": "documents-required",
+            "title": "Documents Required",
+            "type": "bullets",
+            "items": [
+                "National ID (NID) or passport copy",
+                "e-TIN certificate",
+                "Salary certificate or income statement",
+                "Bank statements (all accounts)",
+                "Investment proof (if applicable)",
+                "House rent receipts",
+                "Property deed / vehicle registration (if applicable)",
+                "Previous year's tax return (if available)"
+            ]
+        },
+        {
+            "id": "why-choose-us",
+            "title": "Why Choose Us",
+            "type": "features",
+            "items": [
+                {
+                    "text": "NBR compliance expertise",
+                    "icon": "ShieldCheck"
+                },
+                {
+                    "text": "Accurate tax calculation",
+                    "icon": "Target"
+                },
+                {
+                    "text": "On-time submission",
+                    "icon": "Clock"
+                },
+                {
+                    "text": "Complete confidentiality",
+                    "icon": "Lock"
+                }
+            ]
+        }
+    ],
+    "cta": {
+        "headline": "Still unsure about your eligibility?",
+        "subtext": "Get personalized guidance from our tax experts.",
+        "button": "Speak with a Tax Expert Today"
+    },
+    "faq": [
+        {
+            "question": "What is the tax-free income limit in Bangladesh?",
+            "answer": "For the 2025-26 assessment year, the general tax-free income threshold is BDT 3,50,000 annually. This limit varies for women, senior citizens, and persons with disabilities."
+        },
+        {
+            "question": "Is it mandatory to file a tax return if I have a TIN?",
+            "answer": "Yes. If you hold a TIN, you are required to file an annual tax return regardless of whether your income exceeds the tax-free threshold."
+        },
+        {
+            "question": "Can you file my return online?",
+            "answer": "Absolutely. We handle the entire NBR e-return submission process online—you don't need to visit any tax office."
+        },
+        {
+            "question": "What happens if I miss the filing deadline?",
+            "answer": "Late filing may result in penalties and interest charges. We ensure timely submission so you avoid additional costs."
+        },
+        {
+            "question": "Do I need to show proof of assets and investments?",
+            "answer": "Yes. Your tax return includes an asset & liability statement. We help you prepare this accurately with the required supporting documents."
+        }
+    ],
+    "relatedServices": [
+        {
+            "title": "Corporate Tax Filing",
+            "href": "/services/corporate-tax"
+        },
+        {
+            "title": "NRB Tax Services",
+            "href": "/services/nrb-tax"
+        }
+    ]
+}

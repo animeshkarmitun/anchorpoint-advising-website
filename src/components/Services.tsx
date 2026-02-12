@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Calculator, PieChart, TrendingUp, FileText, Users, Briefcase } from "lucide-react";
+import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
 import { translations } from "@/lib/content";
 
@@ -15,36 +16,42 @@ export default function Services() {
             title: t.service1Title,
             description: t.service1Desc,
             gradient: "from-blue-500 to-cyan-500",
+            href: "/services/individual-tax",
         },
         // {
         //     icon: <PieChart size={48} />,
         //     title: t.service2Title,
         //     description: t.service2Desc,
         //     gradient: "from-purple-500 to-pink-500",
+        //     href: "#",
         // },
         // {
         //     icon: <TrendingUp size={48} />,
         //     title: t.service3Title,
         //     description: t.service3Desc,
         //     gradient: "from-green-500 to-emerald-500",
+        //     href: "#",
         // },
         {
             icon: <FileText size={48} />,
             title: t.service4Title,
             description: t.service4Desc,
             gradient: "from-orange-500 to-red-500",
+            href: "/services/corporate-tax",
         },
         // {
         //     icon: <Users size={48} />,
         //     title: t.service5Title,
         //     description: t.service5Desc,
         //     gradient: "from-indigo-500 to-blue-500",
+        //     href: "#",
         // },
         {
             icon: <Briefcase size={48} />,
             title: t.service6Title,
             description: t.service6Desc,
             gradient: "from-amber-500 to-yellow-500",
+            href: "/services/nrb-tax",
         },
     ];
 
@@ -125,12 +132,12 @@ export default function Services() {
                                 </p>
 
                                 {/* Learn More Link */}
-                                <div className="flex items-center justify-center md:justify-start gap-2 text-secondary font-semibold transition-all duration-300 group-hover:gap-3">
+                                <Link href={service.href} className="flex items-center justify-center md:justify-start gap-2 text-secondary font-semibold transition-all duration-300 group-hover:gap-3">
                                     <span>{t.learnMore}</span>
                                     <svg className="w-4 h-4 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                                     </svg>
-                                </div>
+                                </Link>
                             </div>
                         </motion.div>
                     ))}

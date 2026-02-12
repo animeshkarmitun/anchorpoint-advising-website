@@ -1,0 +1,156 @@
+{
+    "meta": {
+        "title": "Tax Rebate & Investment Guide Bangladesh 2025-26 | Reduce Income Tax Legally",
+        "description": "Learn how to reduce income tax legally in Bangladesh. Tax rebate on Sanchaypatra, DPS, insurance, investments & calculation examples (2025-26)."
+    },
+    "hero": {
+        "badge": "Tax Rebate Guide",
+        "headline": "Reduce Your Income Tax Legally Through Smart Investments",
+        "subtext": "Understand how tax rebate works in Bangladesh and which investments qualify for maximum savings under NBR rules.",
+        "cta1": "Get Tax Planning Advice",
+        "cta2": "Book Consultation"
+    },
+    "h1": "Tax Rebate & Investment Guide (Bangladesh 2025-26)",
+    "sections": [
+        {
+            "id": "what-is-tax-rebate",
+            "title": "What Is Tax Rebate?",
+            "type": "bullets",
+            "intro": "Tax rebate allows you to reduce your payable tax based on eligible investments. Instead of paying the full tax amount, you receive a credit for qualifying investments made during the income year.",
+            "items": [
+                "Rebate is calculated as a percentage of your eligible investment or a portion of your taxable income — whichever is lower",
+                "The rebate rate is typically 15% of the eligible investment amount",
+                "Maximum eligible investment is generally up to 25% of your total income or BDT 1 crore — whichever is lower",
+                "Rebate directly reduces your tax payable — not your taxable income"
+            ]
+        },
+        {
+            "id": "eligible-investments",
+            "title": "Eligible Investments for Tax Rebate",
+            "type": "services",
+            "items": [
+                {
+                    "text": "Sanchaypatra (National Savings Certificates)",
+                    "icon": "Award"
+                },
+                {
+                    "text": "DPS (Deposit Pension Scheme)",
+                    "icon": "DollarSign"
+                },
+                {
+                    "text": "Life Insurance Premium",
+                    "icon": "ShieldCheck"
+                },
+                {
+                    "text": "Approved Provident Fund Contribution",
+                    "icon": "Lock"
+                },
+                {
+                    "text": "Share Market Investment (Listed Companies)",
+                    "icon": "TrendingUp"
+                },
+                {
+                    "text": "Mutual Fund Investment",
+                    "icon": "Globe"
+                },
+                {
+                    "text": "Treasury Bond / Government Securities",
+                    "icon": "FileText"
+                },
+                {
+                    "text": "Donation to Approved Charitable Organizations",
+                    "icon": "Users"
+                }
+            ]
+        },
+        {
+            "id": "rebate-calculation",
+            "title": "Tax Rebate Calculation — A Simple Example",
+            "type": "steps",
+            "items": [
+                "Your total annual income: BDT 10,00,000",
+                "Eligible investment during the year: BDT 3,00,000",
+                "Eligible investment limit: 25% of BDT 10,00,000 = BDT 2,50,000",
+                "Rebate amount: 15% of BDT 2,50,000 = BDT 37,500",
+                "This BDT 37,500 is deducted from your total tax payable"
+            ]
+        },
+        {
+            "id": "common-mistakes",
+            "title": "Common Mistakes People Make",
+            "type": "warning",
+            "intro": "Avoid these common errors when claiming tax rebate:",
+            "items": [
+                "Overestimating rebate — the rebate has a maximum cap based on your income level",
+                "Not keeping proof — you need receipts, certificates, and bank statements for every investment",
+                "Misunderstanding the maximum limit — exceeding the eligible cap does not increase your rebate",
+                "Investing at the last minute without proper documentation",
+                "Confusing tax rebate with tax exemption — rebate reduces tax payable, not taxable income"
+            ]
+        },
+        {
+            "id": "strategic-advice",
+            "title": "Strategic Tax Planning Advice",
+            "type": "features",
+            "items": [
+                {
+                    "text": "Start investing early in the fiscal year for maximum benefit",
+                    "icon": "Clock"
+                },
+                {
+                    "text": "Diversify across Sanchaypatra, DPS, and insurance",
+                    "icon": "Target"
+                },
+                {
+                    "text": "Keep all investment proofs organized and accessible",
+                    "icon": "FolderOpen"
+                },
+                {
+                    "text": "Consult a tax advisor for income above BDT 10 lakh",
+                    "icon": "Users"
+                }
+            ]
+        }
+    ],
+    "cta": {
+        "headline": "Want to Maximize Your Tax Savings?",
+        "subtext": "Our tax experts help you plan investments strategically for maximum rebate benefit.",
+        "button": "Get Tax Planning Advice"
+    },
+    "faq": [
+        {
+            "question": "What is the maximum tax rebate I can claim in Bangladesh?",
+            "answer": "The maximum rebate is 15% of eligible investment, subject to a cap based on your income. The eligible investment limit is typically 25% of your total income or BDT 1 crore, whichever is lower."
+        },
+        {
+            "question": "Does Sanchaypatra qualify for tax rebate?",
+            "answer": "Yes. Sanchaypatra (National Savings Certificates) is one of the most popular eligible investments for tax rebate in Bangladesh."
+        },
+        {
+            "question": "Can I claim rebate on life insurance premiums?",
+            "answer": "Yes. Premiums paid on life insurance policies from approved insurers qualify for tax rebate under the current NBR rules."
+        },
+        {
+            "question": "Is rebate the same as tax exemption?",
+            "answer": "No. Tax exemption reduces your taxable income, while tax rebate directly reduces the amount of tax you owe. They work differently in your tax calculation."
+        },
+        {
+            "question": "When should I invest to get the rebate?",
+            "answer": "Investments must be made during the income year (typically July to June) to be eligible for the rebate in the corresponding assessment year."
+        }
+    ],
+    "relatedServices": [
+        {
+            "title": "Individual Tax Filing",
+            "href": "/services/individual-tax"
+        },
+        {
+            "title": "Late Filing & Penalty Guide",
+            "href": "/services/late-filing-guide"
+        },
+        {
+            "title": "Corporate Tax Filing",
+            "href": "/services/corporate-tax"
+        }
+    ]
+}

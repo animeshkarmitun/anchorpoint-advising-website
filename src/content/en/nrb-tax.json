@@ -1,0 +1,125 @@
+{
+    "meta": {
+        "title": "NRB Tax Filing Service in Bangladesh | Overseas Bangladeshi Tax Support",
+        "description": "Professional tax filing service for Non-Resident Bangladeshis (NRB). File income tax from abroad, dual taxation advice & NBR e-return support."
+    },
+    "hero": {
+        "badge": "NRB Tax Services",
+        "headline": "File Your Bangladesh Income Tax from Anywhere in the World",
+        "subtext": "Secure online tax filing support for NRBs living in UK, USA, Canada, Middle East & beyond.",
+        "cta1": "File from Abroad",
+        "cta2": "Schedule Online Consultation"
+    },
+    "h1": "NRB Tax Filing in Bangladesh (For Overseas Bangladeshis)",
+    "sections": [
+        {
+            "id": "who-needs-nrb",
+            "title": "Who Needs NRB Tax Filing?",
+            "type": "bullets",
+            "items": [
+                "NRBs with rental income in Bangladesh",
+                "NRBs with property ownership in Bangladesh",
+                "Directors of Bangladeshi companies",
+                "Individuals repatriating foreign assets"
+            ]
+        },
+        {
+            "id": "services-for-nrbs",
+            "title": "Services for NRBs",
+            "type": "services",
+            "items": [
+                {
+                    "text": "NBR e-return filing",
+                    "icon": "FileText"
+                },
+                {
+                    "text": "Tax clearance certificate",
+                    "icon": "Award"
+                },
+                {
+                    "text": "Dual taxation guidance",
+                    "icon": "Globe"
+                },
+                {
+                    "text": "Foreign remittance tax advisory",
+                    "icon": "DollarSign"
+                },
+                {
+                    "text": "Property income compliance",
+                    "icon": "Home"
+                }
+            ]
+        },
+        {
+            "id": "how-it-works",
+            "title": "How It Works",
+            "type": "steps",
+            "items": [
+                "Online document submission",
+                "Secure review & tax calculation",
+                "NBR e-return filing",
+                "Confirmation & documentation delivery"
+            ]
+        },
+        {
+            "id": "why-nrbs-choose-us",
+            "title": "Why NRBs Choose Us",
+            "type": "features",
+            "items": [
+                {
+                    "text": "Remote-friendly process",
+                    "icon": "Wifi"
+                },
+                {
+                    "text": "Secure documentation handling",
+                    "icon": "Lock"
+                },
+                {
+                    "text": "Knowledge of dual taxation agreements",
+                    "icon": "BookOpen"
+                },
+                {
+                    "text": "Dedicated support for overseas clients",
+                    "icon": "Headphones"
+                }
+            ]
+        }
+    ],
+    "cta": {
+        "headline": "Live Outside Bangladesh?",
+        "subtext": "Let Us Handle Your Tax Filing Securely.",
+        "button": "Speak with an NRB Tax Specialist"
+    },
+    "faq": [
+        {
+            "question": "Do NRBs need to file tax returns in Bangladesh?",
+            "answer": "Yes. If you hold a TIN or earn income in Bangladesh (rental, business, capital gains), you are required to file a tax return regardless of your residency status."
+        },
+        {
+            "question": "Can I file my Bangladesh tax return while living abroad?",
+            "answer": "Absolutely. Our entire process is remote-friendly. You submit documents online, and we handle the full e-return filing with NBR on your behalf."
+        },
+        {
+            "question": "What is dual taxation and how does it affect me?",
+            "answer": "Dual taxation occurs when income is taxed in both your country of residence and Bangladesh. Bangladesh has Double Taxation Avoidance Agreements (DTAA) with several countries. We help you navigate these to avoid paying tax twice."
+        },
+        {
+            "question": "Is my rental income in Bangladesh taxable?",
+            "answer": "Yes. Rental income from property in Bangladesh is taxable, and you must declare it in your tax return. We help calculate the correct tax liability and claim eligible deductions."
+        },
+        {
+            "question": "How do I send my documents securely?",
+            "answer": "We use encrypted channels for document transfer. You can upload documents through our secure portal or share via encrypted email. Your data confidentiality is our top priority."
+        }
+    ],
+    "relatedServices": [
+        {
+            "title": "Individual Tax Filing",
+            "href": "/services/individual-tax"
+        },
+        {
+            "title": "Corporate Tax Filing",
+            "href": "/services/corporate-tax"
+        }
+    ]
+}

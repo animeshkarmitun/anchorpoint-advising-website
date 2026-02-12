@@ -1,0 +1,130 @@
+{
+    "meta": {
+        "title": "Corporate Tax Filing in Bangladesh | Company & SME Tax Consultants",
+        "description": "Expert corporate tax filing service in Bangladesh. Company income tax return, SME tax compliance, audit support & NBR submission assistance."
+    },
+    "hero": {
+        "badge": "Corporate Tax Filing",
+        "headline": "Ensure Full Tax Compliance for Your Business",
+        "subtext": "We help companies, SMEs and directors meet NBR filing requirements accurately and on time.",
+        "cta1": "Get Business Tax Support",
+        "cta2": "Book Consultation"
+    },
+    "h1": "Corporate & SME Tax Filing Services in Bangladesh",
+    "sections": [
+        {
+            "id": "who-we-serve",
+            "title": "Who We Serve",
+            "type": "bullets",
+            "items": [
+                "Private Limited Companies",
+                "Public Limited Companies",
+                "SMEs (Small & Medium Enterprises)",
+                "Partnerships",
+                "Directors & Shareholders"
+            ]
+        },
+        {
+            "id": "services-included",
+            "title": "Services Included",
+            "type": "services",
+            "items": [
+                {
+                    "text": "Corporate income tax return preparation",
+                    "icon": "FileText"
+                },
+                {
+                    "text": "Tax computation & compliance review",
+                    "icon": "Calculator"
+                },
+                {
+                    "text": "Advance tax calculation",
+                    "icon": "TrendingUp"
+                },
+                {
+                    "text": "Withholding tax advisory",
+                    "icon": "AlertCircle"
+                },
+                {
+                    "text": "Audit coordination",
+                    "icon": "Search"
+                },
+                {
+                    "text": "Tax clearance certificate",
+                    "icon": "Award"
+                }
+            ]
+        },
+        {
+            "id": "risks-of-non-compliance",
+            "title": "Risks of Non-Compliance",
+            "type": "warning",
+            "intro": "Late or incorrect filing may result in:",
+            "items": [
+                "Financial penalties from NBR",
+                "Legal and compliance risks",
+                "Operational delays and restrictions"
+            ]
+        },
+        {
+            "id": "why-businesses-choose-us",
+            "title": "Why Businesses Choose Us",
+            "type": "features",
+            "items": [
+                {
+                    "text": "Experienced in NBR corporate regulations",
+                    "icon": "ShieldCheck"
+                },
+                {
+                    "text": "Structured documentation handling",
+                    "icon": "FolderOpen"
+                },
+                {
+                    "text": "Confidential & secure process",
+                    "icon": "Lock"
+                },
+                {
+                    "text": "Dedicated business tax advisors",
+                    "icon": "Users"
+                }
+            ]
+        }
+    ],
+    "cta": {
+        "headline": "Ensure Your Company's Compliance Today",
+        "subtext": "Get expert guidance on corporate tax obligations and filing.",
+        "button": "Talk to a Corporate Tax Advisor"
+    },
+    "faq": [
+        {
+            "question": "What is the corporate tax rate in Bangladesh?",
+            "answer": "Corporate tax rates in Bangladesh vary based on the type of company—ranging from 22.5% for listed companies to 27.5% for non-listed companies. Rates may differ for banks, insurance, and mobile operators."
+        },
+        {
+            "question": "When is the corporate tax filing deadline?",
+            "answer": "Generally, the filing deadline is the 15th day of the 7th month following the income year. We ensure your return is prepared and submitted well before the deadline."
+        },
+        {
+            "question": "Do SMEs need to file corporate tax returns?",
+            "answer": "Yes. All registered companies and SMEs with a TIN are required to file annual corporate tax returns with NBR."
+        },
+        {
+            "question": "Can you handle audit coordination with NBR?",
+            "answer": "Yes. We coordinate with auditors and NBR officials on your behalf, ensuring proper documentation and representation during any audit proceedings."
+        },
+        {
+            "question": "What documents are needed for corporate tax filing?",
+            "answer": "Key documents include audited financial statements, bank statements, TDS certificates, advance tax challans, trade license, and TIN certificate. We provide a detailed checklist during onboarding."
+        }
+    ],
+    "relatedServices": [
+        {
+            "title": "Individual Tax Filing",
+            "href": "/services/individual-tax"
+        },
+        {
+            "title": "NRB Tax Services",
+            "href": "/services/nrb-tax"
+        }
+    ]
+}

@@ -49,6 +49,24 @@ export default function FAQ() {
 
     return (
         <section className="py-20 bg-white relative overflow-hidden">
+            {/* FAQ Schema JSON-LD for SEO */}
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                    __html: JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "FAQPage",
+                        "mainEntity": t.questions.map((faq: { question: string; answer: string }) => ({
+                            "@type": "Question",
+                            "name": faq.question,
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": faq.answer,
+                            },
+                        })),
+                    }),
+                }}
+            />
             {/* Background Decorations */}
             <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
             <div className="absolute bottom-0 left-0 w-96 h-96 bg-secondary/5 rounded-full blur-3xl" />
@@ -167,8 +185,8 @@ export default function FAQ() {
                                 >
                                     {/* Numbered Badge */}
                                     <span className={`flex-shrink-0 w-10 h-10 rounded-xl flex items-center justify-center text-sm font-bold transition-all duration-300 ${openIndices.has(faq.originalIndex)
-                                            ? "bg-secondary text-white shadow-lg"
-                                            : "bg-gray-100 text-gray-500"
+                                        ? "bg-secondary text-white shadow-lg"
+                                        : "bg-gray-100 text-gray-500"
                                         }`}>
                                         {String(faq.originalIndex + 1).padStart(2, "0")}
                                     </span>

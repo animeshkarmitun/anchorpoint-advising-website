@@ -11,10 +11,12 @@ import Team from "@/components/Team";
 import FAQ from "@/components/FAQ";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import DynamicSEO from "@/components/DynamicSEO";
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-white">
+      <DynamicSEO />
       <Navbar />
       <Hero />
       <VideoSection />
