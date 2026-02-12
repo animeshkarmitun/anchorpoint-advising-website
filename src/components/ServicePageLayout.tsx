@@ -104,7 +104,7 @@ interface RelatedService {
     href: string;
 }
 
-interface ServicePageContent {
+export interface ServicePageContent {
     hero: {
         badge: string;
         headline: string;
