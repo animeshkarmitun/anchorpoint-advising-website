@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect } from "react";
-import { X } from "lucide-react";
+import { useEffect, useState } from "react";
+import { X, Loader2 } from "lucide-react";
 
 interface CalendlyModalProps {
     isOpen: boolean;
@@ -10,6 +10,8 @@ interface CalendlyModalProps {
 }
 
 export default function CalendlyModal({ isOpen, onClose, calendlyUrl }: CalendlyModalProps) {
+    const [isLoading, setIsLoading] = useState(true);
+
     // Build the Calendly URL with cookie consent if already accepted
     const getCalendlyUrl = () => {
         if (typeof window !== "undefined") {
@@ -24,6 +26,8 @@ export default function CalendlyModal({ isOpen, onClose, calendlyUrl }: Calendly
 
     useEffect(() => {
         if (isOpen) {
+            setIsLoading(true);
+
             // Load Calendly script
             const script = document.createElement("script");
             script.src = "https://assets.calendly.com/assets/external/widget.js";
@@ -33,8 +37,22 @@ export default function CalendlyModal({ isOpen, onClose, calendlyUrl }: Calendly
             // Prevent body scroll when modal is open
             document.body.style.overflow = "hidden";
 
+            // Listen for Calendly iframe ready
+            const handleMessage = (e: MessageEvent) => {
+                if (e.data?.event === "calendly.page_height" ||
+                    e.data?.event === "calendly.event_type_viewed") {
+                    setIsLoading(false);
+                }
+            };
+            window.addEventListener("message", handleMessage);
+
+            // Fallback: hide loader after 5s max
+            const timeout = setTimeout(() => setIsLoading(false), 5000);
+
             return () => {
                 document.body.style.overflow = "unset";
+                window.removeEventListener("message", handleMessage);
+                clearTimeout(timeout);
             };
         }
     }, [isOpen]);
@@ -52,6 +70,14 @@ export default function CalendlyModal({ isOpen, onClose, calendlyUrl }: Calendly
                 >
                     <X size={24} className="text-gray-700" />
                 </button>
+
+                {/* Loading Indicator */}
+                {isLoading && (
+                    <div className="absolute inset-0 z-[5] flex flex-col items-center justify-center bg-white">
+                        <Loader2 size={40} className="text-secondary animate-spin mb-4" />
+                        <p className="text-gray-500 font-medium text-sm">Loading scheduler...</p>
+                    </div>
+                )}
 
                 {/* Calendly Inline Widget */}
                 <div
