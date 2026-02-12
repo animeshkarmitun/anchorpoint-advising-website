@@ -13,6 +13,7 @@ import bnFaq from "@/content/bn/faq.json";
 import bnCookieConsent from "@/content/bn/cookieConsent.json";
 import bnFooter from "@/content/bn/footer.json";
 import bnTeam from "@/content/bn/team.json";
+import bnCookiePolicy from "@/content/bn/cookiePolicy.json";
 
 // English content
 import enNavbar from "@/content/en/navbar.json";
@@ -29,6 +30,7 @@ import enFaq from "@/content/en/faq.json";
 import enCookieConsent from "@/content/en/cookieConsent.json";
 import enFooter from "@/content/en/footer.json";
 import enTeam from "@/content/en/team.json";
+import enCookiePolicy from "@/content/en/cookiePolicy.json";
 
 export const translations = {
     bn: {
@@ -46,6 +48,7 @@ export const translations = {
         cookieConsent: bnCookieConsent,
         footer: bnFooter,
         team: bnTeam,
+        cookiePolicy: bnCookiePolicy,
     },
     en: {
         navbar: enNavbar,
@@ -62,5 +65,6 @@ export const translations = {
         cookieConsent: enCookieConsent,
         footer: enFooter,
         team: enTeam,
+        cookiePolicy: enCookiePolicy,
     },
 };

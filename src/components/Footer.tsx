@@ -138,6 +138,12 @@ export default function Footer() {
                                     {t.privacyPolicy}
                                 </Link>
                             </li>
+                            <li>
+                                <Link href="/cookie-policy" className="group text-gray-300 hover:text-white transition-colors text-base flex items-center gap-2">
+                                    <ArrowRight size={16} className="text-secondary group-hover:translate-x-1 transition-transform" />
+                                    {t.cookiePolicy}
+                                </Link>
+                            </li>
                         </ul>
 
                         {/* Contact Info */}
@@ -165,7 +171,7 @@ export default function Footer() {
                     <div className="flex gap-6 text-sm text-gray-400">
                         <Link href="#" className="hover:text-white transition-colors">{t.privacyPolicy}</Link>
                         <Link href="#" className="hover:text-white transition-colors">{t.termsOfService}</Link>
-                        <Link href="#" className="hover:text-white transition-colors">{t.cookiePolicy}</Link>
+                        <Link href="/cookie-policy" className="hover:text-white transition-colors">{t.cookiePolicy}</Link>
                     </div>
                 </motion.div>
             </div>
