@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone, MapPin, Send, ArrowRight } from "lucide-react";
+import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone, MapPin, Send, ArrowRight, CheckCircle } from "lucide-react";
 import { motion } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
 import { translations } from "@/lib/content";
@@ -40,10 +40,20 @@ export default function Footer() {
                                 />
                             </div>
                         </Link>
-                        <p className="text-gray-300 mb-8 leading-relaxed text-base">
+                        <p className="text-gray-300 mb-6 leading-relaxed text-base">
                             {t.description}
                         </p>
-                        {/* Social Icons */}
+                        {/* Trust Bullets */}
+                        {t.trustBullets && (
+                            <ul className="space-y-2.5 mb-8">
+                                {t.trustBullets.map((bullet: string, index: number) => (
+                                    <li key={index} className="flex items-start gap-2.5 text-gray-300 text-sm">
+                                        <CheckCircle size={16} className="text-emerald-400 mt-0.5 flex-shrink-0" />
+                                        <span>{bullet}</span>
+                                    </li>
+                                ))}
+                            </ul>
+                        )}
                         <div className="flex gap-3">
                             {[Facebook, Twitter, Instagram, Linkedin].map((Icon, index) => (
                                 <motion.a

@@ -125,7 +125,7 @@ export default function Services() {
                                 </p>
 
                                 {/* Learn More Link */}
-                                <div className="flex items-center justify-center md:justify-start gap-2 text-secondary font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                <div className="flex items-center justify-center md:justify-start gap-2 text-secondary font-semibold transition-all duration-300 group-hover:gap-3">
                                     <span>{t.learnMore}</span>
                                     <svg className="w-4 h-4 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />

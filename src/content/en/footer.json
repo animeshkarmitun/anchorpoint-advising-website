@@ -1,6 +1,12 @@
 {
     "logo": "Anchor Point Advising",
     "description": "We provide professional tax and finance solutions to help your business grow and succeed in today's competitive market.",
+    "trustBullets": [
+        "Accurate & Timely Tax Filing",
+        "Full Compliance with NBR Regulations",
+        "Personal & Business Tax Services",
+        "100% Confidentiality Guaranteed"
+    ],
     "quickLinks": "Quick Links",
     "home": "Home",
     "aboutUs": "About Us",
