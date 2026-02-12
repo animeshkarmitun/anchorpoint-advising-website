@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { User, Mail, Phone, Linkedin, Twitter, Sparkles } from 'lucide-react';
+import { User, Mail, Phone, Linkedin, Twitter, Sparkles, Shield, ArrowRight } from 'lucide-react';
 import { useState } from 'react';
 import { useLanguage } from '@/context/LanguageContext';
 import { translations } from '@/lib/content';
@@ -66,6 +66,22 @@ export default function Team() {
                     >
                         {t.subtitle}
                     </motion.p>
+
+                    {/* Trust Indicator Stats Bar */}
+                    {t.trustIndicator && (
+                        <motion.div
+                            initial={{ opacity: 0, y: 15 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: 0.4 }}
+                            className="mt-6 inline-flex items-center gap-2 px-6 py-3 bg-[#1E3A8A]/5 border border-[#1E3A8A]/10 rounded-full"
+                        >
+                            <Shield className="w-5 h-5 text-[#F59E0B] flex-shrink-0" />
+                            <span className="text-[#1E3A8A] font-semibold text-sm md:text-base tracking-wide">
+                                {t.trustIndicator}
+                            </span>
+                        </motion.div>
+                    )}
                 </div>
 
                 {/* Team Grid */}
@@ -180,6 +196,25 @@ export default function Team() {
                         </motion.div>
                     ))}
                 </div>
+
+                {/* CTA Button */}
+                {t.ctaText && (
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.3 }}
+                        className="text-center mt-16"
+                    >
+                        <a
+                            href="#consultation"
+                            className="group inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-[#1E3A8A] to-[#2563EB] text-white font-bold text-lg rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
+                        >
+                            {t.ctaText}
+                            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+                        </a>
+                    </motion.div>
+                )}
             </div>
         </section>
     );
