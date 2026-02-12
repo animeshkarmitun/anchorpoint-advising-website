@@ -69,7 +69,7 @@ export default function About() {
                                         <Award className="text-white" size={32} />
                                     </div>
                                     <div>
-                                        <div className="text-3xl font-bold text-primary">3+</div>
+                                        <div className="text-3xl font-bold text-primary">15+</div>
                                         <div className="text-sm text-gray-600">{t.yearsExp}</div>
                                     </div>
                                 </div>

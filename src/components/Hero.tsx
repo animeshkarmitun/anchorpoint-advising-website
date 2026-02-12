@@ -119,7 +119,7 @@ export default function Hero() {
                         </div>
                         <div className="h-12 w-px bg-white/20" />
                         <div className="text-center">
-                            <div className="text-4xl font-bold text-white mb-1">3+</div>
+                            <div className="text-4xl font-bold text-white mb-1">15+</div>
                             <div className="text-sm uppercase tracking-wider">{t.yearsExperience}</div>
                         </div>
                     </motion.div>

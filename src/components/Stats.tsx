@@ -142,6 +142,23 @@ export default function Stats() {
                         gradient="from-orange-500 to-red-500"
                     /> */}
                 </div>
+
+                {/* CTA Button */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.4 }}
+                    className="text-center mt-16"
+                >
+                    <a
+                        href="#pricing"
+                        className="inline-flex items-center gap-2 px-10 py-4 bg-secondary text-white font-bold text-lg rounded-full hover:bg-secondary/90 hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-2xl"
+                    >
+                        {t.cta}
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
+                    </a>
+                </motion.div>
             </div>
         </section>
     );
