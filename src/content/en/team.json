@@ -1,0 +1,26 @@
+{
+    "badge": "MEET WITH EXPERT",
+    "title1": "Our",
+    "title2": "Expert Team",
+    "subtitle": "Meet our dedicated team of certified tax professionals committed to your success",
+    "members": [
+        {
+            "name": "Laltu Lal Sarker (Prodip)",
+            "role": "FCGA Consultants-VAT, Customs, Income Tax, Accounts, Audit Company Affairs",
+            "expertise": "M.Com, MBA, ITP, CA (RAT) & CFO (COL)",
+            "image": "/team/Laltu.jpg"
+        },
+        {
+            "name": "Md. Ruhul Amin Tamim",
+            "role": "Business Tax Expert",
+            "expertise": "CPA Certified",
+            "image": "/team/tamim.jpg"
+        },
+        {
+            "name": "Radya Yousuf",
+            "role": "Tax Resolution Specialist",
+            "expertise": "Officer, Dhaka Bank",
+            "image": "/team/Radya Yousuf.jpg"
+        }
+    ]
+}

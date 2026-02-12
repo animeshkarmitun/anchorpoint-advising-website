@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { User, Mail, Phone, Linkedin, Twitter, Sparkles } from 'lucide-react';
 import { useState } from 'react';
 import { useLanguage } from '@/context/LanguageContext';
+import { translations } from '@/lib/content';
 import Expart from '@/assets/icons/Expart';
 import Image from 'next/image';
 
@@ -11,75 +12,7 @@ export default function Team() {
     const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
     const { language } = useLanguage();
 
-    // Inline translations
-    const translations = {
-        bn: {
-            badge: "বিশেষজ্ঞদের সাথে দেখা করুন",
-            title1: "আমাদের",
-            title2: "বিশেষজ্ঞ দল",
-            subtitle: "আপনার সাফল্যের জন্য প্রতিশ্রুতিবদ্ধ আমাদের প্রত্যয়িত ট্যাক্স পেশাদারদের দলের সাথে পরিচিত হন",
-            members: [
-                {
-                    name: "লাল্টু লাল সরকার (প্রদীপ)",
-                    role: "এফসিজিএ কনসালট্যান্টস-ভ্যাট, কাস্টমস, আয়কর, হিসাব, ​​অডিট কোম্পানি বিষয়ক",
-                    expertise: "এম.কম, এমবিএ, আইটিপি, সিএ (আরএটি) এবং সিএফও (সিওএল)",
-                    image: "/team/Laltu.jpg"
-                },
-                {
-                    name: "মোঃ রুহুল আমিন তামিম",
-                    role: "সিনিয়র ট্যাক্স উপদেষ্টা",
-                    expertise: "প্রধান পরামর্শদাতা",
-                    image: "/team/tamim.jpg"
-                },
-                {
-                    name: "রাদিয়া ইউসুফ",
-                    role: "ট্যাক্স সমাধান বিশেষজ্ঞ",
-                    expertise: "অফিসার, ঢাকা ব্যাংক",
-                    image: "/team/Radya Yousuf.jpg"
-                },
-                // {
-                //     name: "অ্যান্ড্রু প্যাটেল",
-                //     role: "ব্যবসায়িক ট্যাক্স বিশেষজ্ঞ",
-                //     expertise: "সিপিএ প্রত্যয়িত",
-                //     image: "/team/tam.jpg"
-                // }
-            ]
-        },
-        en: {
-            badge: "MEET WITH EXPERT",
-            title1: "Our",
-            title2: "Expert Team",
-            subtitle: "Meet our dedicated team of certified tax professionals committed to your success",
-            members: [
-                {
-                    name: "Laltu Lal Sarker (Prodip)",
-                    role: "FCGA Consultants-VAT, Customs, Income Tax, Accounts, Audit Company Affairs",
-                    expertise: "M.Com, MBA, ITP, CA (RAT) & CFO (COL)",
-                    image: "/team/Laltu.jpg"
-                },
-                {
-                    name: "Md. Ruhul Amin Tamim",
-                    role: "Business Tax Expert",
-                    expertise: "CPA Certified",
-                    image: "/team/tamim.jpg"
-                },
-                {
-                    name: "Radya Yousuf",
-                    role: "Tax Resolution Specialist",
-                    expertise: "Officer, Dhaka Bank",
-                    image: "/team/Radya Yousuf.jpg"
-                },
-                // {
-                //     name: "Andrew Patel",
-                //     role: "Senior Tax Advisor",
-                //     expertise: "Lead Consultant",
-                //     image: "/team/tam.jpg"
-                // }
-            ]
-        }
-    };
-
-    const t = translations[language];
+    const t = translations[language].team;
 
     const teamMembers = t.members.map((member, index) => ({
         ...member,
