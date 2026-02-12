@@ -94,7 +94,7 @@ export default function Navbar() {
                             aria-label="Toggle Language"
                         >
                             <Globe size={18} />
-                            <span>{language === "bn" ? "বাং" : "EN"}</span>
+                            <span>{language === "bn" ? "EN" : "বাংলা"}</span>
                         </button>
 
                         {/* Strategy Call Button */}
