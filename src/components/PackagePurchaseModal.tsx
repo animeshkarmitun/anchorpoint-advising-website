@@ -178,9 +178,6 @@ export default function PackagePurchaseModal({ isOpen, onClose, packageType, pac
 
             if (data.success) {
                 setShowSuccess(true);
-                setTimeout(() => {
-                    handleClose();
-                }, 2000);
             } else {
                 setError(data.error || (language === 'bn' ? 'তথ্য সংরক্ষণ করতে ব্যর্থ' : 'Failed to save information'));
             }
@@ -245,7 +242,7 @@ export default function PackagePurchaseModal({ isOpen, onClose, packageType, pac
                                     <motion.div
                                         initial={{ opacity: 0, scale: 0.9 }}
                                         animate={{ opacity: 1, scale: 1 }}
-                                        className="flex flex-col items-center justify-center py-16"
+                                        className="flex flex-col items-center justify-center py-12"
                                     >
                                         <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mb-6">
                                             <Check size={48} className="text-green-600" />
@@ -253,11 +250,37 @@ export default function PackagePurchaseModal({ isOpen, onClose, packageType, pac
                                         <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-2 text-center">
                                             {language === 'bn' ? 'সফলভাবে জমা দেওয়া হয়েছে!' : 'Successfully Submitted!'}
                                         </h2>
-                                        <p className="text-gray-600 text-center">
+                                        <p className="text-gray-600 text-center mb-4">
                                             {language === 'bn'
                                                 ? 'আমরা যাচাই করে শীঘ্রই আপনার সাথে যোগাযোগ করব।'
                                                 : "We'll verify and contact you soon."}
                                         </p>
+                                        <div className="bg-blue-50 border border-blue-100 rounded-xl p-4 text-center space-y-2 w-full max-w-md">
+                                            <p className="text-gray-700 text-sm leading-relaxed">
+                                                {language === 'bn'
+                                                    ? 'আপনার অর্ডার নিশ্চিত করার জন্য সর্বোচ্চ ১২ ঘণ্টার মধ্যে একটি ইমেইল পাঠানো হবে।'
+                                                    : 'You will receive a confirmation email within 12 hours (maximum) regarding your order.'}
+                                            </p>
+                                            <p className="text-gray-700 text-sm leading-relaxed">
+                                                {language === 'bn'
+                                                    ? 'যেকোনো সহায়তার জন্য WhatsApp-এ আমাদের সাথে যোগাযোগ করুন: '
+                                                    : 'For any assistance, please contact us on WhatsApp at '}
+                                                <a
+                                                    href="https://wa.me/8801400966833"
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="text-green-600 font-semibold hover:underline"
+                                                >
+                                                    01400966833
+                                                </a>
+                                            </p>
+                                        </div>
+                                        <button
+                                            onClick={handleClose}
+                                            className="mt-6 px-8 py-3 bg-secondary text-white rounded-xl font-semibold hover:bg-secondary/90 transition-colors"
+                                        >
+                                            {language === 'bn' ? 'বন্ধ করুন' : 'Close'}
+                                        </button>
                                     </motion.div>
                                 ) : (
                                     <>
