@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { X, Loader2 } from "lucide-react";
+import { X } from "lucide-react";
+import LogoLoader from "@/components/LogoLoader";
 
 interface CalendlyModalProps {
     isOpen: boolean;
@@ -74,8 +75,7 @@ export default function CalendlyModal({ isOpen, onClose, calendlyUrl }: Calendly
                 {/* Loading Indicator */}
                 {isLoading && (
                     <div className="absolute inset-0 z-[5] flex flex-col items-center justify-center bg-white">
-                        <Loader2 size={40} className="text-secondary animate-spin mb-4" />
-                        <p className="text-gray-500 font-medium text-sm">Loading scheduler...</p>
+                        <LogoLoader text="Loading scheduler" size={72} />
                     </div>
                 )}
 
