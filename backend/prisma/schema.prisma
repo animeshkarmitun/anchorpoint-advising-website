@@ -1,0 +1,572 @@
+// Anchor Point Advising — Prisma Schema
+// Stack: PostgreSQL (Supabase) via Prisma ORM
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+}
+
+// ─────────────────────────────────────────────
+// 1. User & Authentication
+// ─────────────────────────────────────────────
+
+enum Role {
+  CUSTOMER
+  TAX_ADVISOR
+  OPERATIONS
+  SUPPORT
+  SUPER_ADMIN
+}
+
+enum AuthProvider {
+  EMAIL
+  GOOGLE
+  PHONE
+}
+
+enum UserStatus {
+  ACTIVE
+  INACTIVE
+  SUSPENDED
+}
+
+model User {
+  id               String       @id @default(cuid())
+  email            String       @unique
+  phone            String?      @unique
+  passwordHash     String?
+  role             Role         @default(CUSTOMER)
+  authProvider     AuthProvider  @default(EMAIL)
+  emailVerified    Boolean      @default(false)
+  phoneVerified    Boolean      @default(false)
+  twoFactorEnabled Boolean     @default(false)
+  twoFactorSecret  String?
+  status           UserStatus   @default(ACTIVE)
+  lastLoginAt      DateTime?
+  createdAt        DateTime     @default(now())
+  updatedAt        DateTime     @updatedAt
+
+  profile                    CustomerProfile?
+  documents                  Document[]
+  filings                    Filing[]
+  payments                   Payment[]
+  consultationsAsClient      Consultation[]  @relation("ClientConsultations")
+  consultationsAsAdvisor     Consultation[]  @relation("AdvisorConsultations")
+  sentMessages               Message[]       @relation("SentMessages")
+  receivedMessages           Message[]       @relation("ReceivedMessages")
+  notifications              Notification[]
+  tickets                    Ticket[]
+  assignedTickets            Ticket[]        @relation("AssignedTickets")
+  assignedFilings            Filing[]        @relation("AdvisorFilings")
+  auditLogs                  AuditLog[]
+  refreshTokens              RefreshToken[]
+
+  @@index([email])
+  @@index([phone])
+  @@index([role])
+}
+
+model RefreshToken {
+  id        String   @id @default(cuid())
+  token     String   @unique
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  @@index([userId])
+}
+
+model InviteToken {
+  id        String   @id @default(cuid())
+  token     String   @unique
+  maxUses   Int?     // null = unlimited
+  usedCount Int      @default(0)
+  expiresAt DateTime
+  createdBy String
+  active    Boolean  @default(true)
+  createdAt DateTime @default(now())
+
+  @@index([token])
+}
+
+// ─────────────────────────────────────────────
+// 2. Customer Profile
+// ─────────────────────────────────────────────
+
+enum IncomeSource {
+  SALARY
+  BUSINESS
+  FREELANCE
+  RENTAL
+  INVESTMENT
+  OTHER
+}
+
+enum TaxpayerCategory {
+  INDIVIDUAL
+  COMPANY
+  PARTNERSHIP
+  OTHER
+}
+
+model CustomerProfile {
+  id               String           @id @default(cuid())
+  userId           String           @unique
+  user             User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  fullName         String
+  fullNameBn       String?
+  nid              String?
+  tin              String?
+  dateOfBirth      DateTime?
+  address          String?
+  city             String?
+  district         String?
+  taxZone          String?
+  taxCircle        String?
+  taxpayerCategory TaxpayerCategory @default(INDIVIDUAL)
+  incomeSources    IncomeSource[]
+  employerName     String?
+  businessName     String?
+  tradeLicenseNo   String?
+  language         String           @default("en")
+  notifyEmail      Boolean          @default(true)
+  notifySms        Boolean          @default(true)
+  referralCode     String?          @unique
+  referredBy       String?
+  vip              Boolean          @default(false)
+  notes            String?          // Admin-only internal notes
+  onboardingDone   Boolean          @default(false)
+  createdAt        DateTime         @default(now())
+  updatedAt        DateTime         @updatedAt
+
+  @@index([tin])
+  @@index([nid])
+}
+
+// ─────────────────────────────────────────────
+// 3. Documents
+// ─────────────────────────────────────────────
+
+enum DocumentCategory {
+  NID
+  TIN_CERTIFICATE
+  SALARY_CERTIFICATE
+  BANK_STATEMENT
+  RENTAL_AGREEMENT
+  INVESTMENT_PROOF
+  PREVIOUS_RETURN
+  TRADE_LICENSE
+  ASSET_STATEMENT
+  FILED_RETURN
+  ACKNOWLEDGEMENT
+  OTHER
+}
+
+enum DocumentStatus {
+  PENDING
+  ACCEPTED
+  REJECTED
+  NEEDS_REUPLOAD
+}
+
+model Document {
+  id            String           @id @default(cuid())
+  userId        String
+  user          User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  filingId      String?
+  filing        Filing?          @relation(fields: [filingId], references: [id])
+  category      DocumentCategory
+  fileName      String
+  fileKey       String           // S3 key or local path
+  fileSize      Int              // bytes
+  mimeType      String
+  status        DocumentStatus   @default(PENDING)
+  rejectionNote String?
+  reviewedBy    String?
+  reviewedAt    DateTime?
+  version       Int              @default(1)
+  parentId      String?
+  parent        Document?        @relation("DocumentVersions", fields: [parentId], references: [id])
+  versions      Document[]       @relation("DocumentVersions")
+  expiresAt     DateTime?
+  createdAt     DateTime         @default(now())
+  updatedAt     DateTime         @updatedAt
+
+  @@index([userId])
+  @@index([filingId])
+  @@index([status])
+  @@index([category])
+}
+
+// ─────────────────────────────────────────────
+// 4. Tax Filing
+// ─────────────────────────────────────────────
+
+enum FilingStatus {
+  INITIATED
+  DOCUMENTS_PENDING
+  DOCUMENTS_RECEIVED
+  UNDER_PREPARATION
+  REVIEW_READY
+  CUSTOMER_APPROVED
+  E_FILED
+  ACKNOWLEDGED
+  COMPLETED
+  ON_HOLD
+}
+
+model Filing {
+  id             String       @id @default(cuid())
+  userId         String
+  user           User         @relation(fields: [userId], references: [id])
+  advisorId      String?
+  advisor        User?        @relation("AdvisorFilings", fields: [advisorId], references: [id])
+  assessmentYear String       // e.g. "2025-2026"
+  status         FilingStatus @default(INITIATED)
+  serviceType    String       // "individual", "corporate", "nrb"
+  totalIncome    Decimal?
+  taxPayable     Decimal?
+  taxPaid        Decimal?
+  refundAmount   Decimal?
+  filedAt        DateTime?
+  acknowledgedAt DateTime?
+  deadline       DateTime?
+  internalNotes  String?
+  documents      Document[]
+  statusHistory  FilingStatusLog[]
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+
+  @@unique([userId, assessmentYear])
+  @@index([advisorId])
+  @@index([status])
+  @@index([assessmentYear])
+}
+
+model FilingStatusLog {
+  id        String       @id @default(cuid())
+  filingId  String
+  filing    Filing       @relation(fields: [filingId], references: [id], onDelete: Cascade)
+  from      FilingStatus
+  to        FilingStatus
+  changedBy String
+  note      String?
+  createdAt DateTime     @default(now())
+
+  @@index([filingId])
+}
+
+// ─────────────────────────────────────────────
+// 5. Payments & Invoices
+// ─────────────────────────────────────────────
+
+enum PaymentStatus {
+  PENDING
+  COMPLETED
+  FAILED
+  REFUNDED
+  PARTIALLY_REFUNDED
+}
+
+enum PaymentMethod {
+  BKASH
+  NAGAD
+  ROCKET
+  CARD
+  BANK_TRANSFER
+  CASH
+}
+
+model Payment {
+  id             String        @id @default(cuid())
+  userId         String
+  user           User          @relation(fields: [userId], references: [id])
+  filingId       String?
+  consultationId String?
+  amount         Decimal
+  currency       String        @default("BDT")
+  method         PaymentMethod
+  status         PaymentStatus @default(PENDING)
+  transactionId  String?       // Gateway reference
+  gatewayResponse Json?
+  couponId       String?
+  coupon         Coupon?       @relation(fields: [couponId], references: [id])
+  discountAmount Decimal?
+  invoice        Invoice?
+  refunds        Refund[]
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+
+  @@index([userId])
+  @@index([status])
+}
+
+model Invoice {
+  id        String   @id @default(cuid())
+  paymentId String   @unique
+  payment   Payment  @relation(fields: [paymentId], references: [id])
+  invoiceNo String   @unique  // "APA-2026-0001"
+  issuedAt  DateTime @default(now())
+  dueDate   DateTime?
+  fileKey   String?  // S3 key or local path for generated PDF
+  createdAt DateTime @default(now())
+}
+
+model Refund {
+  id          String   @id @default(cuid())
+  paymentId   String
+  payment     Payment  @relation(fields: [paymentId], references: [id])
+  amount      Decimal
+  reason      String
+  status      String   @default("pending") // pending, approved, processed, rejected
+  processedBy String?
+  createdAt   DateTime @default(now())
+
+  @@index([paymentId])
+}
+
+model Coupon {
+  id            String    @id @default(cuid())
+  code          String    @unique
+  discountType  String    // "percentage" | "fixed"
+  discountValue Decimal
+  maxUses       Int?
+  usedCount     Int       @default(0)
+  minAmount     Decimal?
+  expiresAt     DateTime?
+  active        Boolean   @default(true)
+  payments      Payment[]
+  createdAt     DateTime  @default(now())
+}
+
+// ─────────────────────────────────────────────
+// 6. Consultations
+// ─────────────────────────────────────────────
+
+enum ConsultationStatus {
+  SCHEDULED
+  CONFIRMED
+  IN_PROGRESS
+  COMPLETED
+  CANCELLED
+  NO_SHOW
+}
+
+enum ConsultationMedium {
+  PHONE
+  VIDEO
+  IN_PERSON
+}
+
+model Consultation {
+  id           String             @id @default(cuid())
+  clientId     String
+  client       User               @relation("ClientConsultations", fields: [clientId], references: [id])
+  advisorId    String
+  advisor      User               @relation("AdvisorConsultations", fields: [advisorId], references: [id])
+  scheduledAt  DateTime
+  duration     Int                @default(30)
+  medium       ConsultationMedium
+  meetingLink  String?
+  status       ConsultationStatus @default(SCHEDULED)
+  notes        String?
+  followUp     String?
+  cancelledAt  DateTime?
+  cancelReason String?
+  createdAt    DateTime           @default(now())
+  updatedAt    DateTime           @updatedAt
+
+  @@index([clientId])
+  @@index([advisorId])
+  @@index([scheduledAt])
+  @@index([status])
+}
+
+model AdvisorSchedule {
+  id           String  @id @default(cuid())
+  advisorId    String
+  dayOfWeek    Int     // 0=Sunday, 6=Saturday
+  startTime    String  // "09:00"
+  endTime      String  // "17:00"
+  slotDuration Int     @default(30)
+  active       Boolean @default(true)
+
+  @@unique([advisorId, dayOfWeek])
+}
+
+model ScheduleException {
+  id        String   @id @default(cuid())
+  advisorId String
+  date      DateTime
+  available Boolean  @default(false)
+  reason    String?
+
+  @@unique([advisorId, date])
+}
+
+// ─────────────────────────────────────────────
+// 7. Messaging, Notifications, Tickets
+// ─────────────────────────────────────────────
+
+model Conversation {
+  id           String    @id @default(cuid())
+  participantA String
+  participantB String
+  lastMessageAt DateTime?
+  messages     Message[]
+  createdAt    DateTime  @default(now())
+
+  @@unique([participantA, participantB])
+}
+
+model Message {
+  id             String       @id @default(cuid())
+  conversationId String
+  conversation   Conversation @relation(fields: [conversationId], references: [id])
+  senderId       String
+  sender         User         @relation("SentMessages", fields: [senderId], references: [id])
+  receiverId     String
+  receiver       User         @relation("ReceivedMessages", fields: [receiverId], references: [id])
+  content        String
+  attachmentKey  String?
+  read           Boolean      @default(false)
+  readAt         DateTime?
+  createdAt      DateTime     @default(now())
+
+  @@index([conversationId])
+  @@index([receiverId, read])
+}
+
+model Notification {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  type      String   // "filing_update", "document_status", "payment", "reminder", "system"
+  title     String
+  body      String
+  link      String?
+  read      Boolean  @default(false)
+  readAt    DateTime?
+  createdAt DateTime @default(now())
+
+  @@index([userId, read])
+  @@index([type])
+}
+
+enum TicketPriority {
+  LOW
+  MEDIUM
+  HIGH
+  URGENT
+}
+
+enum TicketStatus {
+  OPEN
+  IN_PROGRESS
+  WAITING_ON_CUSTOMER
+  RESOLVED
+  CLOSED
+}
+
+enum TicketCategory {
+  BILLING
+  TECHNICAL
+  TAX_QUERY
+  DOCUMENT
+  GENERAL
+}
+
+model Ticket {
+  id         String         @id @default(cuid())
+  userId     String
+  user       User           @relation(fields: [userId], references: [id])
+  assignedTo String?
+  assignee   User?          @relation("AssignedTickets", fields: [assignedTo], references: [id])
+  subject    String
+  category   TicketCategory
+  priority   TicketPriority @default(MEDIUM)
+  status     TicketStatus   @default(OPEN)
+  replies    TicketReply[]
+  resolvedAt DateTime?
+  createdAt  DateTime       @default(now())
+  updatedAt  DateTime       @updatedAt
+
+  @@index([userId])
+  @@index([assignedTo])
+  @@index([status])
+}
+
+model TicketReply {
+  id         String   @id @default(cuid())
+  ticketId   String
+  ticket     Ticket   @relation(fields: [ticketId], references: [id], onDelete: Cascade)
+  authorId   String
+  content    String
+  isInternal Boolean  @default(false)
+  createdAt  DateTime @default(now())
+
+  @@index([ticketId])
+}
+
+// ─────────────────────────────────────────────
+// 8. CMS & System
+// ─────────────────────────────────────────────
+
+model CmsContent {
+  id        String   @id @default(cuid())
+  section   String   // "hero", "services", "faq", "team", "pricing", "testimonials"
+  locale    String   @default("en")
+  data      Json
+  updatedBy String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([section, locale])
+}
+
+model SeoMeta {
+  id              String   @id @default(cuid())
+  page            String
+  locale          String   @default("en")
+  metaTitle       String?
+  metaDescription String?
+  ogTitle         String?
+  ogDescription   String?
+  ogImage         String?
+  canonicalUrl    String?
+  robots          String   @default("index, follow")
+  structuredData  Json?
+  updatedBy       String?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@unique([page, locale])
+}
+
+model Setting {
+  id    String @id @default(cuid())
+  key   String @unique
+  value Json
+}
+
+model AuditLog {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  action    String
+  entity    String
+  entityId  String
+  oldValue  Json?
+  newValue  Json?
+  ip        String?
+  userAgent String?
+  createdAt DateTime @default(now())
+
+  @@index([userId])
+  @@index([entity, entityId])
+  @@index([createdAt])
+}

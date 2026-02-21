@@ -43,3 +43,6 @@ next-env.d.ts
 # Gemini artifacts (except README.md)
 .gemini/
 !.gemini/**/README.md
+
+# internal docs
+/docs/
