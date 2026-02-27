@@ -381,4 +381,101 @@ export class PaymentsService {
             },
         };
     }
+
+    // ─── Public: Manual bKash Payment (No Auth) ───────────────────
+
+    async recordManualBkashPayment(dto: import('./dto/manual-bkash.dto').ManualBkashPaymentDto) {
+        // Check for duplicate transaction ID
+        const existing = await this.prisma.payment.findFirst({
+            where: { transactionId: dto.transactionId },
+        });
+
+        if (existing) {
+            throw new ConflictException(
+                `Transaction ID "${dto.transactionId}" has already been recorded`,
+            );
+        }
+
+        // Use a system "guest" user or resolve by email/phone
+        // We look up or create a guest user to satisfy the FK constraint
+        let guestUser = await this.prisma.user.findFirst({
+            where: { email: 'guest@anchorpoint.internal' },
+        });
+
+        if (!guestUser) {
+            guestUser = await this.prisma.user.create({
+                data: {
+                    email: 'guest@anchorpoint.internal',
+                    passwordHash: 'NOT_A_REAL_PASSWORD',
+                    role: 'CUSTOMER',
+                    emailVerified: false,
+                    status: 'INACTIVE',
+                    profile: {
+                        create: {
+                            fullName: 'Guest Submissions',
+                        },
+                    },
+                },
+            });
+            this.logger.log('Created system guest user for manual bKash payments');
+        }
+
+        // Store all customer details in gatewayResponse JSON
+        const customerDetails = {
+            source: 'manual_bkash',
+            submittedAt: new Date().toISOString(),
+            customerName: dto.name,
+            customerEmail: dto.email || null,
+            customerPhone: dto.phone,
+            bkashNumber: dto.bkashNumber,
+            packageType: dto.packageType,
+            paymentStatus: dto.status || 'Pending Verification',
+        };
+
+        const payment = await this.prisma.payment.create({
+            data: {
+                userId: guestUser.id,
+                amount: new Prisma.Decimal(dto.amount),
+                currency: 'BDT',
+                method: 'BKASH',
+                status: 'PENDING',
+                transactionId: dto.transactionId,
+                gatewayResponse: customerDetails as Prisma.InputJsonValue,
+            },
+        });
+
+        // Notify admins
+        const admins = await this.prisma.user.findMany({
+            where: { role: { in: ['SUPER_ADMIN', 'OPERATIONS'] } },
+            select: { id: true },
+        });
+
+        if (admins.length > 0) {
+            await this.prisma.notification.createMany({
+                data: admins.map((a) => ({
+                    userId: a.id,
+                    type: 'payment',
+                    title: '💰 New Manual bKash Payment',
+                    body: `${dto.name} (${dto.phone}) — BDT ${dto.amount} | TRX: ${dto.transactionId} | Package: ${dto.packageType}`,
+                    link: `/admin/payments`,
+                })),
+            });
+        }
+
+        this.logger.log(
+            `Manual bKash payment recorded: ${payment.id} — ${dto.name} BDT ${dto.amount} TRX:${dto.transactionId}`,
+        );
+
+        return {
+            success: true,
+            message: 'Payment recorded. We will verify and contact you within 12 hours.',
+            data: {
+                id: payment.id,
+                transactionId: payment.transactionId,
+                amount: payment.amount,
+                status: payment.status,
+                createdAt: payment.createdAt,
+            },
+        };
+    }
 }

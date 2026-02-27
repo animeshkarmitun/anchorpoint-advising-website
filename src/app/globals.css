@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
 @theme {
+  /* ── Existing Marketing Site ── */
   --color-primary: #0B1B35;
   --color-secondary: #1E88E5;
   --color-accent: #F59E0B;
@@ -8,6 +9,35 @@
   --color-foreground: #171717;
   --font-sans: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
 
+  /* ── Portal Design System ── */
+  --color-portal-primary: #1B3A6B;
+  --color-portal-primary-hover: #162f59;
+  --color-portal-secondary: #E8A020;
+  --color-admin-accent: #4F46E5;
+  --color-admin-hover: #4338CA;
+  --color-admin-bg: #312E81;
+  /* indigo-900 — sidebar/avatar background */
+
+  /* ── Semantic ── */
+  --color-success: #16A34A;
+  --color-warning: #D97706;
+  --color-danger: #DC2626;
+
+  /* ── Neutrals ── */
+  --color-neutral-50: #F8FAFC;
+  --color-neutral-100: #F1F5F9;
+  --color-neutral-200: #E2E8F0;
+  --color-neutral-300: #CBD5E1;
+  --color-neutral-400: #94A3B8;
+  --color-neutral-500: #64748B;
+  --color-neutral-600: #475569;
+  --color-neutral-700: #374151;
+  --color-neutral-900: #111827;
+
+  /* ── Layout ── */
+  --portal-sidebar-w: 240px;
+  --admin-sidebar-w: 220px;
+  --topbar-h: 56px;
 }
 
 body {
@@ -49,6 +79,90 @@ body {
   100% {
     background-position: 1000px 0;
   }
+}
+
+@keyframes shake {
+
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    transform: translateX(-6px);
+  }
+
+  20%,
+  40%,
+  60%,
+  80% {
+    transform: translateX(6px);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ── Skeleton shimmer ── */
+.skeleton {
+  background: linear-gradient(90deg,
+      var(--color-neutral-100) 25%,
+      var(--color-neutral-200) 50%,
+      var(--color-neutral-100) 75%);
+  background-size: 1000px 100%;
+  animation: shimmer 1.4s infinite linear;
+}
+
+/* ── Utility animations ── */
+.animate-shake {
+  animation: shake 0.5s ease-in-out;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.2s ease-out;
+}
+
+.animate-slide-right {
+  animation: slide-in-right 0.18s ease-out;
+}
+
+/* ── Portal scrollbar ── */
+.portal-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+
+.portal-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.portal-scroll::-webkit-scrollbar-thumb {
+  background: var(--color-neutral-300);
+  border-radius: 9999px;
 }
 
 @keyframes slideInUp {

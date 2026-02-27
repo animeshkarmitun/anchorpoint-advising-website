@@ -5,6 +5,7 @@ import "./globals.css";
 import { LanguageProvider } from "@/context/LanguageContext";
 import CookieConsent from "@/components/CookieConsent";
 import MetaPixel from "@/components/MetaPixel";
+import { Providers } from "./providers";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -29,11 +30,13 @@ export default function RootLayout({
         className={`${poppins.variable} antialiased`}
         suppressHydrationWarning
       >
-        <LanguageProvider>
-          {children}
-          <CookieConsent />
-        </LanguageProvider>
-        <MetaPixel />
+        <Providers>
+          <LanguageProvider>
+            {children}
+            <CookieConsent />
+          </LanguageProvider>
+          <MetaPixel />
+        </Providers>
       </body>
     </html>
   );
