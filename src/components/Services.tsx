@@ -1,148 +1,232 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Calculator, PieChart, TrendingUp, FileText, Users, Briefcase } from "lucide-react";
+import { CheckCircle } from "lucide-react";
 import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
 import { translations } from "@/lib/content";
+
+interface ServiceTier {
+    title: string;
+    subtitle: string;
+    priceLabel: string;
+    priceAmount: string;
+    priceCurrency?: string;
+    features: string[];
+}
 
 export default function Services() {
     const { language } = useLanguage();
     const t = translations[language].services;
 
-    const services = [
-        {
-            icon: <Calculator size={48} />,
-            title: t.service1Title,
-            description: t.service1Desc,
-            gradient: "from-blue-500 to-cyan-500",
-            href: "/services/individual-tax",
-        },
-        // {
-        //     icon: <PieChart size={48} />,
-        //     title: t.service2Title,
-        //     description: t.service2Desc,
-        //     gradient: "from-purple-500 to-pink-500",
-        //     href: "#",
-        // },
-        // {
-        //     icon: <TrendingUp size={48} />,
-        //     title: t.service3Title,
-        //     description: t.service3Desc,
-        //     gradient: "from-green-500 to-emerald-500",
-        //     href: "#",
-        // },
-        {
-            icon: <FileText size={48} />,
-            title: t.service4Title,
-            description: t.service4Desc,
-            gradient: "from-orange-500 to-red-500",
-            href: "/services/corporate-tax",
-        },
-        // {
-        //     icon: <Users size={48} />,
-        //     title: t.service5Title,
-        //     description: t.service5Desc,
-        //     gradient: "from-indigo-500 to-blue-500",
-        //     href: "#",
-        // },
-        {
-            icon: <Briefcase size={48} />,
-            title: t.service6Title,
-            description: t.service6Desc,
-            gradient: "from-amber-500 to-yellow-500",
-            href: "/services/nrb-tax",
-        },
-    ];
+    const individualTax: ServiceTier = t.individualTax as ServiceTier;
+    const businessTax: ServiceTier = t.businessTax as ServiceTier;
 
     return (
-        <section id="services" className="py-28 bg-gray-50 relative overflow-hidden">
-            {/* Background Decorative Elements */}
-            <div className="absolute top-0 left-0 w-96 h-96 bg-secondary/5 rounded-full blur-3xl" />
-            <div className="absolute bottom-0 right-0 w-96 h-96 bg-accent/5 rounded-full blur-3xl" />
+        <section id="services" className="py-24 md:py-32 bg-gray-50 relative overflow-hidden">
+            {/* Subtle background decoration */}
+            <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-secondary/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
+            <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-secondary/3 rounded-full blur-3xl translate-x-1/3 translate-y-1/3" />
 
             <div className="container mx-auto px-4 relative z-10">
-                {/* Section Header */}
-                <div className="text-center mb-20">
-                    <motion.span
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="inline-block px-4 py-2 bg-secondary/10 text-secondary font-bold tracking-widest uppercase text-sm mb-4 rounded-full"
-                    >
-                        {t.badge}
-                    </motion.span>
-                    <motion.h2
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.1 }}
-                        className="text-5xl md:text-6xl font-extrabold text-primary mb-6"
-                    >
-                        {t.title1}<br />
-                        <span className="text-secondary">
-                            {t.title2}
-                        </span>
-                    </motion.h2>
-                    <motion.p
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.2 }}
-                        className="text-gray-600 text-xl max-w-3xl mx-auto leading-relaxed"
-                    >
-                        {t.subtitle}
-                    </motion.p>
-                </div>
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6 }}
+                    className="max-w-4xl mx-auto"
+                >
+                    {/* Main Card */}
+                    <div className="bg-white rounded-3xl shadow-premium overflow-hidden">
+                        {/* ── Section Title ─────────────────────────── */}
+                        <div className="pt-10 pb-6 px-6 md:px-12 text-center">
+                            <motion.h2
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: 0.15, duration: 0.5 }}
+                                className="text-3xl md:text-4xl font-extrabold text-primary tracking-tight"
+                                style={{ fontStyle: "italic" }}
+                            >
+                                {t.sectionTitle}
+                            </motion.h2>
+                        </div>
 
-                {/* Services Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {services.map((service, index) => (
-                        <motion.div
-                            key={index}
-                            initial={{ opacity: 0, y: 40 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: index * 0.1, duration: 0.6 }}
-                            whileHover={{ y: -10, scale: 1.02 }}
-                            className="group relative bg-white p-10 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 overflow-hidden cursor-pointer"
-                        >
-                            {/* Background on Hover */}
-                            <div className="absolute inset-0 bg-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                        {/* ── Individual Tax Tier ────────────────────── */}
+                        <ServiceTierBlock
+                            tier={individualTax}
+                            delay={0.2}
+                            showCurrency
+                        />
 
+                        {/* Divider */}
+                        <div className="mx-6 md:mx-12">
+                            <div className="border-t border-gray-200" />
+                        </div>
 
+                        {/* ── Business / Corporate Tier ──────────────── */}
+                        <ServiceTierBlock
+                            tier={businessTax}
+                            delay={0.35}
+                            isCustom
+                        />
 
-                            {/* Content */}
-                            <div className="relative z-10 text-center md:text-left">
-                                {/* Icon with Background */}
-                                <div className="w-24 h-24 bg-secondary rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-xl mx-auto md:mx-0">
-                                    <div className="text-white">
-                                        {service.icon}
-                                    </div>
-                                </div>
-
-                                {/* Title */}
-                                <h3 className="text-2xl font-bold text-primary mb-4 group-hover:text-secondary transition-colors duration-300">
-                                    {service.title}
-                                </h3>
-
-                                {/* Description */}
-                                <p className="text-gray-600 leading-relaxed text-base mb-6">
-                                    {service.description}
-                                </p>
-
-                                {/* Learn More Link */}
-                                <Link href={service.href} className="flex items-center justify-center md:justify-start gap-2 text-secondary font-semibold transition-all duration-300 group-hover:gap-3">
-                                    <span>{t.learnMore}</span>
-                                    <svg className="w-4 h-4 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                                    </svg>
+                        {/* ── CTA Button ────────────────────────────── */}
+                        <div className="px-6 md:px-12 pb-6 pt-2">
+                            <motion.div
+                                initial={{ opacity: 0, y: 15 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: 0.5, duration: 0.4 }}
+                            >
+                                <Link
+                                    href="#consultation"
+                                    className="block w-full text-center bg-secondary hover:bg-secondary/90 text-white text-lg md:text-xl font-bold py-4 md:py-5 rounded-2xl transition-all duration-300 hover:shadow-lg hover:shadow-secondary/30 active:scale-[0.98]"
+                                >
+                                    {t.ctaButton}
                                 </Link>
-                            </div>
+                            </motion.div>
+                        </div>
+
+                        {/* ── Guarantee Footer ──────────────────────── */}
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            whileInView={{ opacity: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: 0.6, duration: 0.4 }}
+                            className="pb-8 px-6 md:px-12 text-center"
+                        >
+                            <p className="text-gray-500 text-sm flex items-center justify-center gap-4 flex-wrap">
+                                <span className="flex items-center gap-1">
+                                    <CheckMark />
+                                    {t.guarantee1}
+                                </span>
+                                <span className="flex items-center gap-1">
+                                    <CheckMark />
+                                    {t.guarantee2}
+                                </span>
+                            </p>
                         </motion.div>
+                    </div>
+
+                    {/* Bottom gradient glow */}
+                    <div className="h-24 bg-gradient-to-b from-transparent to-gray-50 -mt-1 relative z-20 rounded-b-3xl" />
+                </motion.div>
+            </div>
+        </section>
+    );
+}
+
+/* ═══════════════════════════════════════════════
+   Service Tier Block (reusable for each tier)
+   ═══════════════════════════════════════════════ */
+
+function ServiceTierBlock({
+    tier,
+    delay = 0,
+    showCurrency = false,
+    isCustom = false,
+}: {
+    tier: ServiceTier;
+    delay?: number;
+    showCurrency?: boolean;
+    isCustom?: boolean;
+}) {
+    // Split features into two columns
+    const mid = Math.ceil(tier.features.length / 2);
+    const leftFeatures = tier.features.slice(0, mid);
+    const rightFeatures = tier.features.slice(mid);
+
+    return (
+        <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay, duration: 0.5 }}
+            className="px-6 md:px-12 py-8"
+        >
+            {/* Header Row: Title + Price */}
+            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-1">
+                <div className="flex-1">
+                    <h3 className="text-xl md:text-2xl font-bold text-primary leading-tight">
+                        {tier.title}
+                    </h3>
+                    <p className="text-gray-500 text-sm mt-1">
+                        {tier.subtitle}
+                    </p>
+                </div>
+                <div className="text-right sm:text-right mt-2 sm:mt-0 flex-shrink-0">
+                    <span className="block text-[11px] md:text-xs font-bold tracking-wider text-gray-400 uppercase">
+                        {tier.priceLabel}
+                    </span>
+                    <span
+                        className={`font-extrabold text-secondary leading-none ${isCustom
+                                ? "text-3xl md:text-4xl mt-1 block"
+                                : "text-3xl md:text-4xl mt-0.5 block"
+                            }`}
+                    >
+                        {tier.priceAmount}
+                        {showCurrency && tier.priceCurrency && (
+                            <span className="text-base md:text-lg font-bold text-gray-600 ml-1">
+                                {tier.priceCurrency}
+                            </span>
+                        )}
+                    </span>
+                </div>
+            </div>
+
+            {/* Feature Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-3 mt-6">
+                <div className="space-y-3">
+                    {leftFeatures.map((feature, i) => (
+                        <FeatureItem key={i} text={feature} />
+                    ))}
+                </div>
+                <div className="space-y-3">
+                    {rightFeatures.map((feature, i) => (
+                        <FeatureItem key={i} text={feature} />
                     ))}
                 </div>
             </div>
-        </section>
+        </motion.div>
+    );
+}
+
+/* ═══════════════════════════════════════════════
+   Feature Item (checkmark + text)
+   ═══════════════════════════════════════════════ */
+
+function FeatureItem({ text }: { text: string }) {
+    return (
+        <div className="flex items-start gap-2.5">
+            <CheckCircle
+                size={18}
+                className="text-secondary flex-shrink-0 mt-0.5"
+                strokeWidth={2.5}
+            />
+            <span className="text-gray-700 text-sm leading-snug">{text}</span>
+        </div>
+    );
+}
+
+/* ═══════════════════════════════════════════════
+   Small Checkmark for guarantee footer
+   ═══════════════════════════════════════════════ */
+
+function CheckMark() {
+    return (
+        <svg
+            className="w-4 h-4 text-gray-400"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            strokeWidth={2.5}
+        >
+            <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M5 13l4 4L19 7"
+            />
+        </svg>
     );
 }

@@ -1,19 +1,37 @@
 {
-    "badge": "Our Services",
-    "title1": "Hassle-Free Tax &",
-    "title2": "Finance Solutions",
-    "subtitle": "From tax planning to return filing—everything under one roof.",
-    "service1Title": "Tax Preparation",
-    "service1Desc": "Complete preparation and online filing of your income tax return via the NBR portal.",
-    "service2Title": "Financial Planning",
-    "service2Desc": "Strategic financial planning and advisory to achieve your long-term goals.",
-    "service3Title": "Business Consulting",
-    "service3Desc": "Expert advice to improve your business performance and maximize profitability.",
-    "service4Title": "Auditing Services",
-    "service4Desc": "Professional audit services to ensure financial transparency and compliance.",
-    "service5Title": "Bookkeeping",
-    "service5Desc": "Reliable bookkeeping services to keep your financial records organized and accurate.",
-    "service6Title": "Payroll Management",
-    "service6Desc": "Accurate salary calculation, tax deductions, and compliant payroll reporting.",
-    "learnMore": "Learn More"
+    "sectionTitle": "Our Services",
+    "individualTax": {
+        "title": "Individual Tax Return Filing",
+        "subtitle": "Comprehensive filing, rebate optimization",
+        "priceLabel": "STARTING FROM",
+        "priceAmount": "2,000/-",
+        "priceCurrency": "BDT",
+        "features": [
+            "Complete income tax return preparation & filing",
+            "Asset & liability statement preparation",
+            "Rebate optimization to minimize tax liability",
+            "Return receipt & confirmation",
+            "TIN registration & certificate assistance",
+            "Expert consultation for tax savings",
+            "Online filing through NBR portal"
+        ]
+    },
+    "businessTax": {
+        "title": "Business/Corporate Review",
+        "subtitle": "Includes VAT, BIN, and full trade license audit",
+        "priceLabel": "BASED ON TURNOVER",
+        "priceAmount": "Custom",
+        "features": [
+            "Complete VAT compliance & filing",
+            "Full trade license audit & renewal assistance",
+            "Financial statement review & advisory",
+            "Dedicated business tax consultant",
+            "BIN (Business Identification Number) support",
+            "Corporate tax return preparation & filing",
+            "Regulatory compliance check"
+        ]
+    },
+    "ctaButton": "Get Started Now",
+    "guarantee1": "No hidden charges",
+    "guarantee2": "100% satisfaction guarantee"
 }

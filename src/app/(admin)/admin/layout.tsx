@@ -13,7 +13,15 @@ import { useAuthStore } from '@/lib/store/auth.store';
 import { useUiStore } from '@/lib/store/ui.store';
 import { useLogout } from '@/lib/hooks/useAuth';
 
-const ADMIN_NAV = [
+interface NavItem {
+    href: string;
+    label: string;
+    icon: React.ComponentType<{ className?: string; strokeWidth?: number }>;
+    badge?: string;
+    superAdminOnly?: boolean;
+}
+
+const ADMIN_NAV: { group: string; items: NavItem[] }[] = [
     {
         group: 'OVERVIEW',
         items: [
@@ -175,7 +183,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
             <div
                 className={cn(
                     'flex-1 flex flex-col min-h-screen transition-all duration-200',
-                    'lg:' + (sidebarOpen ? 'pl-[var(--admin-sidebar-w)]' : 'pl-[56px]'),
+                    sidebarOpen ? 'lg:pl-[var(--admin-sidebar-w)]' : 'lg:pl-[56px]',
                 )}
             >
                 {/* Topbar */}

@@ -373,7 +373,7 @@ export default function RegisterPage() {
 
                             <button
                                 type="button"
-                                onClick={() => form3.handleSubmit(onStep3)({ phone: '' })}
+                                onClick={() => onStep3({ phone: '' })}
                                 className="w-full text-sm text-[var(--color-neutral-500)] hover:text-[var(--color-neutral-800)] py-2 transition-colors"
                             >
                                 Skip for now

@@ -1,9 +1,9 @@
 import { cn } from '@/lib/utils';
 
-interface SkeletonProps { className?: string }
+interface SkeletonProps { className?: string; style?: React.CSSProperties }
 
-export function SkeletonLine({ className }: SkeletonProps) {
-    return <div className={cn('skeleton rounded', className)} />;
+export function SkeletonLine({ className, style }: SkeletonProps) {
+    return <div className={cn('skeleton rounded', className)} style={style} />;
 }
 
 export function SkeletonCard({ className }: SkeletonProps) {

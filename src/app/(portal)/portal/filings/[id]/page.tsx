@@ -29,11 +29,10 @@ function StatusTimeline({ history }: { history: FilingStatusLog[] }) {
                         <div
                             className={cn(
                                 'absolute -left-[25px] top-0.5 w-4 h-4 rounded-full border-2 border-white flex items-center justify-center',
-                                i === 0 ? 'ring-2 ring-offset-1' : '',
+                                i === 0 ? 'ring-2 ring-offset-1 ring-[var(--color-portal-primary)]' : '',
                             )}
                             style={{
                                 background: i === 0 ? 'var(--color-portal-primary)' : 'var(--color-neutral-300)',
-                                ringColor: 'var(--color-portal-primary)',
                             }}
                         >
                             {i === 0 && <CheckCircle2 className="w-2.5 h-2.5 text-white" />}

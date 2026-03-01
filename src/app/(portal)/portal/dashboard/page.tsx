@@ -51,7 +51,7 @@ function FilingProgressStepper({ filing }: { filing: Filing }) {
                                             className={cn(
                                                 'w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0 transition-all',
                                                 done ? 'text-white' : '',
-                                                current ? 'ring-2 ring-offset-2' : '',
+                                                current ? 'ring-2 ring-offset-2 ring-[var(--color-portal-primary)]' : '',
                                             )}
                                             style={{
                                                 background: done
@@ -59,7 +59,6 @@ function FilingProgressStepper({ filing }: { filing: Filing }) {
                                                     : current
                                                         ? 'var(--color-portal-primary)'
                                                         : 'var(--color-neutral-100)',
-                                                ringColor: current ? 'var(--color-portal-primary)' : undefined,
                                             }}
                                         >
                                             {done ? (
