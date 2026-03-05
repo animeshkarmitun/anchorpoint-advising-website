@@ -50,7 +50,7 @@ export default function Navbar() {
                     {/* Logo with Premium Effect */}
                     <Link href="/" className="flex items-center gap-3 group">
                         <div className="relative">
-                            <div className="relative w-12 h-12 md:w-16 md:h-16 rounded-full overflow-hidden">
+                            <div className="relative w-12 h-12 md:w-16 md:h-16 rounded-lg overflow-hidden">
                                 <Image
                                     src="/logo/logo.jpg"
                                     alt={t.logo}
