@@ -9,10 +9,7 @@ export default function VideoSection() {
     const { language } = useLanguage();
     const t = translations[language].video;
 
-    // Replace this with your actual YouTube video ID
-    // For example, if your YouTube URL is: https://www.youtube.com/watch?v=dQw4w9WgXcQ
-    // Then the videoId would be: dQw4w9WgXcQ
-    const videoId = "YOUR_YOUTUBE_VIDEO_ID";
+    const videoId = "ehe29UwvjN4";
     const embedUrl = `https://www.youtube.com/embed/${videoId}?rel=0&modestbranding=1`;
 
     return (
