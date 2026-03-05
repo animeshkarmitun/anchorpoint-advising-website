@@ -77,7 +77,7 @@ export default function Services() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.1 }}
-                        className="text-5xl md:text-6xl font-extrabold text-primary mb-6"
+                        className={`text-5xl md:text-6xl font-extrabold text-primary mb-6 ${language === "bn" ? "leading-snug" : ""}`}
                     >
                         {t.title1}<br />
                         <span className="text-secondary">

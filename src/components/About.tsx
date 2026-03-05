@@ -2,7 +2,7 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
-import { CheckCircle2, Award, Users, TrendingUp, FileCheck } from "lucide-react";
+import { CheckCircle2, Award, Users, TrendingUp, FileCheck, FileText, Calculator, Inbox } from "lucide-react";
 import { useRef } from "react";
 import { useLanguage } from "@/context/LanguageContext";
 import { translations } from "@/lib/content";
@@ -19,9 +19,9 @@ export default function About() {
     const t = translations[language].about;
 
     const features = [
-        { icon: <Award size={24} />, text: t.feature1, color: "from-blue-500 to-cyan-500" },
-        { icon: <Users size={24} />, text: t.feature2, color: "from-purple-500 to-pink-500" },
-        { icon: <TrendingUp size={24} />, text: t.feature3, color: "from-green-500 to-emerald-500" },
+        { icon: <FileText size={24} />, text: t.feature1, color: "from-blue-500 to-cyan-500" },
+        { icon: <Calculator size={24} />, text: t.feature2, color: "from-purple-500 to-pink-500" },
+        { icon: <Inbox size={24} />, text: t.feature3, color: "from-green-500 to-emerald-500" },
         { icon: <FileCheck size={24} />, text: t.feature4, color: "from-orange-500 to-red-500" },
     ];
 
@@ -120,13 +120,14 @@ export default function About() {
                         </div>
 
                         {/* CTA Button */}
-                        <motion.button
+                        <motion.a
+                            href="#team"
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
-                            className="relative px-10 py-5 bg-secondary text-white rounded-xl font-semibold text-lg transition-all shadow-xl hover:shadow-2xl hover:bg-secondary/90"
+                            className="inline-block relative px-10 py-5 bg-secondary text-white rounded-xl font-semibold text-lg transition-all shadow-xl hover:shadow-2xl hover:bg-secondary/90"
                         >
                             <span className="relative z-10">{t.btnLearnMore}</span>
-                        </motion.button>
+                        </motion.a>
                     </motion.div>
                 </div>
             </div>
