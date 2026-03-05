@@ -1,36 +1,43 @@
 {
-    "badge": "Our Package",
+    "badge": "Our Pricing",
     "title1": "Simple and",
     "title2": "Transparent Pricing",
-    "subtitle": "One complete package with everything included - no hidden costs",
-    "popularBadge": "Most Popular",
-    "packageName": "Complete Tax Solution",
-    "price": "1,500/-",
-    "currency": "BDT",
-    "priceDescription": "Everything included - one-time fee",
-    "features": [
-        "Complete income tax return preparation & filing",
-        "TIN registration & certificate assistance",
-        "Asset & liability statement preparation",
-        "Expert consultation for tax savings",
-        "All required document verification",
-        "Online filing through NBR portal",
-        "Return receipt & confirmation"
+    "subtitle": "Professional tax and business advisory services - no hidden costs",
+    "packageName": "Our Services",
+    "services": [
+        {
+            "name": "Individual Tax Return Filing",
+            "price": "2,000/-",
+            "currency": "BDT",
+            "priceNote": "Starting from",
+            "description": "Comprehensive filing, rebate optimization",
+            "features": [
+                "Complete income tax return preparation & filing",
+                "TIN registration & certificate assistance",
+                "Asset & liability statement preparation",
+                "Expert consultation for tax savings",
+                "Rebate optimization to minimize tax liability",
+                "Online filing through NBR portal",
+                "Return receipt & confirmation"
+            ]
+        },
+        {
+            "name": "Business/Corporate Review",
+            "price": "Custom",
+            "currency": "",
+            "priceNote": "Based on turnover",
+            "description": "Includes VAT, BIN, and full trade license audit",
+            "features": [
+                "Complete VAT compliance & filing",
+                "BIN (Business Identification Number) support",
+                "Full trade license audit & renewal assistance",
+                "Corporate tax return preparation & filing",
+                "Financial statement review & advisory",
+                "Regulatory compliance check",
+                "Dedicated business tax consultant"
+            ]
+        }
     ],
     "cta": "Get Started Now",
-    "additionalInfo": "✓ No hidden charges ✓ 100% satisfaction guarantee",
-    "consultationBadge": "Consultation",
-    "consultationPackageName": "Expert Consultation",
-    "consultationPrice": "300/-",
-    "consultationPriceDescription": "Consultation with Expert",
-    "consultationFeatures": [
-        "10-30 minutes personalized consultation",
-        "With expert tax consultant",
-        "At your convenient time",
-        "Video or phone call",
-        "Customized solutions",
-        "No obligation required"
-    ],
-    "consultationCta": "Book Now",
-    "consultationAdditionalInfo": "✓ Instant booking ✓ Flexible scheduling"
+    "additionalInfo": "✓ No hidden charges ✓ 100% satisfaction guarantee"
 }

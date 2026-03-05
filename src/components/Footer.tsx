@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone, MapPin, Send, ArrowRight, CheckCircle } from "lucide-react";
+import { Facebook, Twitter, Instagram, Linkedin, Youtube, Mail, Phone, MapPin, Send, ArrowRight, CheckCircle } from "lucide-react";
 import { motion } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
 import { translations } from "@/lib/content";
@@ -55,10 +55,18 @@ export default function Footer() {
                             </ul>
                         )}
                         <div className="flex gap-3">
-                            {[Facebook, Twitter, Instagram, Linkedin].map((Icon, index) => (
+                            {[
+                                { Icon: Facebook, href: "#" },
+                                { Icon: Twitter, href: "#" },
+                                { Icon: Instagram, href: "#" },
+                                { Icon: Linkedin, href: "#" },
+                                { Icon: Youtube, href: "https://www.youtube.com/@anchorpointadvising" },
+                            ].map(({ Icon, href }, index) => (
                                 <motion.a
                                     key={index}
-                                    href="#"
+                                    href={href}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
                                     whileHover={{ scale: 1.1, y: -3 }}
                                     className="w-12 h-12 bg-white/10 backdrop-blur-sm hover:bg-secondary flex items-center justify-center rounded-xl transition-all duration-300 border border-white/10"
                                 >

@@ -65,138 +65,76 @@ export default function Pricing() {
                     </motion.p>
                 </div>
 
-                {/* Pricing Cards Grid */}
-                <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-                    {/* Consultation Card */}
+                {/* Single Pricing Card */}
+                <div className="max-w-3xl mx-auto">
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.3 }}
                     >
-                        <div className="relative bg-white rounded-3xl shadow-2xl overflow-hidden border-2 border-primary/20 hover:border-primary/40 transition-all duration-500 h-full">
-                            {/* Consultation Badge */}
-                            <div className="absolute top-0 right-0 bg-primary text-white px-6 py-2 rounded-bl-3xl font-bold flex items-center gap-2">
-                                <Sparkles size={18} />
-                                {t.consultationBadge}
-                            </div>
-
+                        <div className="relative bg-white rounded-3xl shadow-2xl overflow-hidden border-2 border-secondary/20 hover:border-secondary/40 transition-all duration-500">
                             <div className="p-12">
-                                {/* Package Name */}
-                                <h3 className="text-3xl font-bold text-primary mb-4">
-                                    {t.consultationPackageName}
-                                </h3>
-
-                                {/* Price */}
-                                <div className="mb-8">
-                                    <div className="flex items-baseline gap-2">
-                                        <span className="text-6xl font-extrabold text-primary">
-                                            {t.consultationPrice}
-                                        </span>
-                                        <span className="text-2xl text-gray-600 font-semibold">
-                                            {t.currency}
-                                        </span>
-                                    </div>
-                                    <p className="text-gray-600 mt-2 text-lg">
-                                        {t.consultationPriceDescription}
-                                    </p>
-                                </div>
-
-                                {/* Features List */}
-                                <div className="space-y-4 mb-10">
-                                    {t.consultationFeatures.map((feature: string, index: number) => (
-                                        <motion.div
-                                            key={index}
-                                            initial={{ opacity: 0, x: -20 }}
-                                            whileInView={{ opacity: 1, x: 0 }}
-                                            viewport={{ once: true }}
-                                            transition={{ delay: 0.4 + index * 0.1 }}
-                                            className="flex items-start gap-4"
-                                        >
-                                            <div className="flex-shrink-0 w-6 h-6 bg-primary/10 rounded-full flex items-center justify-center mt-1">
-                                                <Check className="text-primary" size={16} />
-                                            </div>
-                                            <span className="text-gray-700 text-lg leading-relaxed">
-                                                {feature}
-                                            </span>
-                                        </motion.div>
-                                    ))}
-                                </div>
-
-                                {/* CTA Button */}
-                                <motion.button
-                                    whileHover={{ scale: 1.02 }}
-                                    whileTap={{ scale: 0.98 }}
-                                    onClick={() => handlePackageSelect('consultation')}
-                                    className="w-full bg-primary text-white py-5 px-8 rounded-2xl font-bold text-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:bg-primary/90"
-                                >
-                                    {t.consultationCta}
-                                </motion.button>
-
-                                {/* Additional Info */}
-                                <p className="text-center text-gray-500 mt-6 text-sm">
-                                    {t.consultationAdditionalInfo}
-                                </p>
-                            </div>
-
-                            {/* Decorative Elements */}
-                            <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-primary/10 rounded-full blur-3xl" />
-                            <div className="absolute -top-10 -left-10 w-40 h-40 bg-secondary/10 rounded-full blur-3xl" />
-                        </div>
-                    </motion.div>
-
-                    {/* Complete Tax Solution Card */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.4 }}
-                    >
-                        <div className="relative bg-white rounded-3xl shadow-2xl overflow-hidden border-2 border-secondary/20 hover:border-secondary/40 transition-all duration-500 h-full">
-                            {/* Popular Badge */}
-                            <div className="absolute top-0 right-0 bg-secondary text-white px-6 py-2 rounded-bl-3xl font-bold flex items-center gap-2">
-                                <Sparkles size={18} />
-                                {t.popularBadge}
-                            </div>
-
-                            <div className="p-12">
-                                {/* Package Name */}
-                                <h3 className="text-3xl font-bold text-primary mb-4">
+                                {/* Card Title */}
+                                <h3 className="text-3xl font-bold text-primary mb-10 text-center">
                                     {t.packageName}
                                 </h3>
 
-                                {/* Price */}
-                                <div className="mb-8">
-                                    <div className="flex items-baseline gap-2">
-                                        <span className="text-6xl font-extrabold text-secondary">
-                                            {t.price}
-                                        </span>
-                                        <span className="text-2xl text-gray-600 font-semibold">
-                                            {t.currency}
-                                        </span>
-                                    </div>
-                                    <p className="text-gray-600 mt-2 text-lg">
-                                        {t.priceDescription}
-                                    </p>
-                                </div>
-
-                                {/* Features List */}
-                                <div className="space-y-4 mb-10">
-                                    {t.features.map((feature: string, index: number) => (
+                                {/* Services List */}
+                                <div className="space-y-8">
+                                    {t.services.map((service: { name: string; price: string; currency: string; priceNote: string; description: string; features: string[] }, index: number) => (
                                         <motion.div
                                             key={index}
-                                            initial={{ opacity: 0, x: -20 }}
-                                            whileInView={{ opacity: 1, x: 0 }}
+                                            initial={{ opacity: 0, y: 20 }}
+                                            whileInView={{ opacity: 1, y: 0 }}
                                             viewport={{ once: true }}
-                                            transition={{ delay: 0.5 + index * 0.1 }}
-                                            className="flex items-start gap-4"
+                                            transition={{ delay: 0.4 + index * 0.2 }}
                                         >
-                                            <div className="flex-shrink-0 w-6 h-6 bg-secondary/10 rounded-full flex items-center justify-center mt-1">
-                                                <Check className="text-secondary" size={16} />
+                                            {index > 0 && (
+                                                <div className="border-t-2 border-gray-100 mb-8" />
+                                            )}
+                                            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
+                                                {/* Service Info */}
+                                                <div className="flex-1">
+                                                    <h4 className="text-xl font-bold text-primary mb-1">
+                                                        {service.name}
+                                                    </h4>
+                                                    <p className="text-gray-600 text-base">
+                                                        {service.description}
+                                                    </p>
+                                                </div>
+
+                                                {/* Price */}
+                                                <div className="text-right shrink-0">
+                                                    <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1">
+                                                        {service.priceNote}
+                                                    </p>
+                                                    <div className="flex items-baseline gap-1 justify-end">
+                                                        <span className="text-3xl md:text-4xl font-extrabold text-secondary">
+                                                            {service.price}
+                                                        </span>
+                                                        {service.currency && (
+                                                            <span className="text-lg text-gray-600 font-semibold">
+                                                                {service.currency}
+                                                            </span>
+                                                        )}
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <span className="text-gray-700 text-lg leading-relaxed">
-                                                {feature}
-                                            </span>
+
+                                            {/* Features List */}
+                                            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                                {service.features.map((feature: string, fIndex: number) => (
+                                                    <div key={fIndex} className="flex items-start gap-3">
+                                                        <div className="shrink-0 w-5 h-5 bg-secondary/10 rounded-full flex items-center justify-center mt-0.5">
+                                                            <Check className="text-secondary" size={14} />
+                                                        </div>
+                                                        <span className="text-gray-700 text-sm leading-relaxed">
+                                                            {feature}
+                                                        </span>
+                                                    </div>
+                                                ))}
+                                            </div>
                                         </motion.div>
                                     ))}
                                 </div>
@@ -206,7 +144,7 @@ export default function Pricing() {
                                     whileHover={{ scale: 1.02 }}
                                     whileTap={{ scale: 0.98 }}
                                     onClick={() => handlePackageSelect('solution')}
-                                    className="w-full bg-secondary text-white py-5 px-8 rounded-2xl font-bold text-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:bg-secondary/90"
+                                    className="w-full bg-secondary text-white py-5 px-8 rounded-2xl font-bold text-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:bg-secondary/90 mt-10"
                                 >
                                     {t.cta}
                                 </motion.button>
