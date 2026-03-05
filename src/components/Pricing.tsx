@@ -26,7 +26,7 @@ export default function Pricing() {
     };
 
     return (
-        <section className="py-28 bg-gradient-to-br from-primary/5 via-white to-secondary/5 relative overflow-hidden">
+        <section className="py-28 bg-linear-to-br from-primary/5 via-white to-secondary/5 relative overflow-hidden">
             {/* Background Decorative Elements */}
             <div className="absolute top-0 right-1/4 w-96 h-96 bg-secondary/5 rounded-full blur-3xl" />
             <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-accent/5 rounded-full blur-3xl" />
