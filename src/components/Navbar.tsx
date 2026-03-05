@@ -42,7 +42,7 @@ export default function Navbar() {
                 className={clsx(
                     "fixed w-full z-50 transition-all duration-500",
                     isScrolled
-                        ? "bg-white/80 backdrop-blur-xl shadow-xl py-4 border-b border-gray-100"
+                        ? "bg-white/80 backdrop-blur-xl shadow-xl py-2 border-b border-gray-100"
                         : "bg-transparent py-4"
                 )}
             >
@@ -50,14 +50,13 @@ export default function Navbar() {
                     {/* Logo with Premium Effect */}
                     <Link href="/" className="flex items-center gap-3 group">
                         <div className="relative">
-                            <div className="absolute inset-0 bg-secondary rounded-lg blur-md opacity-50 group-hover:opacity-75 transition-opacity" />
-                            <div className="relative">
+                            <div className="relative w-12 h-12 md:w-16 md:h-16 rounded-full overflow-hidden">
                                 <Image
-                                    src="/logo/transparent-logo.png"
+                                    src="/logo/logo.jpg"
                                     alt={t.logo}
                                     width={300}
-                                    height={100}
-                                    className="h-12 md:h-20 w-auto transition-transform group-hover:scale-105"
+                                    height={300}
+                                    className="w-full h-full object-cover transition-transform group-hover:scale-105"
                                     priority
                                 />
                             </div>
