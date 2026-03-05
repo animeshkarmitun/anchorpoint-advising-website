@@ -5,12 +5,15 @@ import { ChevronDown, HelpCircle, Search, ChevronsDownUp, ChevronsUpDown } from 
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
 import { translations } from "@/lib/content";
+import CalendlyModal from "./CalendlyModal";
 
 export default function FAQ() {
     const [openIndices, setOpenIndices] = useState<Set<number>>(new Set());
     const [searchQuery, setSearchQuery] = useState("");
+    const [isCalendlyOpen, setIsCalendlyOpen] = useState(false);
     const { language } = useLanguage();
     const t = translations[language].faq;
+    const calendlyUrl = "https://calendly.com/anchorpointadvising/30min";
 
     const toggleFAQ = (index: number) => {
         setOpenIndices((prev) => {
@@ -259,16 +262,22 @@ export default function FAQ() {
                         <p className="text-gray-600 mb-6 max-w-xl mx-auto">
                             {t.ctaSubtitle}
                         </p>
-                        <a
-                            href="#consultation"
-                            className="inline-flex items-center gap-2 px-8 py-4 bg-secondary text-white font-bold text-lg rounded-full hover:bg-secondary/90 hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-2xl"
+                        <button
+                            onClick={() => setIsCalendlyOpen(true)}
+                            className="inline-flex items-center gap-2 px-8 py-4 bg-secondary text-white font-bold text-lg rounded-full hover:bg-secondary/90 hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-2xl cursor-pointer"
                         >
                             {t.ctaButton}
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
-                        </a>
+                        </button>
                     </motion.div>
                 </div>
             </div>
+            {/* Calendly Modal */}
+            <CalendlyModal
+                isOpen={isCalendlyOpen}
+                onClose={() => setIsCalendlyOpen(false)}
+                calendlyUrl={calendlyUrl}
+            />
         </section>
     );
 }
