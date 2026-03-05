@@ -48,7 +48,7 @@ export default function Footer() {
                             <ul className="space-y-2.5 mb-8">
                                 {t.trustBullets.map((bullet: string, index: number) => (
                                     <li key={index} className="flex items-start gap-2.5 text-gray-300 text-sm">
-                                        <CheckCircle size={16} className="text-emerald-400 mt-0.5 flex-shrink-0" />
+                                        <CheckCircle size={16} className="text-emerald-400 mt-0.5 shrink-0" />
                                         <span>{bullet}</span>
                                     </li>
                                 ))}
@@ -158,7 +158,7 @@ export default function Footer() {
                         {/* Contact Info */}
                         <div className="mt-8 space-y-4">
                             <div className="flex items-center gap-3 text-gray-300 text-base group cursor-pointer">
-                                <div className="w-10 h-10 bg-white/10 backdrop-blur-sm rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-secondary transition-all">
+                                <div className="w-10 h-10 bg-white/10 backdrop-blur-sm rounded-lg flex items-center justify-center shrink-0 group-hover:bg-secondary transition-all">
                                     <Mail size={20} className="text-secondary group-hover:text-white" />
                                 </div>
                                 <span>{t.email}</span>

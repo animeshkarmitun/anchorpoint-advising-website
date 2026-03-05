@@ -184,7 +184,7 @@ export default function FAQ() {
                                         }`}
                                 >
                                     {/* Numbered Badge */}
-                                    <span className={`flex-shrink-0 w-10 h-10 rounded-xl flex items-center justify-center text-sm font-bold transition-all duration-300 ${openIndices.has(faq.originalIndex)
+                                    <span className={`shrink-0 w-10 h-10 rounded-xl flex items-center justify-center text-sm font-bold transition-all duration-300 ${openIndices.has(faq.originalIndex)
                                         ? "bg-secondary text-white shadow-lg"
                                         : "bg-gray-100 text-gray-500"
                                         }`}>
@@ -199,7 +199,7 @@ export default function FAQ() {
                                     <motion.div
                                         animate={{ rotate: openIndices.has(faq.originalIndex) ? 180 : 0 }}
                                         transition={{ duration: 0.3 }}
-                                        className="flex-shrink-0"
+                                        className="shrink-0"
                                     >
                                         <ChevronDown className={`transition-colors ${openIndices.has(faq.originalIndex) ? "text-secondary" : "text-gray-400"
                                             }`} size={24} />
@@ -251,7 +251,7 @@ export default function FAQ() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.3 }}
-                        className="text-center mt-16 p-10 bg-gradient-to-br from-primary/5 to-secondary/5 rounded-3xl"
+                        className="text-center mt-16 p-10 bg-linear-to-br from-primary/5 to-secondary/5 rounded-3xl"
                     >
                         <h3 className="text-2xl font-bold text-primary mb-2">
                             {t.ctaTitle}
