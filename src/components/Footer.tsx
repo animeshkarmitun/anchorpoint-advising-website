@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone, MapPin, Send, ArrowRight, CheckCircle } from "lucide-react";
+import { Facebook, Twitter, Instagram, Linkedin, Youtube, Mail, Phone, MapPin, Send, ArrowRight, CheckCircle } from "lucide-react";
 import { motion } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
 import { translations } from "@/lib/content";
@@ -55,22 +55,31 @@ export default function Footer() {
                             </ul>
                         )}
                         <div className="flex gap-3">
-                            {[Facebook, Twitter, Instagram, Linkedin].map((Icon, index) => (
+                            {[
+                                { Icon: Facebook, href: "https://www.facebook.com/Anchorpointadvisingbd" },
+                                // { Icon: Twitter, href: "#" },
+                                { Icon: Instagram, href: "https://www.instagram.com/anchorpointadvising" },
+                                { Icon: Linkedin, href: "https://www.linkedin.com/company/anchorpoint-advising/" },
+                                { Icon: Youtube, href: "https://www.youtube.com/@anchorpointadvising" },
+                            ].map(({ Icon, href }, index) => (
                                 <motion.a
                                     key={index}
-                                    href="#"
+                                    href={href}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
                                     whileHover={{ scale: 1.1, y: -3 }}
                                     className="w-12 h-12 bg-white/10 backdrop-blur-sm hover:bg-secondary flex items-center justify-center rounded-xl transition-all duration-300 border border-white/10"
                                 >
                                     <Icon size={20} />
                                 </motion.a>
                             ))}
-                        </div>
-                    </motion.div>
+                        </div >
+                    </motion.div >
 
                     {/* Quick Links */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
+                    < motion.div
+                        initial={{ opacity: 0, y: 20 }
+                        }
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.1 }}
@@ -89,10 +98,10 @@ export default function Footer() {
                                 </li>
                             ))}
                         </ul>
-                    </motion.div>
+                    </motion.div >
 
                     {/* Services */}
-                    <motion.div
+                    < motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
@@ -112,10 +121,10 @@ export default function Footer() {
                                 </li>
                             ))}
                         </ul>
-                    </motion.div>
+                    </motion.div >
 
                     {/* Legal */}
-                    <motion.div
+                    < motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
@@ -155,11 +164,11 @@ export default function Footer() {
                                 <span>{t.email}</span>
                             </div>
                         </div>
-                    </motion.div>
-                </div>
+                    </motion.div >
+                </div >
 
                 {/* Copyright */}
-                <motion.div
+                < motion.div
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
@@ -173,8 +182,8 @@ export default function Footer() {
                         <Link href="#" className="hover:text-white transition-colors">{t.termsOfService}</Link>
                         <Link href="/cookie-policy" className="hover:text-white transition-colors">{t.cookiePolicy}</Link>
                     </div>
-                </motion.div>
-            </div>
-        </footer>
+                </motion.div >
+            </div >
+        </footer >
     );
 }
