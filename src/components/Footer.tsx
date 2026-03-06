@@ -56,10 +56,10 @@ export default function Footer() {
                         )}
                         <div className="flex gap-3">
                             {[
-                                { Icon: Facebook, href: "#" },
-                                { Icon: Twitter, href: "#" },
-                                { Icon: Instagram, href: "#" },
-                                { Icon: Linkedin, href: "#" },
+                                { Icon: Facebook, href: "https://www.facebook.com/Anchorpointadvisingbd" },
+                                // { Icon: Twitter, href: "#" },
+                                { Icon: Instagram, href: "https://www.instagram.com/anchorpointadvising" },
+                                { Icon: Linkedin, href: "https://www.linkedin.com/company/anchorpoint-advising/" },
                                 { Icon: Youtube, href: "https://www.youtube.com/@anchorpointadvising" },
                             ].map(({ Icon, href }, index) => (
                                 <motion.a
