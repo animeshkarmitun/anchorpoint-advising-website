@@ -134,4 +134,12 @@ export class UpdateProfileDto {
     @IsOptional()
     @IsBoolean()
     notifySms?: boolean;
+
+    @ApiPropertyOptional({
+        description: 'Mark onboarding as complete',
+        example: true,
+    })
+    @IsOptional()
+    @IsBoolean()
+    onboardingDone?: boolean;
 }

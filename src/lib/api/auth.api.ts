@@ -16,15 +16,41 @@ export interface RegisterDto {
 export interface AuthResponse {
     accessToken: string;
     refreshToken?: string;
-    user: AuthUser;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    user: any; // Raw backend shape — mapUser normalises to AuthUser
+}
+
+/** Map backend user shape to frontend AuthUser */
+function mapUser(raw: any): AuthUser {
+    return {
+        id: raw.id,
+        email: raw.email,
+        phone: raw.phone ?? null,
+        role: raw.role,
+        name: raw.profile?.fullName ?? raw.name ?? raw.email,
+        onboardingDone: raw.profile?.onboardingDone ?? raw.onboardingDone,
+        language: raw.profile?.language ?? raw.language,
+    };
 }
 
 export const authApi = {
     login: (dto: LoginDto) =>
-        apiClient.post<{ data: AuthResponse }>('/auth/login', dto).then((r) => r.data.data),
+        apiClient.post<{ data: AuthResponse }>('/auth/login', dto).then((r) => {
+            const d = r.data.data;
+            return {
+                ...d,
+                user: mapUser(d.user),
+            };
+        }),
 
     register: (dto: RegisterDto) =>
-        apiClient.post<{ data: AuthResponse }>('/auth/register', dto).then((r) => r.data.data),
+        apiClient.post<{ data: AuthResponse }>('/auth/register', dto).then((r) => {
+            const d = r.data.data;
+            return {
+                ...d,
+                user: mapUser(d.user),
+            };
+        }),
 
     logout: () =>
         apiClient.post('/auth/logout').then(() => undefined),

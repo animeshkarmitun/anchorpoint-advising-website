@@ -71,6 +71,7 @@ export class ProfileService {
             'language',
             'notifyEmail',
             'notifySms',
+            'onboardingDone',
         ];
 
         for (const field of fieldsToUpdate) {

@@ -6,6 +6,16 @@ import { toast } from 'sonner';
 import { authApi, type LoginDto, type RegisterDto } from '@/lib/api/auth.api';
 import { useAuthStore } from '@/lib/store/auth.store';
 import { getApiError } from '@/lib/utils';
+import { REFRESH_COOKIE_NAME } from '@/lib/constants';
+
+// ── Cookie helpers (middleware reads this to gate routes) ──────────────────
+function setRefreshCookie(refreshToken: string) {
+    document.cookie = `${REFRESH_COOKIE_NAME}=${refreshToken}; path=/; max-age=${7 * 24 * 60 * 60}; samesite=lax`;
+}
+
+function clearRefreshCookie() {
+    document.cookie = `${REFRESH_COOKIE_NAME}=; path=/; max-age=0`;
+}
 
 // ── Current user ──────────────────────────────────────────────────────────
 
@@ -30,6 +40,7 @@ export function useLogin() {
         mutationFn: (dto: LoginDto) => authApi.login(dto),
         onSuccess: (data) => {
             setAuth(data.accessToken, data.user);
+            if (data.refreshToken) setRefreshCookie(data.refreshToken);
             queryClient.setQueryData(['auth', 'me'], data.user);
 
             toast.success(`Welcome back, ${data.user.name.split(' ')[0]}!`);
@@ -62,6 +73,7 @@ export function useRegister() {
         mutationFn: (dto: RegisterDto) => authApi.register(dto),
         onSuccess: (data) => {
             setAuth(data.accessToken, data.user);
+            if (data.refreshToken) setRefreshCookie(data.refreshToken);
             queryClient.setQueryData(['auth', 'me'], data.user);
         },
         onError: (err) => {
@@ -81,6 +93,7 @@ export function useLogout() {
         mutationFn: () => authApi.logout(),
         onSettled: () => {
             logout();
+            clearRefreshCookie();
             queryClient.clear();
             // Redirect to the appropriate login page based on which portal was in use
             const isAdminRoute =

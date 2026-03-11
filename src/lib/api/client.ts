@@ -1,8 +1,22 @@
 import axios from 'axios';
 import type { InternalAxiosRequestConfig } from 'axios';
 import { authBridge } from './authBridge';
+import { REFRESH_COOKIE_NAME } from '@/lib/constants';
 
 const BASE_URL = process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:3001/api/v1';
+
+/** Read a cookie value by name (client-side only) */
+function getCookie(name: string): string | null {
+    if (typeof document === 'undefined') return null;
+    const match = document.cookie.match(new RegExp('(?:^|; )' + name + '=([^;]*)'));
+    return match ? decodeURIComponent(match[1]) : null;
+}
+
+/** Set a cookie (client-side only) */
+function setCookie(name: string, value: string, maxAge: number) {
+    if (typeof document === 'undefined') return;
+    document.cookie = `${name}=${value}; path=/; max-age=${maxAge}; samesite=lax`;
+}
 
 export const apiClient = axios.create({
     baseURL: BASE_URL,
@@ -60,21 +74,28 @@ apiClient.interceptors.response.use(
         isRefreshing = true;
 
         try {
-            // The refresh endpoint reads the httpOnly cookie automatically
+            // Read the refresh token from the cookie
+            const refreshToken = getCookie(REFRESH_COOKIE_NAME);
+            if (!refreshToken) throw new Error('No refresh token');
+
             const { data } = await axios.post(
                 `${BASE_URL}/auth/refresh`,
-                {},
+                { refreshToken },
                 { withCredentials: true },
             );
-            const newToken: string = data?.data?.accessToken ?? data?.accessToken;
+            const newAccessToken: string = data?.data?.accessToken ?? data?.accessToken;
+            const newRefreshToken: string | undefined = data?.data?.refreshToken ?? data?.refreshToken;
 
-            // Update in-memory token via the bridge (no circular import)
-            // Note: authBridge.setAccessToken is wired to useAuthStore.setAccessToken
-            // in providers.tsx — the bridge holds the reference, not the module.
-            authBridge.setAccessToken(newToken);
+            // Update in-memory token via the bridge
+            authBridge.setAccessToken(newAccessToken);
 
-            original.headers.Authorization = `Bearer ${newToken}`;
-            processQueue(null, newToken);
+            // Rotate the refresh cookie if a new one was returned
+            if (newRefreshToken) {
+                setCookie(REFRESH_COOKIE_NAME, newRefreshToken, 7 * 24 * 60 * 60);
+            }
+
+            original.headers.Authorization = `Bearer ${newAccessToken}`;
+            processQueue(null, newAccessToken);
             return apiClient(original);
         } catch (refreshError) {
             processQueue(refreshError, null);
