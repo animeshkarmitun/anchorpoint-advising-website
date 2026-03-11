@@ -52,7 +52,7 @@ export default function Navbar() {
                         <div className="relative">
                             <div className="relative w-12 h-12 md:w-16 md:h-16 rounded-lg overflow-hidden">
                                 <Image
-                                    src="/logo/logo.jpg"
+                                    src="/logo/new_logo.png"
                                     alt={t.logo}
                                     width={300}
                                     height={300}
