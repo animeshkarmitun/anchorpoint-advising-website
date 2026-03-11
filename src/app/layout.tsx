@@ -16,6 +16,17 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   title: "Income Tax Filing Service in Bangladesh | Online NBR e-Return & NRB Support",
   description: "Professional income tax filing service in Bangladesh. Online NBR e-return, e-TIN registration, tax calculation & NRB tax support. File accurately & on time.",
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 1,
+    viewportFit: 'cover',
+  },
+  other: {
+    'mobile-web-app-capable': 'yes',
+    'apple-mobile-web-app-capable': 'yes',
+    'apple-mobile-web-app-status-bar-style': 'default',
+  },
 };
 
 export default function RootLayout({

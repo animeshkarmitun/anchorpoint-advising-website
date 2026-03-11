@@ -11,6 +11,10 @@ import { adminApi, type DashboardStats } from '@/lib/api/admin.api';
 import EmptyState from '@/components/shared/EmptyState';
 import { SkeletonCard } from '@/components/shared/Skeletons';
 import { toast } from 'sonner';
+import {
+    BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
+    PieChart, Pie, Cell, Legend,
+} from 'recharts';
 
 // ── KPI card ──────────────────────────────────────────────────────────────────
 
@@ -59,8 +63,12 @@ type TabKey = typeof TABS[number]['key'];
 // ── Revenue tab ───────────────────────────────────────────────────────────────
 
 function RevenueTab({ stats }: { stats: DashboardStats }) {
-    const months = stats.monthlyRevenue ?? [];
-    const maxAmount = Math.max(...months.map((m) => m.amount), 1);
+    const months = (stats.monthlyRevenue ?? []).slice(-12);
+
+    const chartData = months.map((m) => ({
+        month: m.month.slice(5), // MM only
+        amount: m.amount,
+    }));
 
     return (
         <div className="space-y-4">
@@ -79,34 +87,32 @@ function RevenueTab({ stats }: { stats: DashboardStats }) {
                 <KpiCard icon={FileStack} label="Completed Filings YTD" value={stats.completedFilingsYTD} color="#059669" />
             </div>
 
-            {/* Revenue bar chart (pure CSS) */}
+            {/* Revenue bar chart (Recharts) */}
             <div className="bg-white rounded-xl border border-[var(--color-neutral-100)] p-5">
                 <h3 className="text-sm font-semibold text-[var(--color-neutral-900)] mb-4">Monthly Revenue</h3>
-                {months.length === 0 ? (
+                {chartData.length === 0 ? (
                     <p className="text-sm text-[var(--color-neutral-400)] text-center py-8">No revenue data available</p>
                 ) : (
-                    <div className="flex items-end gap-2 h-[200px]">
-                        {months.slice(-12).map((m, i) => {
-                            const pct = (m.amount / maxAmount) * 100;
-                            return (
-                                <div key={i} className="flex-1 flex flex-col items-center gap-1">
-                                    <span className="text-[9px] text-[var(--color-neutral-500)] font-medium">
-                                        {formatBDT(m.amount)}
-                                    </span>
-                                    <div
-                                        className="w-full rounded-t-md transition-all duration-500"
-                                        style={{
-                                            height: `${Math.max(pct, 4)}%`,
-                                            background: 'linear-gradient(to top, #4F46E5, #818CF8)',
-                                        }}
-                                    />
-                                    <span className="text-[9px] text-[var(--color-neutral-400)]">
-                                        {m.month.slice(5)}
-                                    </span>
-                                </div>
-                            );
-                        })}
-                    </div>
+                    <ResponsiveContainer width="100%" height={280}>
+                        <BarChart data={chartData} margin={{ top: 5, right: 5, left: 0, bottom: 5 }}>
+                            <CartesianGrid strokeDasharray="3 3" stroke="#F1F5F9" />
+                            <XAxis dataKey="month" tick={{ fontSize: 11, fill: '#9CA3AF' }} axisLine={false} tickLine={false} />
+                            <YAxis tick={{ fontSize: 11, fill: '#9CA3AF' }} axisLine={false} tickLine={false}
+                                tickFormatter={(v: number) => `৳${(v / 1000).toFixed(0)}k`} />
+                            <Tooltip
+                                contentStyle={{ borderRadius: 12, border: '1px solid #E2E8F0', boxShadow: '0 4px 16px rgba(0,0,0,0.06)' }}
+                                formatter={(value) => [formatBDT(Number(value ?? 0)), 'Revenue']}
+                                labelStyle={{ fontWeight: 600, fontSize: 12 }}
+                            />
+                            <Bar dataKey="amount" fill="url(#revenueGradient)" radius={[6, 6, 0, 0]} />
+                            <defs>
+                                <linearGradient id="revenueGradient" x1="0" y1="0" x2="0" y2="1">
+                                    <stop offset="0%" stopColor="#818CF8" />
+                                    <stop offset="100%" stopColor="#4F46E5" />
+                                </linearGradient>
+                            </defs>
+                        </BarChart>
+                    </ResponsiveContainer>
                 )}
             </div>
         </div>
@@ -126,10 +132,19 @@ function CustomersTab({ stats }: { stats: DashboardStats }) {
             </div>
 
             <div className="bg-white rounded-xl border border-[var(--color-neutral-100)] p-5">
-                <h3 className="text-sm font-semibold text-[var(--color-neutral-900)] mb-3">Customer Distribution</h3>
-                <p className="text-sm text-[var(--color-neutral-400)] text-center py-8">
-                    Advanced customer analytics charts will be available in Phase 2 with Recharts integration.
-                </p>
+                <h3 className="text-sm font-semibold text-[var(--color-neutral-900)] mb-3">Customer Growth</h3>
+                <ResponsiveContainer width="100%" height={240}>
+                    <BarChart data={(stats.monthlyRevenue ?? []).slice(-12).map((m) => ({
+                        month: m.month.slice(5),
+                        customers: m.count,
+                    }))} margin={{ top: 5, right: 5, left: 0, bottom: 5 }}>
+                        <CartesianGrid strokeDasharray="3 3" stroke="#F1F5F9" />
+                        <XAxis dataKey="month" tick={{ fontSize: 11, fill: '#9CA3AF' }} axisLine={false} tickLine={false} />
+                        <YAxis tick={{ fontSize: 11, fill: '#9CA3AF' }} axisLine={false} tickLine={false} />
+                        <Tooltip contentStyle={{ borderRadius: 12, border: '1px solid #E2E8F0' }} />
+                        <Bar dataKey="customers" fill="#4F46E5" radius={[6, 6, 0, 0]} />
+                    </BarChart>
+                </ResponsiveContainer>
             </div>
         </div>
     );
@@ -137,7 +152,16 @@ function CustomersTab({ stats }: { stats: DashboardStats }) {
 
 // ── Filings tab ───────────────────────────────────────────────────────────────
 
+const FILING_STATUS_COLORS = ['#4F46E5', '#D97706', '#16A34A', '#DC2626', '#0891B2'];
+
 function FilingsTab({ stats }: { stats: DashboardStats }) {
+    const donutData = [
+        { name: 'Active', value: stats.activeFilings },
+        { name: 'Pending Docs', value: stats.pendingDocuments },
+        { name: 'Completed', value: stats.completedFilingsYTD },
+        { name: 'Under Review', value: stats.pendingReviews },
+    ].filter((d) => d.value > 0);
+
     return (
         <div className="space-y-4">
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
@@ -149,9 +173,33 @@ function FilingsTab({ stats }: { stats: DashboardStats }) {
 
             <div className="bg-white rounded-xl border border-[var(--color-neutral-100)] p-5">
                 <h3 className="text-sm font-semibold text-[var(--color-neutral-900)] mb-3">Filing Status Breakdown</h3>
-                <p className="text-sm text-[var(--color-neutral-400)] text-center py-8">
-                    Filing status donut chart will be available in Phase 2 with Recharts integration.
-                </p>
+                {donutData.length === 0 ? (
+                    <p className="text-sm text-[var(--color-neutral-400)] text-center py-8">No filings data available</p>
+                ) : (
+                    <ResponsiveContainer width="100%" height={280}>
+                        <PieChart>
+                            <Pie
+                                data={donutData}
+                                cx="50%" cy="50%"
+                                innerRadius={60} outerRadius={100}
+                                paddingAngle={3}
+                                dataKey="value"
+                                label={({ name, percent }) => `${name} ${((percent ?? 0) * 100).toFixed(0)}%`}
+                                labelLine={false}
+                            >
+                                {donutData.map((_, i) => (
+                                    <Cell key={i} fill={FILING_STATUS_COLORS[i % FILING_STATUS_COLORS.length]} />
+                                ))}
+                            </Pie>
+                            <Tooltip contentStyle={{ borderRadius: 12, border: '1px solid #E2E8F0' }} />
+                            <Legend
+                                verticalAlign="bottom"
+                                iconType="circle"
+                                formatter={(value: string) => <span className="text-xs text-[#374151]">{value}</span>}
+                            />
+                        </PieChart>
+                    </ResponsiveContainer>
+                )}
             </div>
         </div>
     );

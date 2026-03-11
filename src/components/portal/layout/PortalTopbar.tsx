@@ -1,16 +1,15 @@
 'use client';
 
-import Link from 'next/link';
-import { Bell, Globe } from 'lucide-react';
+import { Globe } from 'lucide-react';
 import { useUiStore } from '@/lib/store/ui.store';
-import { cn } from '@/lib/utils';
+import NotificationBell from '@/components/shared/NotificationBell';
 
 interface PortalTopbarProps {
     title?: string;
 }
 
 export default function PortalTopbar({ title }: PortalTopbarProps) {
-    const { unreadNotifications, language, setLanguage } = useUiStore();
+    const { language, setLanguage } = useUiStore();
 
     return (
         <header
@@ -45,25 +44,10 @@ export default function PortalTopbar({ title }: PortalTopbarProps) {
                     {language === 'en' ? 'বাংলা' : 'EN'}
                 </button>
 
-                {/* Notification bell */}
-                <Link
-                    href="/portal/notifications"
-                    className="relative flex items-center justify-center w-9 h-9 rounded-lg
-                     text-[var(--color-neutral-600)] hover:bg-[var(--color-neutral-50)] transition-all"
-                    aria-label={`Notifications${unreadNotifications > 0 ? ` (${unreadNotifications} unread)` : ''}`}
-                >
-                    <Bell className="w-5 h-5" />
-                    {unreadNotifications > 0 && (
-                        <span
-                            className="absolute top-1.5 right-1.5 min-w-[16px] h-4 px-0.5 rounded-full
-                         text-[9px] font-bold text-white flex items-center justify-center"
-                            style={{ background: 'var(--color-danger)' }}
-                        >
-                            {unreadNotifications > 9 ? '9+' : unreadNotifications}
-                        </span>
-                    )}
-                </Link>
+                {/* Notification bell + dropdown */}
+                <NotificationBell />
             </div>
         </header>
     );
 }
+

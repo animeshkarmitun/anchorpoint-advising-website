@@ -4,6 +4,7 @@ import { usePathname } from 'next/navigation';
 import PortalSidebar from '@/components/portal/layout/PortalSidebar';
 import PortalTopbar from '@/components/portal/layout/PortalTopbar';
 import PortalBottomNav from '@/components/portal/layout/PortalBottomNav';
+import { useSocket } from '@/lib/socket/useSocket';
 
 /** Auth-only pages — no sidebar/nav chrome */
 const AUTH_PATHS = [
@@ -17,6 +18,9 @@ const AUTH_PATHS = [
 export default function PortalShellLayout({ children }: { children: React.ReactNode }) {
     const pathname = usePathname();
     const isAuth = AUTH_PATHS.some((p) => pathname.startsWith(p));
+
+    // Mount socket for real-time events (only when authenticated)
+    useSocket();
 
     // Auth pages: render children bare — no shell
     if (isAuth) return <>{children}</>;

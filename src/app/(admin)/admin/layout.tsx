@@ -12,6 +12,8 @@ import { cn } from '@/lib/utils';
 import { useAuthStore } from '@/lib/store/auth.store';
 import { useUiStore } from '@/lib/store/ui.store';
 import { useLogout } from '@/lib/hooks/useAuth';
+import NotificationBell from '@/components/shared/NotificationBell';
+import { useSocket } from '@/lib/socket/useSocket';
 
 interface NavItem {
     href: string;
@@ -65,6 +67,9 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     const { sidebarOpen, toggleSidebar } = useUiStore();
     const user = useAuthStore((s) => s.user);
     const logout = useLogout();
+
+    // Mount socket for real-time events
+    useSocket();
 
     if (isAuth) return <>{children}</>;
 
@@ -201,6 +206,9 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                     </div>
 
                     <div className="flex-1" />
+
+                    {/* Notification bell */}
+                    <NotificationBell />
 
                     {/* User chip */}
                     <div className="flex items-center gap-2 text-xs text-[var(--color-neutral-600)]">

@@ -259,3 +259,25 @@ html {
 .animate-scale-in {
   animation: scale-in 0.2s ease-out;
 }
+
+/* ── Mobile Polish ── */
+.safe-area-inset-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Smooth scrollable containers on iOS */
+.portal-scroll {
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+}
+
+/* Dropdown animation (grows from top-right) */
+@keyframes dropdown-in {
+  from { opacity: 0; transform: scale(0.95) translateY(-4px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.animate-dropdown-in {
+  animation: dropdown-in 0.15s ease-out;
+  transform-origin: top right;
+}
