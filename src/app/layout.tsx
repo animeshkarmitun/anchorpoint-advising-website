@@ -5,6 +5,7 @@ import "./globals.css";
 import { LanguageProvider } from "@/context/LanguageContext";
 import CookieConsent from "@/components/CookieConsent";
 import MetaPixel from "@/components/MetaPixel";
+import { Providers } from "./providers";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -15,6 +16,17 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   title: "Income Tax Filing Service in Bangladesh | Online NBR e-Return & NRB Support",
   description: "Professional income tax filing service in Bangladesh. Online NBR e-return, e-TIN registration, tax calculation & NRB tax support. File accurately & on time.",
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 1,
+    viewportFit: 'cover',
+  },
+  other: {
+    'mobile-web-app-capable': 'yes',
+    'apple-mobile-web-app-capable': 'yes',
+    'apple-mobile-web-app-status-bar-style': 'default',
+  },
 };
 
 export default function RootLayout({
@@ -29,11 +41,13 @@ export default function RootLayout({
         className={`${poppins.variable} antialiased`}
         suppressHydrationWarning
       >
-        <LanguageProvider>
-          {children}
-          <CookieConsent />
-        </LanguageProvider>
-        <MetaPixel />
+        <Providers>
+          <LanguageProvider>
+            {children}
+            <CookieConsent />
+          </LanguageProvider>
+          <MetaPixel />
+        </Providers>
       </body>
     </html>
   );
