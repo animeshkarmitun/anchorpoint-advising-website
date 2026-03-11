@@ -102,11 +102,11 @@ export default function Consultation() {
                                 onClick={() => setIsCalendlyOpen(true)}
                                 className="group relative px-10 py-5 bg-secondary text-white rounded-2xl font-bold text-lg transition-all shadow-2xl hover:shadow-secondary/50 hover:scale-105"
                             >
-                                <span className="relative flex items-center gap-3">
+                                <div className="absolute inset-0 bg-gradient-to-r from-secondary to-secondary/80 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
+                                <span className="relative z-10 flex items-center gap-3">
                                     <Calendar size={24} />
                                     {t.cta}
                                 </span>
-                                <div className="absolute inset-0 bg-gradient-to-r from-secondary to-secondary/80 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
                             </button>
                         </motion.div>
                     </div>
