@@ -24,7 +24,7 @@ export default function Team() {
             {/* Background Pattern */}
             <div className="absolute inset-0 opacity-5">
                 <div className="absolute inset-0" style={{
-                    backgroundImage: 'radial-gradient(circle at 2px 2px, #3B82F6 1px, transparent 0)',
+                    backgroundImage: 'radial-gradient(circle at 2px 2px, #0055FF 1px, transparent 0)',
                     backgroundSize: '40px 40px'
                 }} />
             </div>
@@ -48,7 +48,7 @@ export default function Team() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.2 }}
-                        className="text-5xl md:text-6xl font-bold text-[#1E3A8A] mb-6"
+                        className="text-5xl md:text-6xl font-bold text-primary mb-6"
                     >
                         {t.title1}{" "}
                         <span className="text-secondary">
@@ -74,10 +74,10 @@ export default function Team() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: 0.4 }}
-                            className="mt-6 inline-flex items-center gap-2 px-6 py-3 bg-[#1E3A8A]/5 border border-[#1E3A8A]/10 rounded-full"
+                            className="mt-6 inline-flex items-center gap-2 px-6 py-3 bg-primary/5 border border-primary/10 rounded-full"
                         >
-                            <Shield className="w-5 h-5 text-[#F59E0B] flex-shrink-0" />
-                            <span className="text-[#1E3A8A] font-semibold text-sm md:text-base tracking-wide">
+                            <Shield className="w-5 h-5 text-accent flex-shrink-0" />
+                            <span className="text-primary font-semibold text-sm md:text-base tracking-wide">
                                 {t.trustIndicator}
                             </span>
                         </motion.div>
@@ -132,7 +132,7 @@ export default function Team() {
                                             }}
                                             className="absolute top-4 right-4 z-10"
                                         >
-                                            <Sparkles className="w-8 h-8 text-[#F59E0B]" />
+                                            <Sparkles className="w-8 h-8 text-accent" />
                                         </motion.div>
                                     </motion.div>
 
@@ -143,7 +143,7 @@ export default function Team() {
                                             opacity: hoveredIndex === index ? 1 : 0,
                                         }}
                                         transition={{ duration: 0.3 }}
-                                        className="absolute inset-0 bg-gradient-to-t from-[#0B1B35] via-[#1E3A8A]/90 to-transparent flex items-center justify-center space-x-4"
+                                        className="absolute inset-0 bg-gradient-to-t from-black via-secondary/90 to-transparent flex items-center justify-center space-x-4"
                                     >
                                         {[
                                             { icon: Linkedin, href: '#' },
@@ -160,7 +160,7 @@ export default function Team() {
                                                 }}
                                                 transition={{ delay: i * 0.1 }}
                                                 whileHover={{ scale: 1.2, rotate: 5 }}
-                                                className="w-12 h-12 glass rounded-full flex items-center justify-center text-white hover:bg-[#F59E0B] transition-all duration-300"
+                                                className="w-12 h-12 glass rounded-full flex items-center justify-center text-white hover:bg-accent transition-all duration-300"
                                             >
                                                 <social.icon className="w-6 h-6" />
                                             </motion.a>
@@ -184,7 +184,7 @@ export default function Team() {
 
                                 {/* Content Section */}
                                 <div className="p-6 text-center bg-white">
-                                    <h3 className="text-xl font-bold text-[#1E3A8A] mb-2 group-hover:text-gradient transition-all duration-300">
+                                    <h3 className="text-xl font-bold text-primary mb-2 group-hover:text-gradient transition-all duration-300">
                                         {member.name}
                                     </h3>
                                     <p className="text-gray-600 font-medium">{member.role}</p>
@@ -208,7 +208,7 @@ export default function Team() {
                     >
                         <a
                             href="#consultation"
-                            className="group inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-[#1E3A8A] to-[#2563EB] text-white font-bold text-lg rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
+                            className="group inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-primary to-secondary text-white font-bold text-lg rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
                         >
                             {t.ctaText}
                             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />

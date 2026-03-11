@@ -109,7 +109,7 @@ export default function About() {
                                     transition={{ delay: index * 0.1 }}
                                     className="group flex items-start gap-4 p-4 rounded-2xl hover:bg-gray-50 transition-all cursor-pointer"
                                 >
-                                    <div className={`w-12 h-12 bg-gradient-to-br ${feature.color} rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform shadow-lg`}>
+                                    <div className={`w-12 h-12 bg-linear-to-br ${feature.color} rounded-xl flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform shadow-lg`}>
                                         <div className="text-white">
                                             {feature.icon}
                                         </div>

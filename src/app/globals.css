@@ -1,11 +1,11 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #0B1B35;
-  --color-secondary: #1E88E5;
-  --color-accent: #F59E0B;
+  --color-primary: #050505;
+  --color-secondary: #1e88e5;
+  --color-accent: #3388FF;
   --color-background: #ffffff;
-  --color-foreground: #171717;
+  --color-foreground: #111111;
   --font-sans: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
 
 }
@@ -33,11 +33,11 @@ body {
 
   0%,
   100% {
-    box-shadow: 0 0 20px rgba(30, 136, 229, 0.3);
+    box-shadow: 0 0 20px rgba(0, 85, 255, 0.3);
   }
 
   50% {
-    box-shadow: 0 0 40px rgba(30, 136, 229, 0.6);
+    box-shadow: 0 0 40px rgba(0, 85, 255, 0.6);
   }
 }
 
@@ -70,16 +70,16 @@ html {
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: #f5f5f5;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #1E88E5;
-  border-radius: 5px;
+  background: #1e88e5;
+  border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -103,7 +103,7 @@ html {
 
 /* Text Gradient */
 .text-gradient {
-  background: linear-gradient(135deg, #1E88E5 0%, #F59E0B 100%);
+  background: linear-gradient(135deg, #0055FF 0%, #3388FF 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

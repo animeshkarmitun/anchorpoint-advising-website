@@ -61,7 +61,7 @@ export default function CalendlyModal({ isOpen, onClose, calendlyUrl }: Calendly
     if (!isOpen) return null;
 
     return (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/50 backdrop-blur-sm">
+        <div className="fixed inset-0 z-100 flex items-center justify-center bg-black/50 backdrop-blur-sm">
             <div className="relative w-full max-w-4xl mx-4 bg-white rounded-2xl shadow-2xl overflow-hidden">
                 {/* Close Button */}
                 <button
@@ -74,7 +74,7 @@ export default function CalendlyModal({ isOpen, onClose, calendlyUrl }: Calendly
 
                 {/* Loading Indicator */}
                 {isLoading && (
-                    <div className="absolute inset-0 z-[5] flex flex-col items-center justify-center bg-white">
+                    <div className="absolute inset-0 z-5 flex flex-col items-center justify-center bg-white">
                         <LogoLoader text="Loading scheduler" size={72} />
                     </div>
                 )}
