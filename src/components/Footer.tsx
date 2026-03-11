@@ -31,13 +31,23 @@ export default function Footer() {
                     >
                         <Link href="/" className="flex items-center gap-3 mb-6 group">
                             <div className="relative">
-                                <Image
-                                    src="/logo/transparent-logo.png"
+                                {/* <Image
+                                    src="/logo/footer-img.png"
                                     alt={t.logo}
                                     width={300}
                                     height={100}
                                     className="h-12 md:h-20 w-auto transition-transform group-hover:scale-105"
-                                />
+                                /> */}
+                                <div className="relative w-12 h-12 md:w-16 md:h-16 rounded-lg overflow-hidden">
+                                    <Image
+                                        src="/logo/new_logo.png"
+                                        alt={t.logo}
+                                        width={300}
+                                        height={300}
+                                        className="w-full h-full object-cover transition-transform group-hover:scale-105"
+                                        priority
+                                    />
+                                </div>
                             </div>
                         </Link>
                         <p className="text-gray-300 mb-6 leading-relaxed text-base">
