@@ -23,7 +23,7 @@ export default function Consultation() {
 
     return (
         <>
-            <section className="py-20 bg-gradient-to-br from-secondary/5 via-white to-primary/5 relative overflow-hidden">
+            <section id="consultation" className="py-20 bg-gradient-to-br from-secondary/5 via-white to-primary/5 relative overflow-hidden">
                 {/* Background Decorations */}
                 <div className="absolute top-0 right-0 w-96 h-96 bg-secondary/10 rounded-full blur-3xl" />
                 <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
