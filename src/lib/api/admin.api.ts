@@ -77,6 +77,47 @@ export interface FilingListItem {
     } | null;
 }
 
+/** Document in the review queue (admin view) — includes customer info */
+export interface PendingDocumentItem {
+    id:             string;
+    category:       string;
+    fileName:       string;
+    fileSize:       number;
+    mimeType:       string;
+    status:         'PENDING' | 'ACCEPTED' | 'REJECTED' | 'NEEDS_REUPLOAD';
+    rejectionNote?: string | null;
+    version:        number;
+    createdAt:      string;
+    updatedAt:      string;
+    user?: {
+        id:      string;
+        email:   string;
+        profile?: { fullName: string } | null;
+    } | null;
+    filing?: {
+        id:              string;
+        assessmentYear:  string;
+        serviceType:     string;
+    } | null;
+}
+
+/** Full customer detail (360° view) */
+export interface CustomerDetail extends CustomerListItem {
+    phone?:       string | null;
+    status:       string;
+    filings:      FilingListItem[];
+    recentActivity?: ActivityItem[];
+}
+
+/** Staff member */
+export interface StaffMember {
+    id:        string;
+    email:     string;
+    role:      string;
+    createdAt: string;
+    profile?: { fullName: string; phone?: string | null } | null;
+}
+
 // ── API ────────────────────────────────────────────────────────────────────
 
 export const adminApi = {
@@ -129,8 +170,24 @@ export const adminApi = {
         apiClient.patch(`/documents/${documentId}/review`, { action, note })
             .then((r) => r.data),
 
+    // Customer 360°
+    getCustomerDetail: (id: string): Promise<CustomerDetail> =>
+        apiClient.get(`/admin/customers/${id}`).then((r) => r.data.data),
+
+    getCustomerFilings: (customerId: string): Promise<FilingListItem[]> =>
+        apiClient.get('/filings', { params: { customerId } }).then((r) => r.data.data?.data ?? r.data.data),
+
+    getCustomerDocuments: (customerId: string) =>
+        apiClient.get('/documents', { params: { userId: customerId } }).then((r) => r.data.data),
+
+    suspendCustomer: (id: string) =>
+        apiClient.patch(`/admin/customers/${id}/suspend`).then((r) => r.data),
+
+    activateCustomer: (id: string) =>
+        apiClient.patch(`/admin/customers/${id}/activate`).then((r) => r.data),
+
     // Staff
-    listStaff: () =>
+    listStaff: (): Promise<StaffMember[]> =>
         apiClient.get('/admin/staff').then((r) => r.data.data),
 
     inviteStaff: (dto: { email: string; role: string; fullName: string }) =>
