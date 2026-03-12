@@ -1,5 +1,5 @@
 {
-    "badge": "EXPERIENCED TAX PROFESSIONALS",
+    "badge": "Experienced Tax Professionals",
     "title1": "The Team Behind",
     "title2": "Your Tax Success",
     "subtitle": "Meet the experienced and dedicated professionals managing your personal and business tax compliance.",
@@ -8,20 +8,20 @@
     "members": [
         {
             "name": "Laltu Lal Sarker (Prodip)",
-            "role": "FCGA Consultants-VAT, Customs, Income Tax, Accounts, Audit Company Affairs",
-            "expertise": "M.Com, MBA, ITP, CA (RAT) & CFO (COL)",
+            "role": "Expert Compliance Advisor",
+            "expertise": "10+ Years Experience | Expert in Customs, VAT & Tax Law",
             "image": "/team/Laltu.jpg"
         },
         {
             "name": "Md. Ruhul Amin Tamim",
-            "role": "Business Tax Expert",
-            "expertise": "CPA Certified",
+            "role": "Senior Tax Consultant",
+            "expertise": "Skilled in Personal & Corporate Tax Planning",
             "image": "/team/tamim.jpg"
         },
         {
             "name": "Radya Yousuf",
-            "role": "Tax Resolution Specialist",
-            "expertise": "Officer, Dhaka Bank",
+            "role": "Tax Solution Specialist",
+            "expertise": "Expert in SME & Startup Tax Support",
             "image": "/team/Radya Yousuf.jpg"
         }
     ]
