@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "skills": {
+    "nestjs-best-practices": {
+      "source": "kadajett/agent-nestjs-skills",
+      "sourceType": "github",
+      "computedHash": "68658903272e1015f3ec5084c7d0988216a47f42f675ed819a675250fc6a23cd"
+    },
+    "nextjs-best-practices": {
+      "source": "sickn33/antigravity-awesome-skills",
+      "sourceType": "github",
+      "computedHash": "f57b0625e5e9e64dc9f3d7333c81e73f445fd9c65fe7cd0fd99a779a2e78dffd"
+    },
+    "prisma-orm-v7-skills": {
+      "source": "gocallum/nextjs16-agent-skills",
+      "sourceType": "github"
+    },
+    "api-design-principles": {
+      "source": "sickn33/antigravity-awesome-skills",
+      "sourceType": "github"
+    },
+    "security-auditor": {
+      "source": "sickn33/antigravity-awesome-skills",
+      "sourceType": "github"
+    },
+    "test-driven-development": {
+      "source": "sickn33/antigravity-awesome-skills",
+      "sourceType": "github"
+    },
+    "debugging-strategies": {
+      "source": "sickn33/antigravity-awesome-skills",
+      "sourceType": "github"
+    }
+  }
+}

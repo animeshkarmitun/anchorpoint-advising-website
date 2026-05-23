@@ -39,11 +39,12 @@ import { RolesGuard } from './auth/guards/roles.guard';
         JWT_ACCESS_EXPIRY: Joi.string().default('15m'),
         JWT_REFRESH_EXPIRY: Joi.string().default('7d'),
         FRONTEND_URL: Joi.string().default('http://localhost:3011'),
-        // S3 — all optional (local storage fallback)
-        AWS_S3_BUCKET: Joi.string().optional().allow(''),
-        AWS_S3_REGION: Joi.string().optional().allow(''),
-        AWS_ACCESS_KEY_ID: Joi.string().optional().allow(''),
-        AWS_SECRET_ACCESS_KEY: Joi.string().optional().allow(''),
+        // Cloudflare R2 — all optional (local storage fallback)
+        R2_ACCOUNT_ID: Joi.string().optional().allow(''),
+        R2_ACCESS_KEY_ID: Joi.string().optional().allow(''),
+        R2_SECRET_ACCESS_KEY: Joi.string().optional().allow(''),
+        R2_BUCKET_NAME: Joi.string().optional().allow(''),
+        R2_PUBLIC_URL: Joi.string().optional().allow(''),
         UPLOAD_DIR: Joi.string().default('./uploads'),
         THROTTLE_TTL: Joi.number().default(60000),
         THROTTLE_LIMIT: Joi.number().default(100),
@@ -82,8 +83,8 @@ import { RolesGuard } from './auth/guards/roles.guard';
       imports: [ConfigModule],
       inject: [ConfigService],
       useFactory: (config: ConfigService) => {
-        const s3Bucket = config.get<string>('AWS_S3_BUCKET');
-        if (s3Bucket) return []; // S3 mode — no static serving
+        const r2Bucket = config.get<string>('R2_BUCKET_NAME');
+        if (r2Bucket) return []; // R2 cloud mode — no static serving
         return [
           {
             rootPath: join(

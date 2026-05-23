@@ -54,7 +54,7 @@ export class HealthController {
         timestamp: new Date().toISOString(),
         version: '1.0.0',
         database: dbStatus,
-        storage: this.uploadService.isS3Mode() ? 's3' : 'local',
+        storage: this.uploadService.isCloudMode() ? 'r2' : 'local',
         uptime: Math.floor(process.uptime()),
       },
     };
