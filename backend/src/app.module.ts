@@ -21,6 +21,7 @@ import { MessagesModule } from './messages/messages.module';
 import { CmsModule } from './cms/cms.module';
 import { SeoModule } from './seo/seo.module';
 import { AnalyticsModule } from './analytics/analytics.module';
+import { EmailModule } from './email/email.module';
 import { JwtAuthGuard } from './auth/guards/jwt-auth.guard';
 import { RolesGuard } from './auth/guards/roles.guard';
 
@@ -49,6 +50,12 @@ import { RolesGuard } from './auth/guards/roles.guard';
         REGISTRATION_MODE: Joi.string()
           .valid('OPEN', 'INVITE_ONLY', 'DISABLED')
           .default('OPEN'),
+        // Brevo Email
+        BREVO_API_KEY: Joi.string().optional().allow(''),
+        EMAIL_SENDER_NAME: Joi.string().default('Anchor Point Advising'),
+        EMAIL_SENDER_EMAIL: Joi.string().default(
+          'contact@anchorpointadvising.com',
+        ),
         NODE_ENV: Joi.string()
           .valid('development', 'production', 'test')
           .default('development'),
@@ -79,7 +86,10 @@ import { RolesGuard } from './auth/guards/roles.guard';
         if (s3Bucket) return []; // S3 mode — no static serving
         return [
           {
-            rootPath: join(process.cwd(), config.get<string>('UPLOAD_DIR', './uploads')),
+            rootPath: join(
+              process.cwd(),
+              config.get<string>('UPLOAD_DIR', './uploads'),
+            ),
             serveRoot: '/uploads',
           },
         ];
@@ -88,6 +98,7 @@ import { RolesGuard } from './auth/guards/roles.guard';
 
     // Core modules
     PrismaModule,
+    EmailModule,
     UploadModule,
     AuthModule,
     SettingsModule,
@@ -122,4 +133,4 @@ import { RolesGuard } from './auth/guards/roles.guard';
     },
   ],
 })
-export class AppModule { }
+export class AppModule {}

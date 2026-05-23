@@ -4,8 +4,8 @@ import { CmsPublicController } from './cms-public.controller';
 import { AdminCmsController } from './admin-cms.controller';
 
 @Module({
-    controllers: [CmsPublicController, AdminCmsController],
-    providers: [CmsService],
-    exports: [CmsService],
+  controllers: [CmsPublicController, AdminCmsController],
+  providers: [CmsService],
+  exports: [CmsService],
 })
-export class CmsModule { }
+export class CmsModule {}

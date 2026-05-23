@@ -2,7 +2,15 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Facebook, Twitter, Instagram, Linkedin, Youtube, Mail, Phone, MapPin, Send, ArrowRight, CheckCircle } from "lucide-react";
+import { Mail, Phone, MapPin, Send, ArrowRight, CheckCircle } from "lucide-react";
+
+const BrandIcon = ({ size = 24, ...props }: { size?: number | string } & React.SVGProps<SVGSVGElement>) => (
+    <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props} />
+);
+const Facebook = (props: { size?: number | string } & React.SVGProps<SVGSVGElement>) => <BrandIcon {...props}><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></BrandIcon>;
+const Twitter = (props: { size?: number | string } & React.SVGProps<SVGSVGElement>) => <BrandIcon {...props}><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></BrandIcon>;
+const Instagram = (props: { size?: number | string } & React.SVGProps<SVGSVGElement>) => <BrandIcon {...props}><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></BrandIcon>;
+const Linkedin = (props: { size?: number | string } & React.SVGProps<SVGSVGElement>) => <BrandIcon {...props}><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></BrandIcon>;
 import { motion } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
 import { translations } from "@/lib/content";
@@ -31,23 +39,13 @@ export default function Footer() {
                     >
                         <Link href="/" className="flex items-center gap-3 mb-6 group">
                             <div className="relative">
-                                {/* <Image
-                                    src="/logo/footer-img.png"
+                                <Image
+                                    src="/logo/transparent-logo.png"
                                     alt={t.logo}
                                     width={300}
                                     height={100}
                                     className="h-12 md:h-20 w-auto transition-transform group-hover:scale-105"
-                                /> */}
-                                <div className="relative w-12 h-12 md:w-16 md:h-16 rounded-lg overflow-hidden">
-                                    <Image
-                                        src="/logo/new_logo.png"
-                                        alt={t.logo}
-                                        width={300}
-                                        height={300}
-                                        className="w-full h-full object-cover transition-transform group-hover:scale-105"
-                                        priority
-                                    />
-                                </div>
+                                />
                             </div>
                         </Link>
                         <p className="text-gray-300 mb-6 leading-relaxed text-base">
@@ -58,38 +56,29 @@ export default function Footer() {
                             <ul className="space-y-2.5 mb-8">
                                 {t.trustBullets.map((bullet: string, index: number) => (
                                     <li key={index} className="flex items-start gap-2.5 text-gray-300 text-sm">
-                                        <CheckCircle size={16} className="text-emerald-400 mt-0.5 shrink-0" />
+                                        <CheckCircle size={16} className="text-emerald-400 mt-0.5 flex-shrink-0" />
                                         <span>{bullet}</span>
                                     </li>
                                 ))}
                             </ul>
                         )}
                         <div className="flex gap-3">
-                            {[
-                                { Icon: Facebook, href: "https://www.facebook.com/Anchorpointadvisingbd" },
-                                // { Icon: Twitter, href: "#" },
-                                { Icon: Instagram, href: "https://www.instagram.com/anchorpointadvising" },
-                                { Icon: Linkedin, href: "https://www.linkedin.com/company/anchorpoint-advising/" },
-                                { Icon: Youtube, href: "https://www.youtube.com/@anchorpointadvising" },
-                            ].map(({ Icon, href }, index) => (
+                            {[Facebook, Twitter, Instagram, Linkedin].map((Icon, index) => (
                                 <motion.a
                                     key={index}
-                                    href={href}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
+                                    href="#"
                                     whileHover={{ scale: 1.1, y: -3 }}
                                     className="w-12 h-12 bg-white/10 backdrop-blur-sm hover:bg-secondary flex items-center justify-center rounded-xl transition-all duration-300 border border-white/10"
                                 >
                                     <Icon size={20} />
                                 </motion.a>
                             ))}
-                        </div >
-                    </motion.div >
+                        </div>
+                    </motion.div>
 
                     {/* Quick Links */}
-                    < motion.div
-                        initial={{ opacity: 0, y: 20 }
-                        }
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.1 }}
@@ -108,10 +97,10 @@ export default function Footer() {
                                 </li>
                             ))}
                         </ul>
-                    </motion.div >
+                    </motion.div>
 
                     {/* Services */}
-                    < motion.div
+                    <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
@@ -131,10 +120,10 @@ export default function Footer() {
                                 </li>
                             ))}
                         </ul>
-                    </motion.div >
+                    </motion.div>
 
                     {/* Legal */}
-                    < motion.div
+                    <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
@@ -168,17 +157,17 @@ export default function Footer() {
                         {/* Contact Info */}
                         <div className="mt-8 space-y-4">
                             <div className="flex items-center gap-3 text-gray-300 text-base group cursor-pointer">
-                                <div className="w-10 h-10 bg-white/10 backdrop-blur-sm rounded-lg flex items-center justify-center shrink-0 group-hover:bg-secondary transition-all">
+                                <div className="w-10 h-10 bg-white/10 backdrop-blur-sm rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-secondary transition-all">
                                     <Mail size={20} className="text-secondary group-hover:text-white" />
                                 </div>
                                 <span>{t.email}</span>
                             </div>
                         </div>
-                    </motion.div >
-                </div >
+                    </motion.div>
+                </div>
 
                 {/* Copyright */}
-                < motion.div
+                <motion.div
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
@@ -192,8 +181,8 @@ export default function Footer() {
                         <Link href="#" className="hover:text-white transition-colors">{t.termsOfService}</Link>
                         <Link href="/cookie-policy" className="hover:text-white transition-colors">{t.cookiePolicy}</Link>
                     </div>
-                </motion.div >
-            </div >
-        </footer >
+                </motion.div>
+            </div>
+        </footer>
     );
 }

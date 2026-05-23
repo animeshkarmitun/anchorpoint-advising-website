@@ -4,8 +4,8 @@ import { ConsultationsController } from './consultations.controller';
 import { AdminConsultationsController } from './admin-consultations.controller';
 
 @Module({
-    controllers: [ConsultationsController, AdminConsultationsController],
-    providers: [ConsultationsService],
-    exports: [ConsultationsService],
+  controllers: [ConsultationsController, AdminConsultationsController],
+  providers: [ConsultationsService],
+  exports: [ConsultationsService],
 })
-export class ConsultationsModule { }
+export class ConsultationsModule {}

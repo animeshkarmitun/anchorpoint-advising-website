@@ -5,8 +5,12 @@ import { AdminPaymentsController } from './admin-payments.controller';
 import { PublicPaymentsController } from './public-payments.controller';
 
 @Module({
-    controllers: [PaymentsController, AdminPaymentsController, PublicPaymentsController],
-    providers: [PaymentsService],
-    exports: [PaymentsService],
+  controllers: [
+    PaymentsController,
+    AdminPaymentsController,
+    PublicPaymentsController,
+  ],
+  providers: [PaymentsService],
+  exports: [PaymentsService],
 })
-export class PaymentsModule { }
+export class PaymentsModule {}

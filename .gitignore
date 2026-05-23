@@ -46,3 +46,7 @@ next-env.d.ts
 
 # internal docs
 /docs/
+
+# deploy artifacts
+deploy.log
+.last-deploy-commit

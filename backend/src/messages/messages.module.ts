@@ -4,8 +4,8 @@ import { MessagesController } from './messages.controller';
 import { AdminMessagesController } from './admin-messages.controller';
 
 @Module({
-    controllers: [MessagesController, AdminMessagesController],
-    providers: [MessagesService],
-    exports: [MessagesService],
+  controllers: [MessagesController, AdminMessagesController],
+  providers: [MessagesService],
+  exports: [MessagesService],
 })
-export class MessagesModule { }
+export class MessagesModule {}

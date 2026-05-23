@@ -4,8 +4,8 @@ import { FilingsController } from './filings.controller';
 import { AdminFilingsController } from './admin-filings.controller';
 
 @Module({
-    controllers: [FilingsController, AdminFilingsController],
-    providers: [FilingsService],
-    exports: [FilingsService],
+  controllers: [FilingsController, AdminFilingsController],
+  providers: [FilingsService],
+  exports: [FilingsService],
 })
-export class FilingsModule { }
+export class FilingsModule {}

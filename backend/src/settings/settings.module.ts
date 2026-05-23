@@ -4,8 +4,8 @@ import { SettingsController } from './settings.controller';
 import { PublicSettingsController } from './public-settings.controller';
 
 @Module({
-    controllers: [SettingsController, PublicSettingsController],
-    providers: [SettingsService],
-    exports: [SettingsService],
+  controllers: [SettingsController, PublicSettingsController],
+  providers: [SettingsService],
+  exports: [SettingsService],
 })
-export class SettingsModule { }
+export class SettingsModule {}

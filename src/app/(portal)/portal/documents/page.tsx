@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState, Suspense } from 'react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { useSearchParams, useRouter } from 'next/navigation';
 import {
@@ -312,7 +312,7 @@ function ChecklistRow({
 
 // ── Documents page ─────────────────────────────────────────────────────────────
 
-export default function DocumentsPage() {
+function DocumentsPageContent() {
     const router = useRouter();
     const searchParams = useSearchParams();
     const filingId = searchParams.get('filingId') ?? '';
@@ -400,5 +400,25 @@ export default function DocumentsPage() {
                 </>
             )}
         </div>
+    );
+}
+
+// ── Page wrapper with Suspense (useSearchParams requires it in Next.js 16) ────
+
+export default function DocumentsPage() {
+    return (
+        <Suspense fallback={
+            <div className="space-y-5 max-w-2xl">
+                <div className="skeleton h-8 w-48 rounded" />
+                <div className="skeleton h-24 rounded-xl" />
+                <div className="space-y-3">
+                    {[0, 1, 2, 3].map((i) => (
+                        <div key={i} className="skeleton h-16 rounded-xl" />
+                    ))}
+                </div>
+            </div>
+        }>
+            <DocumentsPageContent />
+        </Suspense>
     );
 }

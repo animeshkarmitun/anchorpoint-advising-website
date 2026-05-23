@@ -6,13 +6,13 @@ import { CustomersController } from './customers.controller';
 import { StaffController } from './staff.controller';
 
 @Module({
-    controllers: [
-        DashboardController,
-        AuditLogController,
-        CustomersController,
-        StaffController,
-    ],
-    providers: [AnalyticsService],
-    exports: [AnalyticsService],
+  controllers: [
+    DashboardController,
+    AuditLogController,
+    CustomersController,
+    StaffController,
+  ],
+  providers: [AnalyticsService],
+  exports: [AnalyticsService],
 })
-export class AnalyticsModule { }
+export class AnalyticsModule {}

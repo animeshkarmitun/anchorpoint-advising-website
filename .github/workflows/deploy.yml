@@ -1,37 +1,198 @@
-name: 🚀 Deploy to Production
+# ============================================================================
+#  🚀 Professional CI/CD Pipeline — Anchor Point Advising
+#
+#  How it works:
+#    1. Push to `main` triggers the workflow.
+#    2. CI Job ('validate'):
+#       - Checks out code and sets up Node.js v20 with npm caching.
+#       - Validates NestJS backend: runs npm ci, prisma client generation,
+#         ESLint check (warn only), and compile build (blocking gate).
+#       - Validates Next.js frontend: runs npm ci, ESLint check (warn only),
+#         and Next.js optimized build compilation (blocking gate).
+#    3. CD Job ('deploy'):
+#       - Runs ONLY if the 'validate' CI job succeeds.
+#       - Connects to the production server via secure SSH (SSH Key or Password).
+#       - Triggers scripts/deploy.sh on the server to pull and restart services.
+#       - Executes automated server health checks.
+#
+#  Required GitHub Secrets (Settings → Secrets and Variables → Actions):
+#    SERVER_HOST      — Server public IP address (194.233.80.166)
+#    SERVER_USER      — SSH username (e.g., root)
+#    SERVER_SSH_KEY   — Private SSH Key content (Recommended for secure auth)
+#    SERVER_PASSWORD  — SSH password (Fallback/Backward compatible auth)
+#    SERVER_PORT      — SSH port (optional, default: 22)
+#    PROJECT_DIR      — Project path on the server (e.g., /var/www/anchorpoint)
+# ============================================================================
+
+name: 🚀 Production CI/CD Pipeline
 
 on:
   push:
     branches: [main]
+
+  # Enable manual execution with target filters
   workflow_dispatch:
+    inputs:
+      deploy_target:
+        description: 'Target component to deploy'
+        required: false
+        default: 'all'
+        type: choice
+        options:
+          - all
+          - backend
+          - frontend
+      deploy_mode:
+        description: 'Deployment execution mode'
+        required: false
+        default: 'full'
+        type: choice
+        options:
+          - full
+          - quick
+
+# Prevent concurrent deployments (avoids git and PM2 lock conflicts on the server)
+concurrency:
+  group: production-deploy
+  cancel-in-progress: false
 
 jobs:
-  deploy:
-    name: Deploy to Ubuntu Server
+  # ── 1. CI VALIDATION GATE ───────────────────────────────────────────────────
+  validate:
+    name: 🧪 CI Code Validation
     runs-on: ubuntu-latest
-    
+    timeout-minutes: 10
+
     steps:
-      - name: 🔗 SSH & Deploy
+      - name: 📥 Checkout repository
+        uses: actions/checkout@v4
+
+      - name: 🟢 Setup Node.js environment
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      # ── NestJS Backend Validation ──
+      - name: 📦 Install backend dependencies
+        run: |
+          cd backend
+          npm ci
+
+      - name: 🔗 Generate Prisma Client
+        run: |
+          cd backend
+          npx prisma generate
+
+      - name: 🔍 Lint check NestJS backend
+        run: |
+          cd backend
+          npm run lint
+        continue-on-error: true # Display errors in logs/annotations but don't block deployment for pre-existing lint styles
+
+      - name: 🔨 Compile NestJS backend
+        run: |
+          cd backend
+          npm run build
+
+      # ── Next.js Frontend Validation ──
+      - name: 📦 Install frontend dependencies
+        run: npm ci
+
+      - name: 🔍 Lint check Next.js frontend
+        run: npm run lint
+        continue-on-error: true # Display errors in logs/annotations but don't block deployment for pre-existing lint styles
+
+      - name: 🔨 Compile Next.js frontend
+        run: npm run build
+        env:
+          NEXT_PUBLIC_BASE_URL: https://anchorpointadvising.com
+          NEXT_PUBLIC_API_URL: https://anchorpointadvising.com/api/v1
+
+  # ── 2. CD DEPLOYMENT STAGE ──────────────────────────────────────────────────
+  deploy:
+    name: 📦 CD Server Deploy
+    needs: validate
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: 📋 Log deploy information
+        run: |
+          echo "🚀 Deploy triggered!"
+          echo "   Trigger  : ${{ github.event_name }}"
+          echo "   Branch   : ${{ github.ref_name }}"
+          echo "   Commit   : ${{ github.sha }}"
+          echo "   Author   : ${{ github.actor }}"
+          echo "   Message  : ${{ github.event.head_commit.message }}"
+          echo "   Target   : ${{ inputs.deploy_target || 'all' }}"
+          echo "   Mode     : ${{ inputs.deploy_mode || 'full' }}"
+
+      - name: 🔑 Deploy via SSH
         uses: appleboy/ssh-action@v1
         with:
           host: ${{ secrets.SERVER_HOST }}
           username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
           password: ${{ secrets.SERVER_PASSWORD }}
           port: ${{ secrets.SERVER_PORT || 22 }}
+          timeout: 600s
+          command_timeout: 600s
           script_stop: true
           script: |
-            echo "🚀 Starting deployment..."
-            cd ${{ secrets.PROJECT_DIR || '~/anchor-point' }}
-            
-            if [ -f deploy.sh ]; then
-              bash deploy.sh
-            else
-              echo "deploy.sh not found. Running manual deploy..."
-              git fetch origin main
-              git reset --hard origin/main
-              npm install
-              npm run build
-              pm2 restart anchor-point
+            set -e
+
+            echo "═══════════════════════════════════════════"
+            echo "  🚀 Deploy started at $(date)"
+            echo "═══════════════════════════════════════════"
+
+            # Load server configurations if available
+            CONFIG_FILE="$HOME/.server-setup.conf"
+            if [ -f "$CONFIG_FILE" ]; then
+                set -a
+                . "$CONFIG_FILE"
+                set +a
+                echo "[OK] Loaded config from $CONFIG_FILE"
             fi
-            
-            echo "✅ Deployment finished at $(date)"
+
+            # Resolve project directories
+            PROJECT_DIR="${PROJECT_DIR:-${{ secrets.PROJECT_DIR }}}"
+            PROJECT_DIR="${PROJECT_DIR:-$HOME/anchor-point}"
+            GIT_BRANCH="${GIT_BRANCH:-main}"
+            export PROJECT_DIR GIT_BRANCH
+
+            # Pull latest code first so deploy.sh itself is fresh
+            cd "$PROJECT_DIR"
+            git fetch origin
+            git reset --hard "origin/$GIT_BRANCH"
+            echo "[OK] Code synced to origin/$GIT_BRANCH"
+
+            # Execute the verified deployment script
+            DEPLOY_TARGET="${{ inputs.deploy_target || 'all' }}"
+            DEPLOY_MODE="${{ inputs.deploy_mode || 'full' }}"
+
+            if [ "$DEPLOY_MODE" = "quick" ]; then
+                bash "$PROJECT_DIR/scripts/deploy.sh" --quick
+            else
+                bash "$PROJECT_DIR/scripts/deploy.sh" "$DEPLOY_TARGET"
+            fi
+
+            echo ""
+            echo "═══════════════════════════════════════════"
+            echo "  ✅ Deploy completed at $(date)"
+            echo "═══════════════════════════════════════════"
+
+      - name: 📊 Deployment Summary
+        if: always()
+        run: |
+          if [[ "${{ job.status }}" == "success" ]]; then
+            echo "✅ Deploy SUCCEEDED"
+            echo "   Commit: ${{ github.sha }}"
+            echo "   Branch: ${{ github.ref_name }}"
+          else
+            echo "❌ Deploy FAILED"
+            echo "   Check the SSH step logs above for details."
+            echo "   SSH into the server and check:"
+            echo "     pm2 logs --lines 50"
+            echo "     cat ~/anchor-point/deploy.log | tail -30"
+          fi

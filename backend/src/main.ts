@@ -49,8 +49,8 @@ async function bootstrap() {
       .setTitle('Anchor Point Advising API')
       .setDescription(
         'Tax consulting & financial advisory platform API. ' +
-        'All endpoints use /api/v1 prefix. ' +
-        'Authentication via Bearer JWT token.',
+          'All endpoints use /api/v1 prefix. ' +
+          'Authentication via Bearer JWT token.',
       )
       .setVersion('1.0')
       .addBearerAuth(
@@ -85,7 +85,10 @@ async function bootstrap() {
       .addTag('Admin: Analytics', 'Reports and analytics')
       .addTag('Admin: Settings', 'System configuration')
       .addTag('Public', 'Public content endpoints')
-      .addServer(`http://localhost:${configService.get<number>('PORT', 3012)}`, 'Local Development')
+      .addServer(
+        `http://localhost:${configService.get<number>('PORT', 3012)}`,
+        'Local Development',
+      )
       .build();
 
     const document = SwaggerModule.createDocument(app, swaggerConfig);

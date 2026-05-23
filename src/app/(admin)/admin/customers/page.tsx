@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { useRouter, useSearchParams } from 'next/navigation';
 import {
@@ -197,7 +197,7 @@ function Pagination({
 
 // ── Page ──────────────────────────────────────────────────────────────────────
 
-export default function CustomersPage() {
+function CustomersPageContent() {
     const router       = useRouter();
     const searchParams = useSearchParams();
 
@@ -286,5 +286,21 @@ export default function CustomersPage() {
                 </div>
             )}
         </div>
+    );
+}
+
+// ── Page wrapper with Suspense (useSearchParams requires it in Next.js 16) ────
+
+export default function CustomersPage() {
+    return (
+        <Suspense fallback={
+            <div className="space-y-5">
+                <div className="skeleton h-8 w-48 rounded" />
+                <div className="skeleton h-12 rounded-lg" />
+                <SkeletonTable rows={8} cols={5} />
+            </div>
+        }>
+            <CustomersPageContent />
+        </Suspense>
     );
 }

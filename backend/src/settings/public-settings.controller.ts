@@ -9,40 +9,40 @@ import { SettingsService } from './settings.service';
 @ApiTags('Public')
 @Controller('public/settings')
 export class PublicSettingsController {
-    constructor(private readonly settingsService: SettingsService) { }
+  constructor(private readonly settingsService: SettingsService) {}
 
-    @Get('registration-mode')
-    @Public()
-    @ApiOperation({
-        summary: 'Get current registration mode (public)',
-        description:
-            'Returns the registration mode so the frontend can show/hide the Register button. ' +
-            'OPEN = register button visible, INVITE_ONLY = hidden (use invite link), DISABLED = hidden.',
-    })
-    @ApiResponse({
-        status: 200,
-        description: 'Current registration mode',
-        schema: {
-            example: {
-                success: true,
-                message: 'Registration mode',
-                data: {
-                    mode: 'OPEN',
-                    registrationEnabled: true,
-                },
-            },
+  @Get('registration-mode')
+  @Public()
+  @ApiOperation({
+    summary: 'Get current registration mode (public)',
+    description:
+      'Returns the registration mode so the frontend can show/hide the Register button. ' +
+      'OPEN = register button visible, INVITE_ONLY = hidden (use invite link), DISABLED = hidden.',
+  })
+  @ApiResponse({
+    status: 200,
+    description: 'Current registration mode',
+    schema: {
+      example: {
+        success: true,
+        message: 'Registration mode',
+        data: {
+          mode: 'OPEN',
+          registrationEnabled: true,
         },
-    })
-    async getRegistrationMode() {
-        const mode = await this.settingsService.getRegistrationMode();
+      },
+    },
+  })
+  async getRegistrationMode() {
+    const mode = await this.settingsService.getRegistrationMode();
 
-        return {
-            success: true,
-            message: 'Registration mode',
-            data: {
-                mode,
-                registrationEnabled: mode === 'OPEN',
-            },
-        };
-    }
+    return {
+      success: true,
+      message: 'Registration mode',
+      data: {
+        mode,
+        registrationEnabled: mode === 'OPEN',
+      },
+    };
+  }
 }

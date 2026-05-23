@@ -7,12 +7,9 @@ import { AdminDocumentsController } from './admin-documents.controller';
 import { UploadModule } from '../upload/upload.module';
 
 @Module({
-    imports: [
-        MulterModule.register({ storage: memoryStorage() }),
-        UploadModule,
-    ],
-    controllers: [DocumentsController, AdminDocumentsController],
-    providers: [DocumentsService],
-    exports: [DocumentsService],
+  imports: [MulterModule.register({ storage: memoryStorage() }), UploadModule],
+  controllers: [DocumentsController, AdminDocumentsController],
+  providers: [DocumentsService],
+  exports: [DocumentsService],
 })
-export class DocumentsModule { }
+export class DocumentsModule {}
